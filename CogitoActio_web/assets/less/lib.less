@@ -1,72 +1,82 @@
 @transparent: transparent;
-@page-white: #FFFFFF;
-@page-white-1: #FCFCFC;
-@page-white-2: #F8F8F8;
-@page-white-3: #F1F1F1;
-@page-gray: #9B9B9B;
-@page-gray-1: #BABABA;
-@page-gray-2: #E8E8E8;
-@page-black: #3A3A3A;
-@page-black-1: #5A5A5A;
-@page-blue: #27364E;
-@page-red: #ED5548;
-@page-lightBlue: rgb(0,159,224);
-@component-red: #E94831;
-@component-blue: #447BAD;
-@component-lightBlue: #54C3F1;
-@component-gray: #9B9B9B;
-@component-gray-1: #B8B8B8;
-@component-gray-2: #D0D0D0;
-@component-white-1: #E8E8E8;
-@component-white-2: #F8F8F8;
-@component-white-3: #E8E8E8;
-@component-white: #FFFFFF;
-@component-black: #3A3A3A;
-@component-black-1: #5A5A5A;
-@component-black-2: #6B6B6B;
-@font-black: #3A3A3A;
-@font-black-1: #5A5A5A;
-@font-black-2: #6B6B6B;
-@font-gray: #9497a5;
-@font-gray-1: #C0C0C0;
-@font-gray-2: #E0E0E0;
-@font-white: #FFFFFF;
-@font-white-1: #FCFCFC;
-@font-white-2: #F1F1F1;
-@font-white-3: #DBDBDB;
-@font-red: #E94831;
-@font-blue: #447BAD;
-@font-lightBlue: #54C3F1;
+@white-1: #FFFFFF;
+@white-2: #F8F8F8;
+@white-3: #F1F1F1;
+@light-gray-1: #E8E8E8;
+@light-gray-2: #D8D8D8;
+@light-gray-3: #C8C8C8;
+@gray-1: #B8B8B8;
+@gray-2: #A8A8A8;
+@gray-3: #989898;
+@gray-4: #888888;
+@black-1: #686868;
+@black-2: #585858;
+@black-3: #383838;
+@red-1: #EB5548;
+@red-2: #ED5548;
+@blue-1: #27364E;
+@blue-2: #447BAD;
+@blue-3: #54C3F1;
 
-.box-size(@width, @height){
+.boxSize1(@style){
+  width: @style;
+  height: @style;
+}
+.boxSize2(@width, @height){
   width: @width;
   height: @height;
 }
+.boxSizeW(@style){
+  width: @style;
+  height: auto;
+}
+.boxSizeH(@style){
+  width: auto;
+  height: @style;
+}
 
-.box-shadow(@style){
+.boxShadow(@style){
   -webkit-box-shadow: @style !important;
   -moz-box-shadow: @style !important;
   box-shadow: @style !important;
 }
 
-.border-radius(@style){
+.borderRadius(@style){
   -webkit-border-radius: @style !important;
   -moz-border-radius: @style !important;
   border-radius: @style !important;
 }
 
-.font(@size, @weight){
+.border(@size, @color){
+  border: @size solid @color;
+}
+
+.font1(@size, @height){
+  font-size: @size;
+  line-height: @height;
+}
+
+.font2(@size, @weight){
   font-size: @size;
   line-height: 1.5*@size;
   font-weight: @weight;
 }
 
-.background(@url){
-  background: url(@url) no-repeat center;
-  background-size: 100% 100%;
+.font3(@size, @height, @weight){
+  font-size: @size;
+  line-height:  @height;
+  font-weight: @weight;
 }
 
-.text-overflow(){
+.BS(@url, @size){
+  background: url(@url) no-repeat center;
+  background-size: @size;
+}
+.BC(@color){
+  background-color: @color;
+}
+
+.textOverflow(){
   overflow: hidden;
   white-space: nowrap;
   -ms-text-overflow: ellipsis;
@@ -81,15 +91,15 @@
   transform: @style;
 }
 
-.transition(@style, @time){
-  -webkit-transition: @style @time;
-  -moz-transition: @style @time;
-  -ms-transition: @style @time;
-  -o-transition: @style @time;
-  transition: @style @time;
+.transition(@style){
+  -webkit-transition: @style;
+  -moz-transition: @style;
+  -ms-transition: @style;
+  -o-transition: @style;
+  transition: @style;
 }
 
-.line-clamp(@num){
+.lineClamp(@num){
   overflow: hidden;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
@@ -98,30 +108,21 @@
   -webkit-box-orient: vertical;
 }
 
-.background-transparent{
-  background-color: transparent;
-}
-
-@font-face {
-  font-family: youyuan; /*这里是说明调用来的字体名字*/
-  src: url('../font/youyuan.TTF'); /*这里是字体文件路径*/
-}
-
-@font-face {
-  font-family: raleway; /*这里是说明调用来的字体名字*/
-  src: url('../font/raleway.ttf'); /*这里是字体文件路径*/
-}
-
-@font-face {
-  font-family: PingFangSC; /*这里是说明调用来的字体名字*/
-  src: url('../font/PingFang-SC-Regular.otf'); /*这里是字体文件路径*/
-}
-textarea{
-  resize:none;
-}
 .btn-primary{
-  background-color: @component-blue;
+  background-color: @blue-2;
 }
 .btn-info{
-  background-color: @component-lightBlue;
+  background-color: @blue-3;
+}
+.btn-danger{
+  background-color: @red-1;
+}
+
+@font-face {
+  font-family: SIMYOU; /*这里是说明调用来的字体名字*/
+  src: url('../fonts/SIMYOU.TTF'); /*这里是字体文件路径*/
+}
+@font-face {
+  font-family: yahei; /*这里是说明调用来的字体名字*/
+  src: url('../fonts/yahei.ttf'); /*这里是字体文件路径*/
 }
