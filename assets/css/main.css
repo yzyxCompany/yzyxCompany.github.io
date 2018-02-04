@@ -1206,14 +1206,14 @@ body {
 .page-section .news-content-box {
   position: relative;
   width: auto;
-  height: 600px;
+  height: 720px;
 }
 .page-section .news-content-box:after {
   position: absolute;
   top: 0;
   left: 6px;
   width: 2px;
-  height: 600px;
+  height: 680px;
   background-color: #B8B8B8;
 }
 .page-section .news-content-box .news-content-card {
