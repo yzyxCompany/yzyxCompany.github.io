@@ -1495,7 +1495,8 @@ footer .footer-card .footer-menu-card .footer-menu li a {
   color: #979da7;
   text-decoration: none;
   font-size: 12px;
-  line-height: 12px;
+  line-height: 18px;
+  font-weight: normal;
 }
 footer .footer-card .footer-menu-card .footer-menu li a.QRCode-btn {
   position: relative;
@@ -1503,6 +1504,7 @@ footer .footer-card .footer-menu-card .footer-menu li a.QRCode-btn {
 footer .footer-card .footer-menu-card .footer-menu li a.QRCode-btn .QRCode-tips-card {
   position: absolute;
   bottom: 25px;
+  z-index: 3;
   left: 50%;
   display: none;
   margin-left: -90px;
@@ -1555,11 +1557,6 @@ footer .footer-card .footer-menu-card p {
   footer .footer-card .footer-menu-card .footer-menu li {
     float: left;
     padding: 0 15px;
-  }
-  footer .footer-card .footer-menu-card .footer-menu li a {
-    font-size: 12px;
-    line-height: 18px;
-    font-weight: normal;
   }
   footer .footer-card .footer-menu-card .footer-menu li:first-child {
     padding-left: 0;

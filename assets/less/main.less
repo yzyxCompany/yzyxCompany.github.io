@@ -1274,13 +1274,14 @@ footer{
           a{
             color: @gray-3;
             text-decoration: none;
-            .font1(12px,12px);
+            .font2(12px, normal);
           }
           a.QRCode-btn{
             position: relative;
             .QRCode-tips-card{
               position: absolute;
               bottom: 25px;
+              z-index: 3;
               left: 50%;
               display: none;
               margin-left: -90px;
@@ -1329,9 +1330,6 @@ footer{
           li {
             float: left;
             padding: 0 15px;
-            a {
-              .font2(12px, normal);
-            }
             &:first-child{
               padding-left: 0;
             }
