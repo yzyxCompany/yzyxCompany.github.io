@@ -32,7 +32,7 @@
 }
 html,
 body {
-  font-family: yahei, sans-serif;
+  font-family: 'PingFang SC','Microsoft YaHei UI',yahei,sans-serif;
   background-color: #FFFFFF;
 }
 .navbar {
