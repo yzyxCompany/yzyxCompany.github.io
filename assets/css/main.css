@@ -1164,7 +1164,7 @@ body {
 .page-section .originator-content-box .originator-content-card p em {
   color: #2a364c;
   font-size: 12px;
-  line-height: 24px;
+  line-height: 20px;
   margin-right: 3px;
 }
 @media (min-width: 768px) {
@@ -1175,10 +1175,7 @@ body {
     font-size: 16px;
     line-height: 24px;
     font-weight: normal;
-    margin-bottom: 20px;
-  }
-  .page-section .originator-content-box .originator-content-card p {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 }
 @media (min-width: 992px) {
@@ -1200,10 +1197,10 @@ body {
     font-size: 18px;
     line-height: 27px;
     font-weight: normal;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
   }
   .page-section .originator-content-box .originator-content-card p {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
   }
 }
 .page-section .news-content-box {
