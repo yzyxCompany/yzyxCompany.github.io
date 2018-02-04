@@ -32,7 +32,7 @@
 }
 html,
 body {
-  font-family: 'PingFang SC','Microsoft YaHei UI',yahei,sans-serif;
+  font-family: 'PingFang SC', 'Microsoft YaHei UI', yahei, sans-serif;
   background-color: #FFFFFF;
 }
 .navbar {
@@ -230,7 +230,7 @@ body {
   font-size: 12px;
   line-height: 18px;
   font-weight: normal;
-  margin: 0 auto;
+  margin: 0 auto 10px;
   max-width: 480px;
 }
 .page-section .row {
@@ -278,6 +278,7 @@ body {
     width: 80%;
     height: auto;
     max-width: inherit;
+    margin: 0 auto 15px;
   }
   .page-section .row > .item {
     padding: 5px;
@@ -315,6 +316,7 @@ body {
     font-weight: normal;
     width: 55%;
     height: auto;
+    margin: 0 auto 20px;
   }
 }
 .page-section .illustration-box {
@@ -528,7 +530,7 @@ body {
 }
 @media (min-width: 992px) {
   .page-section .company-module-box .company-module-card {
-    width: 200px;
+    width: 205px;
     height: auto;
   }
   .page-section .company-module-box .company-module-card .company-module-icon img {
@@ -544,7 +546,7 @@ body {
 }
 @media (min-width: 1200px) {
   .page-section .company-module-box .company-module-card {
-    width: 215px;
+    width: 240px;
     height: auto;
   }
   .page-section .company-module-box .company-module-card .company-module-icon {
@@ -801,7 +803,7 @@ body {
   }
   .page-section .course-module-box .course-module-card .course-module-title span {
     float: none;
-    margin: 80px 0 0;
+    margin: 80px 0 10px;
   }
   .page-section .course-module-box .course-module-card .course-module-title h3 {
     float: none;
@@ -836,6 +838,10 @@ body {
   .page-section .course-module-box .course-module-card.active {
     width: 416px;
     height: 360px;
+  }
+  .page-section .course-module-box .course-module-card:last-child .course-module-title h3 {
+    font-size: 30px;
+    line-height: 36px;
   }
   .page-section .course-module-box .course-module-card:last-child.active {
     width: 410px;
