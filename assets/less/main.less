@@ -1248,6 +1248,7 @@ html,body{
     }
   }
 }
+
 footer{
   .boxSizeW(100%);
   .BC(@blue-1);
@@ -1273,7 +1274,37 @@ footer{
           a{
             color: @gray-3;
             text-decoration: none;
-            .font1(8px,12px);
+            .font1(12px,12px);
+          }
+          a.QRCode-btn{
+            position: relative;
+            .QRCode-tips-card{
+              position: absolute;
+              bottom: 25px;
+              left: 50%;
+              display: none;
+              margin-left: -90px;
+              .BC(@white-1);
+              .boxSize1(180px);
+              .boxShadow(0 0 15px @black-2);
+              img{
+                .boxSize1(180px);
+              }
+              span{
+                position: absolute;
+                .boxSize1(0px);
+                .border(10px,transparent);
+                border-top-color: @white-1;
+                bottom: -20px;
+                left: 50%;
+                margin-left: -10px;
+              }
+            }
+            &:focus,&:hover{
+              .QRCode-tips-card{
+                display: block;
+              }
+            }
           }
         }
       }

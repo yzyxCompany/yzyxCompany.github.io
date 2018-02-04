@@ -11,9 +11,9 @@ var boxHeight = function() {
 };
 
 var accordionMenu = function () {
-    $('.course-module-card').on('click',function () {
+    $('.course-module-title').on('click',function () {
         $('.course-module-card').removeClass('active');
-        $(this).addClass('active');
+        $(this).parent('.course-module-card').addClass('active');
     })
 };
 

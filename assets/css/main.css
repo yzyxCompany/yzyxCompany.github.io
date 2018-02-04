@@ -1,3 +1,6 @@
+a {
+  cursor: pointer;
+}
 .btn-primary {
   background-color: #447BAD;
 }
@@ -1491,8 +1494,42 @@ footer .footer-card .footer-menu-card .footer-menu li {
 footer .footer-card .footer-menu-card .footer-menu li a {
   color: #979da7;
   text-decoration: none;
-  font-size: 8px;
+  font-size: 12px;
   line-height: 12px;
+}
+footer .footer-card .footer-menu-card .footer-menu li a.QRCode-btn {
+  position: relative;
+}
+footer .footer-card .footer-menu-card .footer-menu li a.QRCode-btn .QRCode-tips-card {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  display: none;
+  margin-left: -90px;
+  background-color: #FFFFFF;
+  width: 180px;
+  height: 180px;
+  -webkit-box-shadow: 0 0 15px #585858 !important;
+  -moz-box-shadow: 0 0 15px #585858 !important;
+  box-shadow: 0 0 15px #585858 !important;
+}
+footer .footer-card .footer-menu-card .footer-menu li a.QRCode-btn .QRCode-tips-card img {
+  width: 180px;
+  height: 180px;
+}
+footer .footer-card .footer-menu-card .footer-menu li a.QRCode-btn .QRCode-tips-card span {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border: 10px solid transparent;
+  border-top-color: #FFFFFF;
+  bottom: -20px;
+  left: 50%;
+  margin-left: -10px;
+}
+footer .footer-card .footer-menu-card .footer-menu li a.QRCode-btn:focus .QRCode-tips-card,
+footer .footer-card .footer-menu-card .footer-menu li a.QRCode-btn:hover .QRCode-tips-card {
+  display: block;
 }
 footer .footer-card .footer-menu-card p {
   color: #979da7;
