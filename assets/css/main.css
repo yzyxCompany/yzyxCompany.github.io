@@ -93,10 +93,15 @@ body {
 .navbar .navbar-nav > li a {
   position: relative;
   color: #64676c;
+  -webkit-transition: color 0.5s;
+  -moz-transition: color 0.5s;
+  -ms-transition: color 0.5s;
+  -o-transition: color 0.5s;
+  transition: color 0.5s;
 }
 .navbar .navbar-nav > li a:hover {
   background-color: #F1F1F1;
-  color: #4c5564;
+  color: #EB5548;
 }
 .navbar .navbar-nav > li a:focus {
   color: #64676c;
@@ -113,6 +118,22 @@ body {
 .navbar .navbar-nav > li.active > a:focus {
   color: #64676c;
   background-color: transparent;
+}
+.navbar .navbar-nav > li .dropdown-menu {
+  padding: 0;
+}
+.navbar .navbar-nav > li .dropdown-menu li > a {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 35px;
+  padding-left: 30px;
+}
+.navbar .navbar-nav > li .dropdown-menu li > a:hover {
+  color: #EB5548 !important;
+}
+.navbar .navbar-nav > li .dropdown-menu li + li {
+  border-top: 1px solid #F1F1F1;
 }
 @media (min-width: 768px) {
   .navbar {
@@ -137,11 +158,6 @@ body {
     height: 50px;
   }
   .navbar .navbar-nav > li a {
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -ms-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
     margin: 0 10px;
     letter-spacing: 1px;
     padding: 20px 10px;

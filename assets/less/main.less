@@ -48,9 +48,10 @@ html,body{
     a{
       position: relative;
       color: @black-1;
+      .transition(color 0.5s);
       &:hover{
         .BC(@white-3);
-        color: @black-3;
+        color: @red-1;
       }
       &:focus{
         color: @black-1;
@@ -67,6 +68,20 @@ html,body{
       &:focus{
         color: @black-1;
         .BC(transparent);
+      }
+    }
+    .dropdown-menu{
+      padding: 0;
+      li>a{
+        .MP-0;
+        .font1(14px,35px);
+        padding-left: 30px;
+        &:hover{
+          color: @red-1!important;
+        }
+      }
+      li+li{
+        border-top: 1px solid @white-3;
       }
     }
   }
@@ -87,7 +102,6 @@ html,body{
     }
     .navbar-nav > li {
       a {
-        .transition(all 0.5s);
         margin: 0 10px;
         letter-spacing: 1px;
         padding: 20px 10px;
