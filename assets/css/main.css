@@ -1225,14 +1225,14 @@ body {
 .page-section .news-content-box {
   position: relative;
   width: auto;
-  height: 720px;
+  height: 800px;
 }
 .page-section .news-content-box:after {
   position: absolute;
   top: 0;
   left: 6px;
   width: 2px;
-  height: 680px;
+  height: 785px;
   background-color: #B8B8B8;
 }
 .page-section .news-content-box .news-content-card {
