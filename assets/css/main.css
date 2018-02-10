@@ -588,7 +588,7 @@ body {
   background: url('../img/illustration/i002.png') no-repeat center;
   background-size: 360px auto;
   background-position: center bottom;
-  padding-bottom: 310px;
+  padding-bottom: 375px;
   margin-bottom: 50px;
 }
 @media (min-width: 768px) {
