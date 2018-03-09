@@ -1473,6 +1473,11 @@ body {
     padding: 9px 54px;
   }
 }
+@media (max-width: 768px) {
+  .about-intro-section p {
+    text-align: left;
+  }
+}
 footer {
   width: 100%;
   height: auto;
