@@ -1159,9 +1159,6 @@ body {
   border: 5px solid #979da7;
   width: 240px;
   height: auto;
-  -webkit-box-shadow: -3px -3px 15px #888888 !important;
-  -moz-box-shadow: -3px -3px 15px #888888 !important;
-  box-shadow: -3px -3px 15px #888888 !important;
 }
 .page-section .originator-content-box .originator-content-card h2 {
   margin-top: 0;
