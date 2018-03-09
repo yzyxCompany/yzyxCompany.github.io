@@ -1153,7 +1153,7 @@ body {
 }
 .page-section .originator-content-box {
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 .page-section .originator-content-box .originator-picture-card > .originator-picture > img {
   border: 5px solid #979da7;
@@ -1197,7 +1197,6 @@ body {
 @media (min-width: 992px) {
   .page-section .originator-content-box {
     max-width: 880px;
-    text-align: left;
   }
   .page-section .originator-content-box .originator-picture-card .originator-picture {
     padding-top: 8px;
