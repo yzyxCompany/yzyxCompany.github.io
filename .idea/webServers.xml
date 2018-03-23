@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9386d739-3f46-4407-b4c2-9deced5dcf58" name="yzyx" url="http://120.77.209.23">
+        <fileTransfer host="120.77.209.23" port="22" rootFolder="/home/business_main_page/CogitoActio_web" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

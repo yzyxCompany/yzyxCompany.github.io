@@ -1,1 +1,90 @@
 @import "lib.less";
+
+html, body {
+  .boxSize1(100%);
+}
+
+.bm-body {
+  background: url('../img/illustration/i013.jpg') no-repeat;
+  background-position: center top;
+  background-size: 100% auto;
+  padding: 10px;
+  @media (min-width: 768px){
+    background: url('../img/illustration/i012.jpg') no-repeat;
+    background-size: 100% auto;
+  }
+  @media (min-width: 1200px){
+    background: url('../img/illustration/i011.jpg') no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+header {
+  .logo-box {
+    img {
+      .boxSizeH(36px);
+    }
+  }
+}
+
+.bm-content {
+  .bm-info-container{
+    .boxSizeW(320px);
+    margin: 0 auto;
+    h2 {
+      text-align: center;
+      margin-top: 75px;
+      margin-bottom: 35px;
+      .font2(24px, normal);
+      color: @black-5;
+      font-family: 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
+    }
+    .bm-input-box{
+      border-bottom: 1px solid @gray-1;
+      margin-bottom: 5px;
+      label{
+        font-family: 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
+        color: @black-5;
+        .font2(16px, normal);
+        padding: 5px 10px;
+      }
+      .bm-input{
+        font-family: 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
+        width: calc(~"100% - 56px");
+        border: 0;
+        .BC(@transparent);
+        outline: none;
+        .font2(16px, normal);
+        &::-webkit-input-placeholder{
+          .font2(13px, normal);
+          color:@light-gray-3;
+        }
+        &::-moz-placeholder{   /* Mozilla Firefox 19+ */
+          .font2(13px, normal);
+          color:@light-gray-3;
+        }
+        &:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+          .font2(13px, normal);
+          color:@light-gray-3;
+        }
+        &:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+          .font2(13px, normal);
+          color:@light-gray-3;
+        }
+      }
+    }
+    .bm-btn-box{
+      .boxSizeW(320px);
+      margin: 0 auto;
+      .bm-btn{
+        .boxSize2(100%,45px);
+        background-color: @blue-2;
+        border: 0;
+        color: @white-1;
+      }
+    }
+  }
+
+}
+
+
