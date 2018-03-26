@@ -9,9 +9,8 @@
     "author": "Mo Lin",
     "license": "ISC",
     "dependencies": {
-        "animate.css": "^3.5.2",
+        "animate.css": "^3.6.1",
         "bootstrap": "^3.3.7",
-        "font-awesome": "^4.7.0",
         "html5shiv": "^3.7.3",
         "jquery": "^3.2.1",
         "normalize.css": "^7.0.0",

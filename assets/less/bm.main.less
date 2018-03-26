@@ -8,7 +8,9 @@ html, body {
   background: url('../img/illustration/i013.jpg') no-repeat;
   background-position: center top;
   background-size: 100% auto;
+  background-color: #fcfcfc;
   padding: 10px;
+  position: relative;
   @media (min-width: 768px){
     background: url('../img/illustration/i012.jpg') no-repeat;
     background-size: 100% auto;
@@ -23,68 +25,142 @@ header {
   .logo-box {
     img {
       .boxSizeH(36px);
+      @media (min-width: 768px){
+        .boxSizeH(42px);
+      }
+      @media (min-width: 1200px){
+        .boxSizeH(60px);
+      }
     }
   }
 }
 
 .bm-content {
-  .bm-info-container{
+  .bm-container{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
     .boxSizeW(320px);
-    margin: 0 auto;
+    margin: -168px auto 0;
     h2 {
       text-align: center;
-      margin-top: 75px;
-      margin-bottom: 35px;
+      margin: 0 0 35px;
       .font2(24px, normal);
       color: @black-5;
       font-family: 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
     }
+    .bm-text-box{
+      p.bm-text{
+        .font1(15px, 30px);
+        margin-bottom: 25px;
+        span{
+          display: inline-block;
+          .font2(18px, 600);
+        }
+      }
+      span.bm-text{
+        display: inline-block;
+        .font2(15px, normal);
+        margin-bottom: 4px;
+      }
+    }
+    .bm-tag-box{
+      text-align: center;
+      padding: 7px 0;
+      .border(1px,@light-gray-3);
+      .bm-tag{
+        .font1(14px, 29px);
+        margin: 0;
+        img{
+          .boxSize1(26px);
+          margin-right: 5px;
+        }
+        &.active{
+          border-color: @orange-1;
+        }
+      }
+      &:nth-child(4){
+        margin-bottom: 10px;
+      }
+    }
     .bm-input-box{
-      border-bottom: 1px solid @gray-1;
-      margin-bottom: 5px;
+      border-bottom: 1px solid @light-gray-3;
       label{
         font-family: 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
         color: @black-5;
-        .font2(16px, normal);
-        padding: 5px 10px;
+        .font1(16px, 45px);
+        font-weight: normal;
+        padding: 0 10px;
+        margin-bottom: 0;
+        a{
+          display: inline-block;
+          color: @black-5;
+          margin-left: 20px;
+          .font2(12px, normal);
+          text-decoration: none;
+        }
+      }
+      &.bm-phone-input-box{
+        label{
+          border-right: 1px solid @light-gray-3;
+        }
       }
       .bm-input{
+        padding: 0 10px 0 15px;
         font-family: 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
-        width: calc(~"100% - 56px");
+        width: calc(~"100% - 52px");
         border: 0;
         .BC(@transparent);
         outline: none;
-        .font2(16px, normal);
+        .font1(16px, 45px);
         &::-webkit-input-placeholder{
-          .font2(13px, normal);
+          .font2(12px, normal);
           color:@light-gray-3;
         }
         &::-moz-placeholder{   /* Mozilla Firefox 19+ */
-          .font2(13px, normal);
+          .font2(12px, normal);
           color:@light-gray-3;
         }
         &:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
-          .font2(13px, normal);
+          .font2(12px, normal);
           color:@light-gray-3;
         }
         &:-ms-input-placeholder{  /* Internet Explorer 10-11 */
-          .font2(13px, normal);
+          .font2(12px, normal);
           color:@light-gray-3;
         }
       }
+      .bm-phone-input{
+        width: calc(~"100% - 96px");
+      }
     }
     .bm-btn-box{
-      .boxSizeW(320px);
-      margin: 0 auto;
+      .boxSizeW(100%);
+      margin: 60px auto 0;
       .bm-btn{
-        .boxSize2(100%,45px);
+        text-decoration: none;
+        display: block;
+        .borderRadius(4px);
+        .boxSize2(100%, 45px);
+        text-align: center;
+        .font1(18px, 45px);
         background-color: @blue-2;
         border: 0;
         color: @white-1;
       }
     }
   }
-
+  .bm-purchase-container{
+    .bm-btn-box{
+      margin: 40px auto 0;
+    }
+  }
+  .bm-info-container{
+    .bm-btn-box{
+      margin: 60px auto 0;
+    }
+  }
 }
 
 
