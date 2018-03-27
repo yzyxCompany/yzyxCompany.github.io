@@ -17,22 +17,45 @@
         <img src="../assets/img/logo.svg" alt="">
     </div>
 </header>
-<div class="bm-content">
+<div class="bm-content" id="enroll_page">
     <div class="container bm-container bm-info-container">
         <h2>请填写报名信息</h2>
         <div class="bm-input-box">
-            <label for="weChartName">微信</label><input type="text" class="bm-input" id="weChartName" placeholder="请输入微信">
+            <label for="weChartName">微信</label><input type="text" v-model='weChatName' class="bm-input" id="weChartName" placeholder="请输入微信" disabled>
         </div>
         <div class="bm-input-box">
-            <label for="name">姓名</label><input type="text" class="bm-input" id="name" placeholder="请填写真实姓名">
+            <label for="name">姓名</label><input type="text" v-model='name' class="bm-input" id="name" placeholder="请填写真实姓名">
         </div>
         <div class="bm-input-box bm-phone-input-box">
-            <label for="phone">电话<a href="javascript:;">+86</a></label><input type="text" class="bm-input bm-phone-input" id="phone" placeholder="请填写手机号码">
+            <label for="phone">电话<a href="javascript:;">+86</a></label><input type="text" v-model='phone' class="bm-input bm-phone-input" id="phone" placeholder="请填写手机号码">
         </div>
         <div class="bm-btn-box">
-            <a href="purchase.html" class="bm-btn">下一步</a>
+            <button class="bm-btn" @click="nextCheck()">下一步</button>
         </div>
     </div>
 </div>
+<script src="../assets/node_modules/vue/dist/vue.min.js"></script>
+<script>
+    var mainVue = new Vue({
+        el:'#enroll_page',
+        data:{
+            weChatName: '默淋',
+            name: '',
+            phone: '',
+            isNull: true
+        },
+        methods:{
+            nextCheck: function () {
+                if(mainVue.weChatName !== '' && mainVue.name !== '' && mainVue.phone !== ''){
+                    mainVue.isNull = false;
+                    console.log('将去支付页面');
+                    window.location.href = 'purchase.html'
+                }else{
+                    console.log('请填完');
+                }
+            }
+        }
+    })
+</script>
 </body>
 </html>

@@ -7,7 +7,6 @@
     <title>亦知亦行-报名系统</title>
     <link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="../assets/vendors/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../assets/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/bm.main.css">
     <link rel="ICON" href="../assets/img/main/icon.png">
 </head>
@@ -17,7 +16,7 @@
         <img src="../assets/img/logo.svg" alt="">
     </div>
 </header>
-<div class="bm-content">
+<div class="bm-content" id="purchase_page">
     <div class="container bm-container bm-purchase-container">
         <h2>支付学费</h2>
         <div class="bm-text-box">
@@ -26,16 +25,34 @@
         <div class="bm-text-box">
             <span class="bm-text">选择支付方式：</span>
         </div>
-        <div class="bm-tag-box">
-            <p class="bm-tag active"><img src="../assets/img/icon/bm_wechat.svg" alt="">微信支付<i class="fa fa-close"></i></p>
+        <div class="bm-tag-box" v-bind:class = "{'active': tagCheck==1}">
+            <p class="bm-tag" @click="bmTagCheck(1)"><img src="../assets/img/icon/bm_wechat.svg" alt="">微信支付<i class="fa fa-check"></i></p>
         </div>
-        <div class="bm-tag-box">
-            <p class="bm-tag"><img src="../assets/img/icon/bm_alipay.svg" alt="">支付宝支付<i class="fa fa-check"></i></p>
+        <div class="bm-tag-box" v-bind:class = "{'active': tagCheck==2}">
+            <p class="bm-tag" @click="bmTagCheck(2)"><img src="../assets/img/icon/bm_alipay.svg" alt="">支付宝支付<i class="fa fa-check"></i></p>
         </div>
         <div class="bm-btn-box">
             <a href="enroll.html" class="bm-btn">确认支付</a>
         </div>
     </div>
 </div>
+<script src="../assets/node_modules/vue/dist/vue.min.js"></script>
+<script>
+    var mainVue = new Vue({
+        el:'#purchase_page',
+        data:{
+            tagCheck: 0
+        },
+        methods: {
+            bmTagCheck: function (num) {
+                if (mainVue.tagCheck === num){
+                    mainVue.tagCheck = 0;
+                } else {
+                    mainVue.tagCheck = num;
+                }
+            }
+        }
+    })
+</script>
 </body>
 </html>

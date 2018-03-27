@@ -2,6 +2,11 @@
 
 html, body {
   .boxSize1(100%);
+  font-family: 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
+}
+
+*{
+  .boxSize(border-box);
 }
 
 .bm-body {
@@ -9,7 +14,6 @@ html, body {
   background-position: center top;
   background-size: 100% auto;
   background-color: #fcfcfc;
-  padding: 10px;
   position: relative;
   @media (min-width: 768px){
     background: url('../img/illustration/i012.jpg') no-repeat;
@@ -22,6 +26,8 @@ html, body {
 }
 
 header {
+  padding-top: 10px;
+  padding-left: 10px;
   .logo-box {
     img {
       .boxSizeH(36px);
@@ -41,14 +47,13 @@ header {
     top: 50%;
     right: 0;
     left: 0;
-    .boxSizeW(320px);
     margin: -168px auto 0;
+    .boxSizeW(320px);
     h2 {
       text-align: center;
       margin: 0 0 35px;
       .font2(24px, normal);
       color: @black-5;
-      font-family: 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
     }
     .bm-text-box{
       p.bm-text{
@@ -75,9 +80,22 @@ header {
         img{
           .boxSize1(26px);
           margin-right: 5px;
+          vertical-align: middle;
         }
-        &.active{
-          border-color: @orange-1;
+        i{
+          float: right;
+          line-height: 29px;
+          padding-right: 8px;
+          color: @orange-1;
+          opacity: 0;
+        }
+      }
+      &.active{
+        border-color: @orange-1;
+        .bm-tag{
+          i{
+            opacity: 1.0;
+          }
         }
       }
       &:nth-child(4){
@@ -87,7 +105,6 @@ header {
     .bm-input-box{
       border-bottom: 1px solid @light-gray-3;
       label{
-        font-family: 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
         color: @black-5;
         .font1(16px, 45px);
         font-weight: normal;
@@ -108,7 +125,6 @@ header {
       }
       .bm-input{
         padding: 0 10px 0 15px;
-        font-family: 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
         width: calc(~"100% - 52px");
         border: 0;
         .BC(@transparent);
@@ -164,3 +180,52 @@ header {
 }
 
 
+.bm-home-content{
+  .boxSize1(100%);
+  .bm-home-container{
+    margin: 0 auto;
+    text-align: center;
+    .boxSizeW(330px);
+    padding-top: 100px;
+    //margin-top: 100px;
+    h3{
+      margin: 0 0 8px;
+      .font2(20px, normal);
+    }
+    h1{
+      .font2(24px, 600);
+      margin: 0 0 5px;
+    }
+    h4{
+      margin: 0;
+      .font2(15px, normal);
+    }
+    .bm-content-tag-box{
+      margin: 30px 0;
+      .bm-content-tag{
+        p{
+          margin: 0;
+          &.small-text{
+            .font2(13px, normal);
+          }
+          &.big-text{
+            .font2(18px, normal);
+          }
+        }
+        &:first-child{
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .bm-content-text-box{
+      .bm-content-text{
+        p{
+          .font2(13px, normal);
+          font-family: '幼圆', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
+          margin: 0 0 10px;
+          text-align: left;
+        }
+      }
+    }
+  }
+}
