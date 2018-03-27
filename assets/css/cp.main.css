@@ -21,3 +21,11 @@ a {
   background-size: cover;
   padding: 0!important;
 }
+.clear:after,
+.clear:before {
+  display: table;
+  content: " ";
+}
+.clear:after {
+  clear: both;
+}

@@ -9,6 +9,7 @@
 @gray-2: #A8A8A8;
 @gray-3: #979da7;
 @gray-4: #888888;
+@gray-5: #797979;
 @black-1: #64676c;
 @black-2: #585858;
 @black-3: #4c5564;
@@ -144,4 +145,14 @@ a{
   background-repeat: no-repeat;
   background-size: cover;
   padding: 0!important;
+}
+
+.clear{
+  &:after,&:before{
+    display: table;
+    content: " ";
+  }
+  &:after{
+    clear: both;
+  }
 }

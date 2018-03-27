@@ -24,13 +24,13 @@
             <label for="weChartName">微信</label><input type="text" v-model='weChatName' class="bm-input" id="weChartName" placeholder="请输入微信" disabled>
         </div>
         <div class="bm-input-box">
-            <label for="name">姓名</label><input type="text" v-model='name' class="bm-input" id="name" placeholder="请填写真实姓名">
+            <label for="name">姓名</label><input type="text" v-on:input="isNullInput()"  v-model='name' class="bm-input" id="name" placeholder="请填写真实姓名">
         </div>
         <div class="bm-input-box bm-phone-input-box">
-            <label for="phone">电话<a href="javascript:;">+86</a></label><input type="text" v-model='phone' class="bm-input bm-phone-input" id="phone" placeholder="请填写手机号码">
+            <label for="phone">电话<a href="javascript:;">+86</a></label><input type="text" v-on:input="isNullInput()" v-model='phone' class="bm-input bm-phone-input" id="phone" placeholder="请填写手机号码">
         </div>
         <div class="bm-btn-box">
-            <button class="bm-btn" @click="nextCheck()">下一步</button>
+            <button type="button" class="bm-btn" @click="nextCheck()" v-bind:class="{'bm-btm-disable': isNull}" v-bind:disable="isNull">下一步</button>
         </div>
     </div>
 </div>
@@ -45,13 +45,18 @@
             isNull: true
         },
         methods:{
-            nextCheck: function () {
-                if(mainVue.weChatName !== '' && mainVue.name !== '' && mainVue.phone !== ''){
+            isNullInput: function () {
+                if(mainVue.weChatName !== '' && mainVue.name !== '' && mainVue.phone !== '') {
                     mainVue.isNull = false;
                     console.log('将去支付页面');
-                    window.location.href = 'purchase.html'
-                }else{
+                } else {
+                    mainVue.isNull = true;
                     console.log('请填完');
+                }
+            },
+            nextCheck: function () {
+                if(!mainVue.isNull) {
+                    window.location.href = 'purchase.html'
                 }
             }
         }

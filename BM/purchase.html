@@ -32,7 +32,7 @@
             <p class="bm-tag" @click="bmTagCheck(2)"><img src="../assets/img/icon/bm_alipay.svg" alt="">支付宝支付<i class="fa fa-check"></i></p>
         </div>
         <div class="bm-btn-box">
-            <a href="enroll.html" class="bm-btn">确认支付</a>
+            <a href="javascript:;" class="bm-btn" @click="purchaseNow()">确认支付</a>
         </div>
     </div>
 </div>
@@ -49,6 +49,15 @@
                     mainVue.tagCheck = 0;
                 } else {
                     mainVue.tagCheck = num;
+                }
+            },
+            purchaseNow: function () {
+                if (mainVue.tagCheck === 1){
+                    window.location.href = 'bmWeChat.html';
+                }else if (mainVue.tagCheck === 2){
+                    window.location.href = 'bmAlipay.html';
+                }else{
+                    alert('请选择支付方式')
                 }
             }
         }
