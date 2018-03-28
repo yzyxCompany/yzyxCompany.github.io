@@ -272,9 +272,11 @@
         </div>
     </section>
 </div>
-<!--<div class="masking masking-top"></div>--
-<!--<div class="masking masking-bottom"></div>-->
+<!--<div class="masking masking-top"></div>-->
+<div class="masking masking-bottom"></div>
+<script src="../assets/js/jweixin-1.0.0.js"></script>
 <script src="../assets/node_modules/vue/dist/vue.min.js"></script>
+<script src="../assets/node_modules/axios/dist/axios.min.js"></script>
 <script>
     var mainVue = new Vue({
         el:'#home_page',
@@ -284,7 +286,22 @@
         methods:{
             registerNow: function () {
                 if(mainVue.isCheck){
-                    window.location.href = 'enroll.html'
+                    var ua = navigator.userAgent.toLowerCase();
+                    if (ua.indexOf('micromessenger') != -1) {
+                        axios({
+                            method:'get',
+                            url:'http://www.cogitoactio.com/api/v1/wechat/auth_start',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            }
+                        }).then(function (response) {
+                            window.location.href = response.data.url
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
+                    } else {
+                        alert('请用微信自带浏览器打开')
+                    }
                 }else{
                     alert('请阅读报名须知，并确认');
                 }

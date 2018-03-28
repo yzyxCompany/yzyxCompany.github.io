@@ -24,10 +24,10 @@
             <label for="weChartName">微信</label><input type="text" v-model='weChatName' class="bm-input" id="weChartName" placeholder="请输入微信" disabled>
         </div>
         <div class="bm-input-box">
-            <label for="name">姓名</label><input type="text" v-on:input="isNullInput()"  v-model='name' class="bm-input" id="name" placeholder="请填写真实姓名">
+            <label for="name">姓名</label><input type="text" v-on:input="isNullInput()" maxlength="5"  v-model='name' class="bm-input" id="name" placeholder="请填写真实姓名">
         </div>
         <div class="bm-input-box bm-phone-input-box">
-            <label for="phone">电话<a href="javascript:;">+86</a></label><input type="text" v-on:input="isNullInput()" v-model='phone' class="bm-input bm-phone-input" id="phone" placeholder="请填写手机号码">
+            <label for="phone">电话<a href="javascript:;">+86</a></label><input type="text" maxlength="11" v-on:input="isNullInput()" v-model='phone' class="bm-input bm-phone-input" id="phone" placeholder="请填写手机号码">
         </div>
         <div class="bm-btn-box">
             <button type="button" class="bm-btn" @click="nextCheck()" v-bind:class="{'bm-btm-disable': isNull}" v-bind:disable="isNull">下一步</button>
@@ -35,11 +35,13 @@
     </div>
 </div>
 <script src="../assets/node_modules/vue/dist/vue.min.js"></script>
+<script src="../assets/node_modules/axios/dist/axios.min.js"></script>
 <script>
     var mainVue = new Vue({
         el:'#enroll_page',
         data:{
-            weChatName: '默淋',
+            weChatInfo: '',
+            weChatName: '',
             name: '',
             phone: '',
             isNull: true
@@ -47,20 +49,44 @@
         methods:{
             isNullInput: function () {
                 if(mainVue.weChatName !== '' && mainVue.name !== '' && mainVue.phone !== '') {
-                    mainVue.isNull = false;
-                    console.log('将去支付页面');
+                    var re = /^1\d{10}$/;
+                    if (re.test(mainVue.phone)) {
+                        mainVue.isNull = false;
+                    } else {
+                        console.log('将去支付页面');
+                        mainVue.isNull = true;
+                    }
                 } else {
                     mainVue.isNull = true;
-                    console.log('请填完');
                 }
             },
             nextCheck: function () {
                 if(!mainVue.isNull) {
-                    window.location.href = 'purchase.html'
+                    var jsonStr = {
+                        token: '',
+                        openid: '',
+                        username: '',
+                        phone: '',
+                        process_num: 1,
+                    };
+                    jsonStr.token = this.weChatInfo.token;
+                    jsonStr.openid = this.weChatInfo.openid;
+                    jsonStr.username = this.name;
+                    jsonStr.phone = this.phone;
+                    axios.post('http://www.cogitoactio.com/api/v1/register',{data : jsonStr}).then(function (res) {
+                        window.location.href = 'purchase.html?openid=' + jsonStr.openid
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
                 }
             }
+        },
+        mounted: function () {
+            this.weChatInfo = JSON.parse(decodeURI(window.location.search.replace('?data=','')).replace(/'/g, '\"'));
+            this.weChatName = this.weChatInfo.username;
         }
-    })
+    });
 </script>
+
 </body>
 </html>

@@ -36,12 +36,21 @@
         </div>
     </div>
 </div>
+<script src="../assets/js/jweixin-1.0.0.js"></script>
 <script src="../assets/node_modules/vue/dist/vue.min.js"></script>
+<script src="../assets/node_modules/axios/dist/axios.min.js"></script>
 <script>
+    wx.config({
+        debug: true,
+        appId: 'wx80e422538e992cf8',
+        jsApiList: ['chooseWXPay']
+    });
+
     var mainVue = new Vue({
         el:'#purchase_page',
         data:{
-            tagCheck: 0
+            tagCheck: 0,
+            openid: 0
         },
         methods: {
             bmTagCheck: function (num) {
@@ -53,13 +62,47 @@
             },
             purchaseNow: function () {
                 if (mainVue.tagCheck === 1){
-                    window.location.href = 'bmWeChat.html';
+                    var jsonStr = {
+                        openid: '',
+                    };
+                    jsonStr.openid = this.openid;
+                    axios.post("http://www.cogitoactio.com/api/v1/wechat/purchase",{
+                        data: jsonStr
+                    }).then(function (res) {
+                        console.log(res);
+                        wx.chooseWXPay({
+                            timestamp: res.data.timeStamp,
+                            appId: res.data.appId,
+                            nonceStr: res.data.nonceStr,
+                            package: res.data.package,
+                            signType: res.data.signType, // 注意：新版支付接口使用 MD5 加密
+                            paySign: res.data.sign,
+                            success: function(res) {
+                                // 支付成功后的回调函数
+                                if (res.errMsg === "chooseWXPay:ok") {
+                                    window.location.href = 'purchaseSuccess.html'
+                                } else {
+                                    alert(res.errMsg);
+                                }
+                            },
+                            cancel: function(res) {
+                                //支付取消
+                                alert('支付取消');
+                            }
+                        });
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
                 }else if (mainVue.tagCheck === 2){
                     window.location.href = 'bmAlipay.html';
                 }else{
-                    alert('请选择支付方式')
+                    alert('请选择支付方式');
                 }
             }
+        },
+        mounted: function () {
+            this.openid = decodeURI(window.location.search.replace('?openid=',''));
+            console.log(this.openid)
         }
     })
 </script>
