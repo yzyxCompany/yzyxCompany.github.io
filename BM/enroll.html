@@ -34,6 +34,9 @@
         </div>
     </div>
 </div>
+<div class="masking masking-loading" id="masking_loading">
+    <p class="loading">未授权登录，即将返回报名页面......</p>
+</div>
 <script src="../assets/node_modules/vue/dist/vue.min.js"></script>
 <script src="../assets/node_modules/axios/dist/axios.min.js"></script>
 <script>
@@ -82,14 +85,17 @@
             }
         },
         mounted: function () {
-            this.weChatInfo = JSON.parse(decodeURI(window.location.search.replace('?data=','')).replace(/'/g, '\"'));
-            this.weChatName = this.weChatInfo.username;
-            this.po
-            axios.post('http://www.cogitoactio.com/api/v1/register',{data : jsonStr}).then(function (res) {
-                window.location.href = 'purchase.html?openid=' + jsonStr.openid
-            }).catch(function (error) {
-                console.log(error);
-            });
+            try{
+                this.weChatInfo = JSON.parse(decodeURI(window.location.search.replace('?data=','')).replace(/'/g, '\"'));
+                this.weChatName = this.weChatInfo.username;
+            }catch (err){
+                var maskingLoading = document.getElementById('masking_loading');
+                maskingLoading.style.display = 'block';
+                var time = setTimeout(function () {
+                    window.location.href = 'home.html';
+                    clearTimeout(time);
+                },2000)
+            }
         }
     });
 </script>

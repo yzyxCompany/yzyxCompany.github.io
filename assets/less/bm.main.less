@@ -617,9 +617,22 @@ header {
   position: fixed;
   left: 0;
   z-index: 200;
-  opacity: 0.95;
   //display: none;
   .transition(display 0.6s);
+  &.masking-loading{
+    top: 0;
+    display: none;
+    .boxSize2(100%, 100%);
+    background-color: @white-1;
+    p{
+      .boxSizeW(100%);
+      text-align: center;
+      .font2(20px,normal);
+      position: absolute;
+      top: 50%;
+      margin: -15px 0 0;
+    }
+  }
   /*&.masking-top{
     top: 0;
     .boxSize2(100%, 20%);
@@ -631,6 +644,7 @@ header {
   &.masking-bottom{
     bottom: 0;
     .boxSize2(100%, 30%);
+    opacity: 0.95;
     background: -webkit-linear-gradient(top, rgba(252, 252, 252, 0) 0%, rgb(252, 252, 252) 80%); /* Safari 5.1 - 6.0 */
     background: -o-linear-gradient(top, rgba(252, 252, 252, 0) 0%, rgb(252, 252, 252) 80%); /* Opera 11.1 - 12.0 */
     background: -moz-linear-gradient(top, rgba(252, 252, 252, 0) 0%, rgb(252, 252, 252) 80%); /* Firefox 3.6 - 15 */
