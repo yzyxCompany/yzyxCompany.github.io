@@ -84,6 +84,12 @@
         mounted: function () {
             this.weChatInfo = JSON.parse(decodeURI(window.location.search.replace('?data=','')).replace(/'/g, '\"'));
             this.weChatName = this.weChatInfo.username;
+            this.po
+            axios.post('http://www.cogitoactio.com/api/v1/register',{data : jsonStr}).then(function (res) {
+                window.location.href = 'purchase.html?openid=' + jsonStr.openid
+            }).catch(function (error) {
+                console.log(error);
+            });
         }
     });
 </script>

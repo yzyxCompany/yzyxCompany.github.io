@@ -63,7 +63,7 @@
             purchaseNow: function () {
                 if (mainVue.tagCheck === 1){
                     var jsonStr = {
-                        openid: '',
+                        openid: ''
                     };
                     jsonStr.openid = this.openid;
                     axios.post("http://www.cogitoactio.com/api/v1/wechat/purchase",{
@@ -102,7 +102,6 @@
         },
         mounted: function () {
             this.openid = decodeURI(window.location.search.replace('?openid=',''));
-            console.log(this.openid)
         }
     })
 </script>

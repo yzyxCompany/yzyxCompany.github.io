@@ -332,6 +332,7 @@ header .logo-box img {
   margin-bottom: 0;
   padding-bottom: 135px;
   min-height: 100%;
+  z-index: 300;
 }
 .bm-section .bm-home-container {
   width: 330px;
@@ -723,21 +724,21 @@ header .logo-box img {
 .masking {
   position: fixed;
   left: 0;
-  z-index: 1000;
+  z-index: 200;
   opacity: 0.95;
-}
-.masking.masking-top {
-  top: 0;
-  width: 100%;
-  height: 20%;
-  background: -webkit-linear-gradient(bottom, rgba(252, 252, 252, 0) 0%, #fcfcfc 100%);
-  /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(bottom, rgba(252, 252, 252, 0) 0%, #fcfcfc 90%);
-  /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(bottom, rgba(252, 252, 252, 0) 0%, #fcfcfc 90%);
-  /* Firefox 3.6 - 15 */
-  background: linear-gradient(bottom, rgba(252, 252, 252, 0) 0%, #fcfcfc 90%);
-  /* 标准的语法 */
+  -webkit-transition: display 0.6s;
+  -moz-transition: display 0.6s;
+  -ms-transition: display 0.6s;
+  -o-transition: display 0.6s;
+  transition: display 0.6s;
+  /*&.masking-top{
+    top: 0;
+    .boxSize2(100%, 20%);
+    background: -webkit-linear-gradient(bottom, rgba(252, 252, 252, 0) 0%, rgb(252, 252, 252) 100%); !* Safari 5.1 - 6.0 *!
+    background: -o-linear-gradient(bottom, rgba(252, 252, 252, 0) 0%, rgb(252, 252, 252) 90%); !* Opera 11.1 - 12.0 *!
+    background: -moz-linear-gradient(bottom, rgba(252, 252, 252, 0) 0%, rgb(252, 252, 252) 90%); !* Firefox 3.6 - 15 *!
+    background: linear-gradient(bottom, rgba(252, 252, 252, 0) 0%, rgb(252, 252, 252) 90%); !* 标准的语法 *!
+  }*/
 }
 .masking.masking-bottom {
   bottom: 0;
