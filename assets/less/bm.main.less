@@ -1,5 +1,7 @@
 @import "lib.less";
 
+[v-cloak] { display: none }
+
 html, body {
   .boxSize1(100%);
   font-family: 'PingFang SC Thin', 'Microsoft YaHei UI', sans-serif;
@@ -663,7 +665,7 @@ header {
   left: 0;
   .BC(rgba(0,0,0,0.5));
   padding-top: 60px;
-  .transition(display,0.6s);
+  .transition(display 0.6s);
   .bm-container{
     .boxSizeW(330px);
     margin: 0 auto;

@@ -29,6 +29,9 @@ a {
 .clear:after {
   clear: both;
 }
+[v-cloak] {
+  display: none;
+}
 html,
 body {
   width: 100%;
@@ -777,6 +780,11 @@ header .logo-box img {
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   padding-top: 60px;
+  -webkit-transition: display 0.6s;
+  -moz-transition: display 0.6s;
+  -ms-transition: display 0.6s;
+  -o-transition: display 0.6s;
+  transition: display 0.6s;
 }
 .bm-modal-box .bm-container {
   width: 330px;

@@ -17,16 +17,17 @@
         <img src="../assets/img/logo.svg" alt="">
     </div>
 </header>
-<section class="bm-content bm-purchase-success-content" id="enroll_page">
+<section class="bm-content bm-purchase-success-content" id="purchaseSuccess_page">
     <div class="container bm-container bm-purchase-container">
         <h2>恭喜您，支付成功！</h2>
         <div class="bm-text-box">
-            <p class="bm-text">为了便于小助理拉您进入学习群，请添加我们客服微信：<span>zongxiuyun</span>。</p>
+            <p class="bm-text">为了便于小助理拉您进入学习群，请添加我们客服微信：<span>yzyxxzl</span>。</p>
         </div>
         <div class="QRCode-box">
             <div class="picture-box">
                 <img src="../assets/img/illustration/i025.png" alt="">
-                <p>长按二维码识别进行支付</p>
+                <p class="weChat-browser" id="weChat_browser">长按二维码识别添加小助理</p>
+                <p class="not-weChat-browser" id="not_weChat_browser">请保存二维码，并用微信识别添加小助理</p>
             </div>
         </div>
     </div>
@@ -37,6 +38,14 @@
 <script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
 <script>
     window.onload = function (ev) {
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.indexOf('micromessenger') !== -1) {
+            weChatBrowser.style.display = 'block';
+            notWeChatBrowser.style.display = 'none';
+        } else {
+            weChatBrowser.style.display = 'none';
+            notWeChatBrowser.style.display = 'block';
+        }
         try{
             var jsonStr = {
                 openid: ''
