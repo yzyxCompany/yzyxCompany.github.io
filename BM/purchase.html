@@ -32,6 +32,8 @@
             <p class="bm-tag" @click="bmTagCheck(2)"><img src="../assets/img/icon/bm_alipay.svg" alt="">支付宝支付<i class="fa fa-check"></i></p>
         </div>
         <div class="bm-btn-box">
+            <input type="checkbox" class="bm-checkbox" id="bm_home_checkbox" value="bm" v-model="isCheck" name="voucher">
+            <label for="bm_home_checkbox"></label><a>是否需要发票？</a>
             <a href="javascript:;" class="bm-btn" @click="purchaseNow()">确认支付</a>
         </div>
     </div>
@@ -54,7 +56,8 @@
         el:'#purchase_page',
         data:{
             tagCheck: 0,
-            openid: 0
+            openid: 0,
+            isCheck: false
         },
         methods: {
             bmTagCheck: function (num) {
@@ -65,13 +68,21 @@
                 }
             },
             purchaseNow: function () {
+                var jsonStr2 = {
+                    openid: '',
+                    isVoucher: '',
+                    channel: ''
+                };
                 if (mainVue.tagCheck === 1){
-                    var jsonStr = {
+                    var jsonStr1 = {
                         openid: ''
                     };
-                    jsonStr.openid = this.openid;
+                    jsonStr1.openid = this.openid;
+                    jsonStr2.openid = this.openid;
+                    jsonStr2.isVoucher = this.isCheck;
+                    jsonStr2.channel = 'wechat';
                     axios.post("http://www.cogitoactio.com/api/v1/wechat/purchase",{
-                        data: jsonStr
+                        data: jsonStr1
                     }).then(function (res) {
                         console.log(res);
                         wx.chooseWXPay({
@@ -84,7 +95,11 @@
                             success: function(res) {
                                 // 支付成功后的回调函数
                                 if (res.errMsg === "chooseWXPay:ok") {
-                                    window.location.href = 'purchaseSuccess.html'
+                                    axios.post("http://www.cogitoactio.com/api/v1/register/purchase_info",{
+                                        data: jsonStr2
+                                    }).then(function (res) {
+                                        window.location.href = 'bmAlipay.html?openid=' + jsonStr2.openid;
+                                    });
                                 } else {
                                     alert(res.errMsg);
                                 }
@@ -98,7 +113,16 @@
                         console.log(error);
                     });
                 }else if (mainVue.tagCheck === 2){
-                    window.location.href = 'bmAlipay.html';
+                    jsonStr2.openid = this.openid;
+                    jsonStr2.isVoucher = this.isCheck;
+                    jsonStr2.channel = 'alipay';
+                    axios.post("http://www.cogitoactio.com/api/v1/register/purchase_info",{
+                        data: jsonStr2
+                    }).then(function (res) {
+                        window.location.href = 'bmAlipay.html?openid=' + jsonStr2.openid;
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
                 }else{
                     alert('请选择支付方式');
                 }
@@ -107,6 +131,25 @@
         mounted: function () {
             try{
                 this.openid = decodeURI(window.location.search.replace('?openid=',''));
+                var jsonStr = {
+                    openid: '',
+                };
+                jsonStr.openid = this.openid;
+                axios.post("http://www.cogitoactio.com/api/v1/register/val_id",{
+                    data: jsonStr
+                }).then(function (res) {
+                    console.log(res);
+                    if(!res.data.Status){
+                        var maskingLoading = document.getElementById('masking_loading');
+                        maskingLoading.style.display = 'block';
+                        var time = setTimeout(function () {
+                            window.location.href = 'home.html';
+                            clearTimeout(time);
+                        },2000)
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
             }catch (err){
                 var maskingLoading = document.getElementById('masking_loading');
                 maskingLoading.style.display = 'block';

@@ -27,7 +27,7 @@
             <label for="name">姓名</label><input type="text" v-on:input="isNullInput()" maxlength="5"  v-model='name' class="bm-input" id="name" placeholder="请填写真实姓名">
         </div>
         <div class="bm-input-box">
-            <label for="name">邮箱</label><input type="text" v-on:input="isNullInput()"  v-model='email' class="bm-input" id="email" placeholder="请填写真实姓名">
+            <label for="name">邮箱</label><input type="text" v-on:input="isNullInput()"  v-model='email' class="bm-input" id="email" placeholder="请填写真实邮箱地址">
         </div>
         <div class="bm-input-box bm-phone-input-box">
             <label for="phone">电话<a href="javascript:;">+86</a></label><input type="text" maxlength="11" v-on:input="isNullInput()" v-model='phone' class="bm-input bm-phone-input" id="phone" placeholder="请填写手机号码">
@@ -89,8 +89,26 @@
         },
         mounted: function () {
             try{
-                this.weChatInfo = JSON.parse(decodeURI(window.location.search.replace('?data=','')).replace(/'/g, '\"'));
-                this.weChatName = this.weChatInfo.username;
+                this.openid = decodeURI(window.location.search.replace('?openid=',''));
+                var jsonStr = {
+                    openid: '',
+                };
+                jsonStr.openid = this.openid;
+                axios.post("http://www.cogitoactio.com/api/v1/register/val_id",{
+                    data: jsonStr
+                }).then(function (res) {
+                    console.log(res);
+                    if(!res.data.Status){
+                        var maskingLoading = document.getElementById('masking_loading');
+                        maskingLoading.style.display = 'block';
+                        var time = setTimeout(function () {
+                            window.location.href = 'home.html';
+                            clearTimeout(time);
+                        },2000)
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
             }catch (err){
                 var maskingLoading = document.getElementById('masking_loading');
                 maskingLoading.style.display = 'block';

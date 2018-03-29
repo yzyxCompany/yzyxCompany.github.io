@@ -31,5 +31,41 @@
         </div>
     </div>
 </section>
+<div class="masking masking-loading" id="masking_loading">
+    <p class="loading">未授权登录，即将返回报名页面......</p>
+</div>
+<script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+<script>
+    window.onload = function (ev) {
+        try{
+            var jsonStr = {
+                openid: ''
+            };
+            jsonStr.openid = decodeURI(window.location.search.replace('?openid=',''));
+            axios.post("http://www.cogitoactio.com/api/v1/register/val_id",{
+                data: jsonStr
+            }).then(function (res) {
+                console.log(res);
+                if(!res.data.Status){
+                    var maskingLoading = document.getElementById('masking_loading');
+                    maskingLoading.style.display = 'block';
+                    var time = setTimeout(function () {
+                        window.location.href = 'home.html';
+                        clearTimeout(time);
+                    },2000)
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }catch (err){
+            var maskingLoading = document.getElementById('masking_loading');
+            maskingLoading.style.display = 'block';
+            var time = setTimeout(function () {
+                window.location.href = 'home.html';
+                clearTimeout(time);
+            },2000)
+        }
+    }
+</script>
 </body>
 </html>

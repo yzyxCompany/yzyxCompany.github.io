@@ -132,7 +132,7 @@ header {
           display: inline-block;
           color: @black-5;
           margin-left: 20px;
-          .font2(12px, normal);
+          .font2(15px, normal);
           text-decoration: none;
         }
       }
@@ -173,6 +173,16 @@ header {
   .bm-purchase-container{
     .bm-btn-box{
       margin: 40px auto 0;
+      label{
+        margin-left: 3px;
+      }
+      a{
+        color: @gray-5;
+      }
+      .bm-btn{
+        margin-top: 5px;
+        color: @white-1;
+      }
     }
   }
   .bm-info-container{
@@ -233,39 +243,6 @@ header {
         p{
           .font2(14px,normal)
         }
-      }
-    }
-  }
-}
-
-.bm-btn-box{
-  .boxSizeW(100%);
-  margin: 60px auto 0;
-  a{
-    color: @blue-2;
-    text-decoration: none;
-  }
-  .bm-btn{
-    text-decoration: none;
-    display: block;
-    .borderRadius(4px);
-    .boxSize2(100%, 45px);
-    text-align: center;
-    .font1(18px, 45px);
-    .BC(@blue-2);
-    border: 0;
-    color: @white-1;
-    outline: none;
-    &:hover{
-      .BC(@blue-4);
-    }
-    &:focus{
-      .BC(@blue-2);
-    }
-    &.bm-btm-disable{
-      .BC(@gray-1);
-      &:hover,&:focus{
-        .BC(@gray-1);
       }
     }
   }
@@ -592,35 +569,6 @@ header {
     }
     .bm-btn-box{
       margin-top: 45px;
-      .bm-checkbox{
-        display:none;
-      }
-      label {
-        display: inline-block;
-        width: 18px;
-        height: 18px;
-        .border(1px, @gray-1);
-        position: relative;
-        vertical-align: middle;
-        margin-right: 5px;
-        &::after {
-          .transition(opacity .5s ease);
-          cursor: pointer;
-          position: absolute;
-          content: '';
-          opacity: 0;
-        }
-      }
-      .bm-checkbox:checked+label::after{
-        .border(2px, @blue-2);
-        border-top: none;
-        border-right: none;
-        .transform(rotate(-45deg));
-        .boxSize2(10px, 5px);
-        top:3px;
-        left:2px;
-        opacity: 1.0;
-      }
       .bm-btn{
         margin-top: 8px;
       }
@@ -641,6 +589,76 @@ header {
   &:last-child{
     .BC(@white-1);
   }
+}
+
+.bm-btn-box{
+  .boxSizeW(100%);
+  margin: 60px auto 0;
+  a{
+    color: @blue-2;
+    display: inline-block;
+    text-decoration: none;
+    .font2(14px,normal)
+  }
+  .bm-checkbox{
+    display:none;
+  }
+  label {
+    display: inline-block;
+    .boxSize1(18px);
+    .border(1px, @gray-1);
+    position: relative;
+    vertical-align: -4px;
+    margin-right: 5px;
+    &::after {
+      .transition(opacity .5s ease);
+      cursor: pointer;
+      position: absolute;
+      content: '';
+      opacity: 0;
+    }
+  }
+  .bm-checkbox:checked+label::after{
+    .border(2px, @blue-2);
+    border-top: none;
+    border-right: none;
+    .transform(rotate(-45deg));
+    .boxSize2(10px, 5px);
+    top:3px;
+    left:2px;
+    opacity: 1.0;
+  }
+  .bm-btn{
+    text-decoration: none;
+    display: block;
+    .borderRadius(4px);
+    .boxSize2(100%, 45px);
+    text-align: center;
+    .font1(18px, 45px);
+    .BC(@blue-2);
+    border: 0;
+    color: @white-1;
+    outline: none;
+    &:hover{
+      .BC(@blue-4);
+    }
+    &:focus{
+      .BC(@blue-2);
+    }
+    &.bm-btm-disable{
+      .BC(@gray-1);
+      &:hover,&:focus{
+        .BC(@gray-1);
+      }
+    }
+  }
+}
+
+.bm-modal-box{
+  position: fixed;
+  .boxSize1(100%);
+  z-index: 500;
+  .BC(rgba(0,0,0,0.5));
 }
 
 .masking{
