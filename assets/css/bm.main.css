@@ -317,7 +317,6 @@ header .logo-box img {
   padding-bottom: 135px;
   min-height: 100%;
   z-index: 300;
-  background-color: #FFFFFF;
 }
 .bm-section .bm-home-container {
   width: 330px;
@@ -371,6 +370,7 @@ header .logo-box img {
   font-size: 13px;
   line-height: 19.5px;
   font-weight: normal;
+  margin-bottom: 5px;
 }
 .bm-section .bm-home-container .bm-content-tag-box .bm-content-tag p.big-text {
   font-size: 19px;
@@ -575,6 +575,11 @@ header .logo-box img {
 .bm-section .bm-home-container .course-content-one-box {
   margin-top: 0;
 }
+.bm-section .bm-home-container .course-content-three-box .bm-content-tag-box .bm-content-tag .small-text {
+  font-size: 15px;
+  line-height: 24px;
+  margin: 0;
+}
 .bm-section .bm-home-container .course-content-four-box {
   margin-top: 60px;
 }
@@ -662,6 +667,7 @@ header .logo-box img {
   font-size: 14px;
   line-height: normal;
   margin: 0;
+  color: #797979;
 }
 .bm-section .bm-six-content-box .QRCode-box p.not-weChat-browser {
   display: none;
@@ -681,7 +687,8 @@ header .logo-box img {
   text-align: center;
   font-size: 12px;
   line-height: 18px;
-  font-weight: bold;
+  font-weight: normal;
+  color: #64676c;
 }
 .bm-section .more-btn i {
   display: block;

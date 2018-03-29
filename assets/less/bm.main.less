@@ -266,7 +266,6 @@ header {
     padding-bottom: 135px;
     min-height: 100%;
     z-index: 300;
-    .BC(@white-1);
   }
   .bm-home-container{
     .boxSizeW(330px);
@@ -309,6 +308,7 @@ header {
           margin: 0;
           &.small-text{
             .font2(13px, normal);
+            margin-bottom: 5px;
           }
           &.big-text{
             .font2(19px, border);
@@ -479,6 +479,16 @@ header {
     .course-content-one-box{
       margin-top: 0;
     }
+    .course-content-three-box{
+      .bm-content-tag-box{
+        .bm-content-tag{
+          .small-text{
+            .font1(15px, 24px);
+            margin: 0;
+          }
+        }
+      }
+    }
     .course-content-four-box{
       margin-top: 60px;
       h3{
@@ -565,6 +575,7 @@ header {
       p{
         .font1(14px,normal);
         margin: 0;
+        color: @gray-5;
         &.not-weChat-browser{
           display: none;
         }
@@ -583,7 +594,8 @@ header {
     bottom: 35px;
     z-index: 300;
     text-align: center;
-    .font2(12px,bold);
+    .font2(12px,normal);
+    color: @black-1;
     i{
       display: block;
       .font1(30px,15px);
