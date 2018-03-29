@@ -431,9 +431,9 @@ header .logo-box img {
   font-family: '幼圆', 'PingFang SC Thin', 'Microsoft YaHei UI', sans-serif;
 }
 .bm-section .bm-home-container .bm-content-two-box p {
-  font-size: 13px;
-  line-height: 19.5px;
-  font-weight: bold;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: normal;
   margin: 0 0 3px;
 }
 .bm-section .bm-home-container .user-info-box {
