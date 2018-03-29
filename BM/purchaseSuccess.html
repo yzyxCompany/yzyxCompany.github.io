@@ -38,6 +38,8 @@
 <script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
 <script>
     window.onload = function (ev) {
+        var weChatBrowser = document.getElementById('weChat_browser');
+        var notWeChatBrowser = document.getElementById('not_weChat_browser');
         var ua = navigator.userAgent.toLowerCase();
         if (ua.indexOf('micromessenger') !== -1) {
             weChatBrowser.style.display = 'block';
