@@ -166,7 +166,7 @@ header {
         }
       }
       .bm-phone-input{
-        width: calc(~"100% - 96px");
+        width: calc(~"100% - 102px");
       }
     }
   }
@@ -217,7 +217,7 @@ header {
         .font2(14px,normal)
       }
     }
-    .bm-close-btm{
+    .bm-close-btn{
       position: absolute;
       top:10px;
       right: 10px;
@@ -259,11 +259,12 @@ header {
     margin-bottom: 60px;
     padding-top: 0;
   }
-  &:last-child{
+  &:nth-child(6){
     margin-bottom: 0;
     padding-bottom: 135px;
     min-height: 100%;
     z-index: 300;
+    .BC(@white-1);
   }
   .bm-home-container{
     .boxSizeW(330px);
@@ -578,7 +579,7 @@ header {
     .boxSizeW(100%);
     position: absolute;
     bottom: 35px;
-    z-index: 1001;
+    z-index: 300;
     text-align: center;
     .font2(12px,bold);
     i{
@@ -658,7 +659,60 @@ header {
   position: fixed;
   .boxSize1(100%);
   z-index: 500;
+  top: 0;
+  left: 0;
   .BC(rgba(0,0,0,0.5));
+  padding-top: 60px;
+  .transition(display,0.6s);
+  .bm-container{
+    .boxSizeW(330px);
+    margin: 0 auto;
+    .bm-modal{
+      .boxSize1(100%);
+      .BC(@white-1);
+      .bm-modal-title{
+        position: relative;
+        padding: 10px;
+        border-bottom: 1px solid @light-gray-3;
+        span{
+          .font2(20px,bold)
+        }
+        .bm-close-btn{
+          position: absolute;
+          top: 15px;
+          right: 10px;
+          .boxSize1(15px);
+          .BS('../img/illustration/i026.png',20px 20px)
+        }
+      }
+      .bm-modal-content{
+        padding: 20px 10px 15px;
+        .bm-notice{
+          p{
+            margin: 0 0 10px;
+            .font2(12px,normal);
+          }
+        }
+      }
+      .bm-modal-footer{
+        padding: 0 15px 10px;
+        .bm-btn-box{
+          margin: 0;
+          text-align: right;
+          .bm-btn{
+            .boxSize1(auto);
+            display: inline-block;
+            .font2(12px,normal);
+            padding: 5px 12px;
+            .BC(@light-gray-1);
+            .border(0.9px, @light-gray-3);
+            .borderRadius(0);
+            color: @black-5;
+          }
+        }
+      }
+    }
+  }
 }
 
 .masking{

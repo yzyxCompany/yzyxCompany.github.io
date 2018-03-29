@@ -285,18 +285,38 @@
                 </div>
                 <div class="bm-btn-box">
                     <input type="checkbox" class="bm-checkbox" id="bm_home_checkbox" value="bm" v-model="isCheck" name="register">
-                    <label for="bm_home_checkbox"></label><a href="javascript:;">报名须知</a>
+                    <label for="bm_home_checkbox"></label><a href="javascript:;" @click="showModal()">报名须知</a>
                     <button type="button" class="bm-btn" @click="registerNow()">现在报名</button>
                 </div>
             </div>
         </div>
     </section>
-</div>
-<div class="bm-modal-box" id="bm_modal_box">
-    <div class="bm-modal">
+    <div class="bm-modal-box" id="bm_modal_box" v-show='isShowModal'>
         <div class="bm-container">
-            <div class="modal-title">
-
+            <div class="bm-modal">
+                <div class="bm-modal-title">
+                    <span>报名须知</span>
+                    <div class="bm-modal-close">
+                        <a href="javascript:;" class="bm-close-btn" @click="closeModal()"></a>
+                    </div>
+                </div>
+                <div class="bm-modal-content">
+                    <div class="bm-notice">
+                        <p>1、报名前请详细阅读本须知；</p>
+                        <p>2、所有培训均须提前支付培训费，确认款项支付后您的报名方才成功；</p>
+                        <p>3、公司保留审核学员资格的权利，若不接受报名将全额退款；</p>
+                        <p>4、学员交通费用自理，酒店地址及联系方式报名后告知；</p>
+                        <p>5、公司提供培训两天的工作午餐和一个晚餐，如自行用餐，培训费用恕不减免；</p>
+                        <p>6、培训人员如不能按时参加，须提前5天书面通知我方，否则按擅自缺席处理，培训费恕不退还；</p>
+                        <p>7、如客户特殊需求，请提前5天书面通知我方，公司会根据客户的实际要求进行安排，3个工作日内给予回复；</p>
+                        <p>8、培训结束并通过考试者，我公司将发放培训结业证书。</p>
+                    </div>
+                </div>
+                <div class="bm-modal-footer">
+                    <div class="bm-btn-box">
+                        <a href="javascript:;" class="bm-btn" @click="closeModal()">确认</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -332,9 +352,16 @@
     var mainVue = new Vue({
         el:'#home_page',
         data:{
-            isCheck:''
+            isCheck: '',
+            isShowModal: false
         },
         methods:{
+            showModal: function () {
+                this.isShowModal = true
+            },
+            closeModal: function () {
+                this.isShowModal = false
+            },
             registerNow: function () {
                 if(mainVue.isCheck){
                     var ua = navigator.userAgent.toLowerCase();

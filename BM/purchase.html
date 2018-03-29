@@ -98,7 +98,7 @@
                                     axios.post("http://www.cogitoactio.com/api/v1/register/purchase_info",{
                                         data: jsonStr2
                                     }).then(function (res) {
-                                        window.location.href = 'bmAlipay.html?openid=' + jsonStr2.openid;
+                                        window.location.href = 'purchaseSuccess.html?openid=' + jsonStr2.openid;
                                     });
                                 } else {
                                     alert(res.errMsg);

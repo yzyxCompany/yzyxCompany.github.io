@@ -220,7 +220,7 @@ header .logo-box img {
   color: #cacdd5;
 }
 .bm-content .bm-container .bm-input-box .bm-phone-input {
-  width: calc(100% - 96px);
+  width: calc(100% - 102px);
 }
 .bm-content .bm-purchase-container .bm-btn-box {
   margin: 40px auto 0;
@@ -270,7 +270,7 @@ header .logo-box img {
   line-height: 21px;
   font-weight: normal;
 }
-.bm-purchase-content .QRCode-box .bm-close-btm {
+.bm-purchase-content .QRCode-box .bm-close-btn {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -309,11 +309,12 @@ header .logo-box img {
   margin-bottom: 60px;
   padding-top: 0;
 }
-.bm-section:last-child {
+.bm-section:nth-child(6) {
   margin-bottom: 0;
   padding-bottom: 135px;
   min-height: 100%;
   z-index: 300;
+  background-color: #FFFFFF;
 }
 .bm-section .bm-home-container {
   width: 330px;
@@ -673,7 +674,7 @@ header .logo-box img {
   height: auto;
   position: absolute;
   bottom: 35px;
-  z-index: 1001;
+  z-index: 300;
   text-align: center;
   font-size: 12px;
   line-height: 18px;
@@ -772,7 +773,70 @@ header .logo-box img {
   width: 100%;
   height: 100%;
   z-index: 500;
+  top: 0;
+  left: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  padding-top: 60px;
+}
+.bm-modal-box .bm-container {
+  width: 330px;
+  height: auto;
+  margin: 0 auto;
+}
+.bm-modal-box .bm-container .bm-modal {
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+}
+.bm-modal-box .bm-container .bm-modal .bm-modal-title {
+  position: relative;
+  padding: 10px;
+  border-bottom: 1px solid #cacdd5;
+}
+.bm-modal-box .bm-container .bm-modal .bm-modal-title span {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: bold;
+}
+.bm-modal-box .bm-container .bm-modal .bm-modal-title .bm-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  width: 15px;
+  height: 15px;
+  background: url('../img/illustration/i026.png') no-repeat center;
+  background-size: 20px 20px;
+}
+.bm-modal-box .bm-container .bm-modal .bm-modal-content {
+  padding: 20px 10px 15px;
+}
+.bm-modal-box .bm-container .bm-modal .bm-modal-content .bm-notice p {
+  margin: 0 0 10px;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: normal;
+}
+.bm-modal-box .bm-container .bm-modal .bm-modal-footer {
+  padding: 0 15px 10px;
+}
+.bm-modal-box .bm-container .bm-modal .bm-modal-footer .bm-btn-box {
+  margin: 0;
+  text-align: right;
+}
+.bm-modal-box .bm-container .bm-modal .bm-modal-footer .bm-btn-box .bm-btn {
+  width: auto;
+  height: auto;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: normal;
+  padding: 5px 12px;
+  background-color: #E8E8E8;
+  border: 0.9px solid #cacdd5;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+  color: #191919;
 }
 .masking {
   position: fixed;

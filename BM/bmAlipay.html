@@ -29,7 +29,7 @@
             <img src="../assets/img/illustration/i027.png" alt="">
             <p>长按二维码识别进行支付</p>
         </div>
-        <a href="purchase.html" class="bm-close-btm"></a>
+        <a href="" class="bm-close-btn" id="bm_close_btn"></a>
     </div>
 </section>
 <div class="masking masking-loading" id="masking_loading">
@@ -43,6 +43,8 @@
                 openid: ''
             };
             jsonStr.openid = decodeURI(window.location.search.replace('?openid=',''));
+            var bmCloseBtn = document.getElementById('bm_close_btn');
+            bmCloseBtn.href = 'purchase.html?openid=' + jsonStr.openid;
             axios.post("http://www.cogitoactio.com/api/v1/register/val_id",{
                 data: jsonStr
             }).then(function (res) {
