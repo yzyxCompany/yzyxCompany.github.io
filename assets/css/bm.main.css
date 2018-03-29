@@ -136,6 +136,9 @@ header .logo-box img {
   line-height: 29px;
   margin: 0;
 }
+.bm-content .bm-container .bm-tag-box .bm-tag:checked {
+  background-color: transparent;
+}
 .bm-content .bm-container .bm-tag-box .bm-tag img {
   width: 26px;
   height: 26px;
@@ -683,6 +686,9 @@ header .logo-box img {
   font-size: 14px;
   line-height: normal;
   margin: 0;
+}
+.bm-section .bm-six-content-box .QRCode-box p.not-weChat-browser {
+  display: none;
 }
 .bm-section .bm-six-content-box .bm-btn-box {
   margin-top: 45px;

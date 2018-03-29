@@ -151,7 +151,7 @@
                     <div class="bm-content-tag-box">
                         <div class="bm-content-tag">
                             <p class="small-text">学员将获得由「亦知亦行」颁发的</p>
-                            <p class="big-text">”知行工坊谈判精英课程“结业证书</p>
+                            <p class="big-text">“知行工坊谈判精英课程”结业证书</p>
                         </div>
                         <div class="bm-content-tag">
                             <p class="small-text">作为第一期知行工坊的学员，</p>
@@ -201,7 +201,7 @@
                         </div>
                         <div class="experts-recommend-content">
                             <h5>杨杰<span>江西财经大学/教授</span></h5>
-                            <p>在谈判中如何争取”双赢“或”多赢“？如何在“知己知彼”的基础上做到“有理有利有节”？如何既”行中有知“，又”知中有行”？知行工坊两天一夜的精英课程将为您撩开科学谈判的神秘”面纱“。把握物超所值的良机，“谈”出新天地！！！</p>
+                            <p>在谈判中如何争取“双赢”或“多赢”？如何在“知己知彼”的基础上做到“有理有利有节”？如何既“行中有知”，又“知中有行”？知行工坊两天一夜的精英课程将为您撩开科学谈判的神秘”面纱“。把握物超所值的良机，“谈”出新天地！！！</p>
                         </div>
                         <div class="experts-recommend-content">
                             <h5>倪考梦<span>温州市决策咨询办公室/主任</span></h5>
@@ -280,7 +280,8 @@
                     <div class="picture-box">
                         <img src="../assets/img/illustration/i025.png" alt="">
                     </div>
-                    <p>长按二维码识别添加小助理</p>
+                    <p class="weChat-browser" id="weChat_browser">长按二维码识别添加小助理</p>
+                    <p class="not-weChat-browser" id="not_weChat_browser">请保存二维码，并用微信识别添加小助理</p>
                 </div>
                 <div class="bm-btn-box">
                     <input type="checkbox" class="bm-checkbox" id="bm_home_checkbox" value="bm" v-model="isCheck" name="register">
@@ -292,10 +293,11 @@
     </section>
 </div>
 <div class="masking masking-bottom" id="masking_bottom"></div>
-<script src="../assets/js/jweixin-1.0.0.js"></script>
-<script src="../assets/node_modules/vue/dist/vue.min.js"></script>
-<script src="../assets/node_modules/axios/dist/axios.min.js"></script>
-<script>
+<script type="text/javascript" src="http://www.cogitoactio.com/assets/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="http://www.cogitoactio.com/assets/node_modules/vue/dist/vue.min.js"></script>
+<script type="text/javascript" src="http://www.cogitoactio.com/assets/node_modules/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+    'user strict';
     window.onload = function (ev) {
         var maskingBottom = document.getElementById('masking_bottom');
         document.addEventListener("scroll", function() {
@@ -307,7 +309,17 @@
                 maskingBottom.style.display = 'none';
             }
         });
-    }
+        var weChatBrowser = document.getElementById('weChat_browser');
+        var notWeChatBrowser = document.getElementById('not_weChat_browser');
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.indexOf('micromessenger') !== -1) {
+            weChatBrowser.style.display = 'block';
+            notWeChatBrowser.style.display = 'none';
+        } else {
+            weChatBrowser.style.display = 'none';
+            notWeChatBrowser.style.display = 'block';
+        }
+    };
     var mainVue = new Vue({
         el:'#home_page',
         data:{
@@ -317,7 +329,7 @@
             registerNow: function () {
                 if(mainVue.isCheck){
                     var ua = navigator.userAgent.toLowerCase();
-                    if (ua.indexOf('micromessenger') != -1) {
+                    if (ua.indexOf('micromessenger') !== -1) {
                         axios({
                             method:'get',
                             url:'http://www.cogitoactio.com/api/v1/wechat/auth_start',

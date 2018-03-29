@@ -13,7 +13,7 @@ html, body {
 .bm-body {
   background-size: 100% auto;
   position: relative;
-  background-color: #fcfcfc;
+  .BC(#fcfcfc);
   margin: 0 auto;
   max-width: 768px;
   &:before {
@@ -89,6 +89,9 @@ header {
       .bm-tag{
         .font1(14px, 29px);
         margin: 0;
+        &:checked{
+          .BC(@transparent);
+        }
         img{
           .boxSize1(26px);
           margin-right: 5px;
@@ -186,7 +189,7 @@ header {
   }
   .QRCode-box{
     .boxSize2(100%, calc(~'50% + 52px'));
-    background-color: @white-1;
+    .BC(@white-1);
     position: absolute;
     top:50%;
     margin: -52px auto 0;
@@ -249,20 +252,20 @@ header {
     .boxSize2(100%, 45px);
     text-align: center;
     .font1(18px, 45px);
-    background-color: @blue-2;
+    .BC(@blue-2);
     border: 0;
     color: @white-1;
     outline: none;
     &:hover{
-      background-color: @blue-4;
+      .BC(@blue-4);
     }
     &:focus{
-      background-color: @blue-2;
+      .BC(@blue-2);
     }
     &.bm-btm-disable{
-      background-color: @gray-1;
+      .BC(@gray-1);
       &:hover,&:focus{
-        background-color: @gray-1;
+        .BC(@gray-1);
       }
     }
   }
@@ -582,6 +585,9 @@ header {
       p{
         .font1(14px,normal);
         margin: 0;
+        &.not-weChat-browser{
+          display: none;
+        }
       }
     }
     .bm-btn-box{
@@ -633,7 +639,7 @@ header {
     }
   }
   &:last-child{
-    background-color: @white-1;
+    .BC(@white-1);
   }
 }
 
@@ -646,7 +652,7 @@ header {
   &.masking-loading{
     top: 0;
     .boxSize2(100%, 100%);
-    background-color: @white-1;
+    .BC(@white-1);
     p{
       .boxSizeW(100%);
       text-align: center;
