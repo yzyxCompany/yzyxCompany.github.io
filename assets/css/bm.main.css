@@ -77,18 +77,18 @@ header {
 }
 header .logo-box img {
   width: auto;
-  height: 36px;
+  height: 45px;
 }
 @media (min-width: 768px) {
   header .logo-box img {
     width: auto;
-    height: 42px;
+    height: 56px;
   }
 }
 @media (min-width: 1200px) {
   header .logo-box img {
     width: auto;
-    height: 60px;
+    height: 66px;
   }
 }
 .bm-content .bm-container {
@@ -141,6 +141,9 @@ header .logo-box img {
   height: 26px;
   margin-right: 5px;
   vertical-align: middle;
+}
+.bm-content .bm-container .bm-tag-box .bm-tag font {
+  color: #447BAD;
 }
 .bm-content .bm-container .bm-tag-box .bm-tag i {
   float: right;
@@ -285,6 +288,10 @@ header .logo-box img {
   height: auto;
   margin: 60px auto 0;
 }
+.bm-btn-box a {
+  color: #447BAD;
+  text-decoration: none;
+}
 .bm-btn-box .bm-btn {
   text-decoration: none;
   display: block;
@@ -324,7 +331,6 @@ header .logo-box img {
   height: 100%;
 }
 .bm-section:first-child {
-  height: calc(100% - 46px);
   margin-bottom: 60px;
   padding-top: 0;
 }
@@ -345,19 +351,30 @@ header .logo-box img {
   top: 50%;
   left: 0;
   right: 0;
-  margin: -223px auto 0;
+  margin: -260px auto 0;
 }
 .bm-section .bm-home-container.bm-home-one-container h3 {
-  margin: 0 0 5px;
-  font-size: 22px;
-  line-height: 33px;
+  margin: 0 0 8px;
   font-weight: normal;
 }
+.bm-section .bm-home-container.bm-home-one-container h3 span {
+  display: inline-block;
+  border-left: 1px solid #cacdd5;
+  font-size: 20px;
+  line-height: 35px;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+.bm-section .bm-home-container.bm-home-one-container h3 img {
+  width: auto;
+  height: 45px;
+  vertical-align: -10px;
+}
 .bm-section .bm-home-container.bm-home-one-container h1 {
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 36px;
+  line-height: 54px;
   font-weight: bold;
-  margin: 0 0 5px;
+  margin: 0 0 8px;
 }
 .bm-section .bm-home-container.bm-home-one-container h4 {
   margin: 0;
@@ -366,7 +383,7 @@ header .logo-box img {
   font-weight: normal;
 }
 .bm-section .bm-home-container .bm-content-tag-box {
-  margin: 30px 0;
+  margin: 35px 0 40px;
 }
 .bm-section .bm-home-container .bm-content-tag-box .bm-content-tag p {
   margin: 0;
@@ -382,7 +399,7 @@ header .logo-box img {
   font-weight: border;
 }
 .bm-section .bm-home-container .bm-content-tag-box .bm-content-tag:first-child {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .bm-section .bm-home-container .bm-content-text-box .bm-content-text p {
   font-size: 13px;
@@ -591,14 +608,14 @@ header .logo-box img {
 }
 .bm-section .bm-five-content-box .request-content-box h3 {
   margin-top: 0;
-  font-size: 15px;
-  line-height: 22.5px;
+  font-size: 20px;
+  line-height: 30px;
   font-weight: normal;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: #797979;
 }
 .bm-section .bm-five-content-box .request-content-box .request-content {
-  padding-left: 53px;
+  padding-left: 45px;
   margin-bottom: 20px;
 }
 .bm-section .bm-five-content-box .request-content-box .request-content .picture-box {
@@ -608,16 +625,22 @@ header .logo-box img {
 }
 .bm-section .bm-five-content-box .request-content-box .request-content .picture-box img {
   width: auto;
-  height: 50px;
+  height: 55px;
 }
 .bm-section .bm-five-content-box .request-content-box .request-content .request-content-text {
   float: left;
 }
 .bm-section .bm-five-content-box .request-content-box .request-content .request-content-text p {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 25px;
   text-align: left;
   margin: 0;
+}
+.bm-section .bm-five-content-box .comment-box p {
+  font-size: 13px;
+  line-height: 19.5px;
+  font-weight: normal;
+  color: #797979;
 }
 .bm-section .bm-six-content-box .price-content-box {
   border-bottom: 1px dotted #cacdd5;
@@ -645,6 +668,9 @@ header .logo-box img {
 }
 .bm-section .bm-six-content-box .price-content-box span:last-child font {
   color: #191919;
+}
+.bm-section .bm-six-content-box .bm-content-tag-box {
+  margin-bottom: 30px;
 }
 .bm-section .bm-six-content-box .bm-content-tag-box .bm-content-tag {
   margin-bottom: 25px!important;
@@ -725,6 +751,7 @@ header .logo-box img {
   position: fixed;
   left: 0;
   z-index: 200;
+  display: none;
   -webkit-transition: display 0.6s;
   -moz-transition: display 0.6s;
   -ms-transition: display 0.6s;
@@ -741,7 +768,6 @@ header .logo-box img {
 }
 .masking.masking-loading {
   top: 0;
-  display: none;
   width: 100%;
   height: 100%;
   background-color: #FFFFFF;
@@ -760,7 +786,7 @@ header .logo-box img {
 .masking.masking-bottom {
   bottom: 0;
   width: 100%;
-  height: 30%;
+  height: 35%;
   opacity: 0.95;
   background: -webkit-linear-gradient(top, rgba(252, 252, 252, 0) 0%, #fcfcfc 80%);
   /* Safari 5.1 - 6.0 */

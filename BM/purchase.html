@@ -26,7 +26,7 @@
             <span class="bm-text">选择支付方式：</span>
         </div>
         <div class="bm-tag-box" v-bind:class = "{'active': tagCheck==1}">
-            <p class="bm-tag" @click="bmTagCheck(1)"><img src="../assets/img/icon/bm_wechat.svg" alt="">微信支付<i class="fa fa-check"></i></p>
+            <p class="bm-tag" @click="bmTagCheck(1)"><img src="../assets/img/icon/bm_wechat.svg" alt="">微信支付<font>(推荐)</font><i class="fa fa-check"></i></p>
         </div>
         <div class="bm-tag-box" v-bind:class = "{'active': tagCheck==2}">
             <p class="bm-tag" @click="bmTagCheck(2)"><img src="../assets/img/icon/bm_alipay.svg" alt="">支付宝支付<i class="fa fa-check"></i></p>
@@ -35,6 +35,9 @@
             <a href="javascript:;" class="bm-btn" @click="purchaseNow()">确认支付</a>
         </div>
     </div>
+</div>
+<div class="masking masking-loading" id="masking_loading">
+    <p class="loading">未授权登录，即将返回报名页面......</p>
 </div>
 <script src="../assets/js/jweixin-1.0.0.js"></script>
 <script src="../assets/node_modules/vue/dist/vue.min.js"></script>
@@ -101,7 +104,16 @@
             }
         },
         mounted: function () {
-            this.openid = decodeURI(window.location.search.replace('?openid=',''));
+            try{
+                this.openid = decodeURI(window.location.search.replace('?openid=',''));
+            }catch (err){
+                var maskingLoading = document.getElementById('masking_loading');
+                maskingLoading.style.display = 'block';
+                var time = setTimeout(function () {
+                    window.location.href = 'home.html';
+                    clearTimeout(time);
+                },2000)
+            }
         }
     })
 </script>
