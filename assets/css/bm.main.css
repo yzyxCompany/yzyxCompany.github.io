@@ -241,6 +241,12 @@ header .logo-box img {
 .bm-content .bm-alipay-container .bm-text-box p.bm-text {
   margin-bottom: 0;
 }
+.bm-content .bm-alipay-container .bm-text-box p.bm-text:last-child {
+  color: #447BAD;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: normal;
+}
 .bm-content .bm-info-container .bm-btn-box {
   margin: 60px auto 0;
 }
@@ -253,11 +259,11 @@ header .logo-box img {
 }
 .bm-purchase-content .QRCode-box {
   width: 100%;
-  height: calc(50% + 52px);
-  background-color: #FFFFFF;
+  height: calc(50% + 22px);
   position: absolute;
+  background-color: #FFFFFF;
   top: 50%;
-  margin: -52px auto 0;
+  margin: -25px auto 0;
 }
 .bm-purchase-content .QRCode-box .picture-box {
   text-align: center;
