@@ -238,6 +238,9 @@ header .logo-box img {
   margin-top: 5px;
   color: #FFFFFF;
 }
+.bm-content .bm-alipay-container .bm-text-box p.bm-text {
+  margin-bottom: 0;
+}
 .bm-content .bm-info-container .bm-btn-box {
   margin: 60px auto 0;
 }
