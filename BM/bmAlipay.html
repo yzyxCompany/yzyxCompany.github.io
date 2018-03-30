@@ -22,6 +22,7 @@
         <h2>支付学费(支付宝)</h2>
         <div class="bm-text-box">
             <p class="bm-text">优惠价：<span>￥7990</span></p>
+            <p class="bm-text">支付成功后，我们会及时通过邮件反馈信息于你.</p>
         </div>
     </div>
     <div class="QRCode-box">
@@ -33,13 +34,14 @@
         <a href="" class="bm-close-btn" id="bm_close_btn"></a>
     </div>
 </section>
-<div class="masking masking-loading" id="masking_loading">
+<div class="masking masking-loading" id="masking_loading1">
     <p class="loading">未授权登录，即将返回报名页面......</p>
 </div>
 <script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
 <script>
     window.onload = function (ev) {
         var weChatBrowser = document.getElementById('weChat_browser');
+        var maskingLoading = document.getElementById('masking_loading');
         var notWeChatBrowser = document.getElementById('not_weChat_browser');
         var ua = navigator.userAgent.toLowerCase();
         if (ua.indexOf('micromessenger') !== -1) {
@@ -49,6 +51,7 @@
             weChatBrowser.style.display = 'none';
             notWeChatBrowser.style.display = 'block';
         }
+
         try{
             var jsonStr = {
                 openid: ''
@@ -72,11 +75,10 @@
                 console.log(error);
             });
         }catch (err){
-            var maskingLoading = document.getElementById('masking_loading');
             maskingLoading.style.display = 'block';
-            var time = setTimeout(function () {
+            var time2 = setTimeout(function () {
                 window.location.href = 'home.html';
-                clearTimeout(time);
+                clearTimeout(time2);
             },2000)
         }
     }

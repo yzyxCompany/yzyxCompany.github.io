@@ -48,34 +48,6 @@
             weChatBrowser.style.display = 'none';
             notWeChatBrowser.style.display = 'block';
         }
-        try{
-            var jsonStr = {
-                openid: ''
-            };
-            jsonStr.openid = decodeURI(window.location.search.replace('?openid=',''));
-            axios.post("http://www.cogitoactio.com/api/v1/register/val_id",{
-                data: jsonStr
-            }).then(function (res) {
-                console.log(res);
-                if(!res.data.Status){
-                    var maskingLoading = document.getElementById('masking_loading');
-                    maskingLoading.style.display = 'block';
-                    var time = setTimeout(function () {
-                        window.location.href = 'home.html';
-                        clearTimeout(time);
-                    },2000)
-                }
-            }).catch(function (error) {
-                console.log(error);
-            });
-        }catch (err){
-            var maskingLoading = document.getElementById('masking_loading');
-            maskingLoading.style.display = 'block';
-            var time = setTimeout(function () {
-                window.location.href = 'home.html';
-                clearTimeout(time);
-            },2000)
-        }
     }
 </script>
 </body>

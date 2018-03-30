@@ -29,11 +29,11 @@
             <p class="bm-tag" @click="bmTagCheck(1)"><img src="../assets/img/icon/bm_wechat.svg" alt="">微信支付<font>(推荐)</font><i class="fa fa-check"></i></p>
         </div>
         <div class="bm-tag-box" v-bind:class = "{'active': tagCheck==2}">
-            <p class="bm-tag" @click="bmTagCheck(2)"><img src="../assets/img/icon/bm_alipay.svg" alt="">支付宝支付<i class="fa fa-check"></i></p>
+            <p class="bm-tag" @click="bmTagCheck(2)"><img src="../assets/img/icon/bm_alipay.svg" alt="">支付宝支付<font>（务必备注报名者姓名）</font><i class="fa fa-check"></i></p>
         </div>
         <div class="bm-btn-box">
             <input type="checkbox" class="bm-checkbox" id="bm_home_checkbox" value="bm" v-model="isCheck" name="voucher">
-            <label for="bm_home_checkbox"></label><a>需要发票？</a>
+            <label for="bm_home_checkbox"></label><a>需要发票</a>
             <a href="javascript:;" class="bm-btn" @click="purchaseNow()">确认支付</a>
         </div>
     </div>
