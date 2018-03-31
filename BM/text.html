@@ -13,17 +13,13 @@
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             box-sizing: border-box;
+            color: #191919;
         }
         body{
-            font-size: 12px;
-        }
-        @media (min-width: 768px) {
-            body{
-                font-size: 14px;
-            }
+            font-size: 14px;
         }
         .bm-body{
-            max-width: 768px;
+            width: 992px;
             margin: 0 auto;
             border: 1px solid #A8A8A8;
             -webkit-box-shadow: 0 0 5px #333333;
@@ -35,31 +31,37 @@
         }
         .nav-bar{
             width: 100%;
-            height: 75px;
-            padding: 15px;
-            -webkit-box-shadow: 0 0 5px #585858;
-            -moz-box-shadow: 0 0 5px #585858;
-            box-shadow: 0 0 5px #585858;
+            height: 91px;
+            padding: 10px 10px 15px;
+            background: url("http://www.cogitoactio.com/assets/img/illustration/i031.png")no-repeat bottom right;
         }
         .logo-box{
             display: inline-block;
             float: left;
         }
         .logo-box img{
-            width: 105px;
-            height: 45px;
+            width: 155px;
+            height: 66px;
         }
         .bm-content{
-            padding: 20px 30px;
+            padding: 20px 10px;
         }
         .bm-content .bm-email-title{
-            margin-top: 35px;
+            padding: 0 60px;
+            margin-top: 42px;
+            font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;
+            font-size: 20px;
         }
         .bm-content .bm-email-content{
+            padding: 0 60px;
             margin-top: 10px;
         }
+        .bm-content .bm-email-content>p{
+            font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;
+            font-size: 20px;
+        }
         .bm-content .bm-email-content .bm-email-QRCode{
-            margin-top: 30px;
+            margin-top: 80px;
             text-align: center;
             margin-bottom: 60px;
         }
@@ -67,56 +69,114 @@
             max-width: 80%;
         }
         .bm-content .bm-email-content .bm-email-QRCode p{
+            font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;
             color: #797979;
+            font-size: 20px;
         }
-        footer{
-            background-color: #27364E;
-        }
-        .footer-content{
-            padding: 20px 10px;
-        }
-        @media (min-width: 768px) {
-            .footer-content{
-                padding: 30px 20px;
-            }
-        }
-        .footer-content .row:after{
+
+        .row:after{
             display: table;
             content: " ";
             clear: both;
         }
-        .footer-content .row:before{
+        .row:before{
             display: table;
             content: " ";
         }
-        .footer-content .row .item{
+        .row .item{
             float: left;
             padding: 5px;
         }
-        .footer-content .row .item-2{
-            width: 100%;
+        .row .item-2{
+            width: 46%;
         }
-        .footer-content .row .item-1{
-            width: 50%;
+        .row .item-1{
+            width: 27%;
         }
-        @media (min-width: 768px) {
-            .footer-content .row .item{
-                padding: 10px 20px;
-            }
-            .footer-content .row .item-2{
-                width: 42%;
-            }
-            .footer-content .row .item-1{
-                width: 29%;
-            }
+        .item .bm-tag-box{
+            border: 2px solid #edcdc5;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            height: 220px;
+            padding: 20px 15px;
+            text-align: center;
         }
         .item .item-title{
+            font-size: 24px;
+            line-height: 36px;
+            margin-bottom: 10px;
+            color: #e0826f;
+            font-weight: bold;
+        }
+        .item-1 .bm-email-QRCode img{
+            width: 105px;
+            height: 105px;
+        }
+        .item-2 .bm-email-QRCode img{
+            width: 100%;
+            padding:  0 5px;
+            margin-top: 10px;
+        }
+        .item .bm-tag-bottom-text{
+            font-size: 16px;
+            color: #797979;
+            position: relative;
+            line-height: 24px;
+        }
+        .item:first-child .bm-tag-bottom-text{
+            letter-spacing: 3px;
+        }
+        .item:last-child .bm-tag-bottom-text{
+            letter-spacing: 1px;
+        }
+
+        .item .bm-tag-bottom-text:after,
+        .item .bm-tag-bottom-text:before{
+            position: absolute;
+            top: 11px;
+            margin: 0 auto;
+            display: block;
+            content: '';
+            height: 2px;
+            background-color: #edcdc5;
+        }
+        .item:first-child .bm-tag-bottom-text:after{
+            left: 0;
+            width: calc(50% - 43px);
+        }
+        .item:first-child .bm-tag-bottom-text:before{
+            right: 0;
+            width: calc(50% - 40px);
+        }
+
+        .item:last-child .bm-tag-bottom-text:after{
+            left: 0;
+            width: calc(50% - 56px);
+        }
+        .item:last-child .bm-tag-bottom-text:before{
+            right: 0;
+            width: calc(50% - 55px);
+        }
+
+        .item-1 .bm-tag-content{
+            margin-bottom: 20px;
+        }
+
+        .item-1 .bm-tag-content .bm-tag{
+            color: #797979;
             font-size: 16px;
             line-height: 24px;
-            margin-bottom: 10px;
-            color: #EB5548;
+            margin: 0 0 10px;
+            display: inline-block;
         }
-        .item span{
+
+        .item-1 .bm-tag-content p{
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        /*.item span{
             display: inline-block;
             font-size: 12px;
             line-height: 18px;
@@ -137,12 +197,21 @@
         }
         .item:last-child span:last-child{
             padding: 0 0 0 5px;
+        }*/
+
+        footer{
+            background-color: #bc614b;
         }
-        .item img{
-            width: 100%;
+        .footer-content{
+            padding: 0 10px;
         }
-        .item:last-child {
-            padding: 10px 10px 10px 20px!important;
+        .footer-content p{
+            color: #F1F1F1;
+            font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;
+            font-size: 24px;
+            line-height: 50px;
+            letter-spacing: 3px;
+            text-align: right;
         }
     </style>
 </head>
@@ -164,27 +233,41 @@
                 <p>扫描二维码添加知行小助手</p>
             </div>
         </div>
-
+        <div class="bm-tag-content">
+            <div class="row">
+                <div class="item item-1">
+                    <div class="bm-tag-box">
+                        <p class="item-title">知行管理学院</p>
+                        <div class="bm-email-QRCode">
+                            <img src="http://www.cogitoactio.com/assets/img/illustration/i030.png" alt="">
+                        </div>
+                        <p class="bm-tag-bottom-text">线上课程</p>
+                    </div>
+                </div>
+                <div class="item item-2">
+                    <div class="bm-tag-box">
+                        <div class="bm-email-QRCode">
+                            <img src="http://www.cogitoactio.com/assets/img/illustration/i029.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="item item-1">
+                    <div class="bm-tag-box">
+                        <p class="item-title">知行工坊</p>
+                        <div class="bm-tag-content">
+                            <span class="bm-tag">系统 专业 实操</span>
+                            <p>改变心理模型</p>
+                            <p>掌握科学谈判方法</p>
+                        </div>
+                        <p class="bm-tag-bottom-text">线下深度课程</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <footer>
         <div class="footer-content">
-            <div class="row">
-                <div class="item item-2">
-                    <img src="http://www.cogitoactio.com/assets/img/illustration/i029.png" alt="">
-                </div>
-                <div class="item item-1">
-                    <p class="item-title">线上课程-千聊直播间</p>
-                    <span>知行管理学院</span>
-                    <span>娓娓道来 聊聊谈判和沟通的那些事</span>
-                </div>
-                <div class="item item-1">
-                    <p class="item-title">线下深度课程</p>
-                    <span>知行工坊</span>
-                    <span>系统 专业 实操</span>
-                    <span>改变心理模型</span>
-                    <span>掌握科学谈判方法</span>
-                </div>
-            </div>
+            <p> 亦知亦行&nbsp;|&nbsp;掌控人生</p>
         </div>
     </footer>
 </div>
