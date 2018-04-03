@@ -2,137 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>亦知亦行-报名系统</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>亦知亦行-报名系统</title>
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-            font-family: 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-            color: #191919;
+        @media(max-width: 992px){
+            .bm-body{
+                width: 100%!important;
+            }
+            .bm-content .bm-email-title{
+                padding: 0 10px!important;
+            }
+            .bm-content .bm-email-content{
+                padding: 0 10px!important;
+            }
+            .bm-tag-content .row .item{
+                width: 100%!important;
+            }
         }
-        body{
-            font-size: 14px;
-        }
-        .bm-body{
-            width: 992px;
-            margin: 0 auto;
-            border: 1px solid #A8A8A8;
-            -webkit-box-shadow: 0 0 5px #333333;
-            -moz-box-shadow: 0 0 5px #333333;
-            box-shadow: 0 0 5px #333333;
-        }
-        header{
-            position: relative;
-        }
-        .nav-bar{
-            width: 100%;
-            height: 91px;
-            padding: 10px 10px 15px;
-            background: url("http://www.cogitoactio.com/assets/img/illustration/i031.png")no-repeat bottom right;
-        }
-        .logo-box{
-            display: inline-block;
-            float: left;
-        }
-        .logo-box img{
-            width: 155px;
-            height: 66px;
-        }
-        .bm-content{
-            padding: 20px 10px;
-        }
-        .bm-content .bm-email-title{
-            padding: 0 60px;
-            margin-top: 42px;
-            font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;
-            font-size: 20px;
-        }
-        .bm-content .bm-email-content{
-            padding: 0 60px;
-            margin-top: 10px;
-        }
-        .bm-content .bm-email-content>p{
-            font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;
-            font-size: 20px;
-        }
-        .bm-content .bm-email-content .bm-email-QRCode{
-            margin-top: 80px;
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .bm-content .bm-email-content .bm-email-QRCode img{
-            max-width: 80%;
-        }
-        .bm-content .bm-email-content .bm-email-QRCode p{
-            font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;
-            color: #797979;
-            font-size: 20px;
-        }
-
-        .row:after{
-            display: table;
-            content: " ";
-            clear: both;
-        }
-        .row:before{
-            display: table;
-            content: " ";
-        }
-        .row .item{
-            float: left;
-            padding: 5px;
-        }
-        .row .item-2{
-            width: 46%;
-        }
-        .row .item-1{
-            width: 27%;
-        }
-        .item .bm-tag-box{
-            border: 2px solid #edcdc5;
-            -webkit-border-radius: 20px;
-            -moz-border-radius: 20px;
-            border-radius: 20px;
-            height: 220px;
-            padding: 20px 15px;
-            text-align: center;
-        }
-        .item .item-title{
-            font-size: 24px;
-            line-height: 36px;
-            margin-bottom: 10px;
-            color: #e0826f;
-            font-weight: bold;
-        }
-        .item-1 .bm-email-QRCode img{
-            width: 105px;
-            height: 105px;
-        }
-        .item-2 .bm-email-QRCode img{
-            width: 100%;
-            padding:  0 5px;
-            margin-top: 10px;
-        }
-        .item .bm-tag-bottom-text{
-            font-size: 16px;
-            color: #797979;
-            position: relative;
-            line-height: 24px;
-        }
-        .item:first-child .bm-tag-bottom-text{
-            letter-spacing: 3px;
-        }
-        .item:last-child .bm-tag-bottom-text{
-            letter-spacing: 1px;
-        }
-
-        .item .bm-tag-bottom-text:after,
-        .item .bm-tag-bottom-text:before{
+        .item .bm-tag-bottom-text::after,
+        .item .bm-tag-bottom-text::before{
             position: absolute;
             top: 11px;
             margin: 0 auto;
@@ -141,133 +30,79 @@
             height: 2px;
             background-color: #edcdc5;
         }
-        .item:first-child .bm-tag-bottom-text:after{
+        .item:first-child .bm-tag-bottom-text::after{
             left: 0;
             width: calc(50% - 43px);
         }
-        .item:first-child .bm-tag-bottom-text:before{
+        .item:first-child .bm-tag-bottom-text::before{
             right: 0;
             width: calc(50% - 40px);
         }
 
-        .item:last-child .bm-tag-bottom-text:after{
+        .item:last-child .bm-tag-bottom-text::after{
             left: 0;
             width: calc(50% - 56px);
         }
-        .item:last-child .bm-tag-bottom-text:before{
+        .item:last-child .bm-tag-bottom-text::before{
             right: 0;
             width: calc(50% - 55px);
-        }
-
-        .item-1 .bm-tag-content{
-            margin-bottom: 20px;
-        }
-
-        .item-1 .bm-tag-content .bm-tag{
-            color: #797979;
-            font-size: 16px;
-            line-height: 24px;
-            margin: 0 0 10px;
-            display: inline-block;
-        }
-
-        .item-1 .bm-tag-content p{
-            font-size: 16px;
-            line-height: 24px;
-        }
-
-        /*.item span{
-            display: inline-block;
-            font-size: 12px;
-            line-height: 18px;
-            margin-bottom: 5px;
-            color: #f1f1f1;
-            float: left;
-            padding: 0 5px;
-        }
-        .item:last-child span+span{
-            border-left: 1px solid #999999;
-        }
-        .item:last-child span:nth-child(2){
-            padding: 0 5px 0 0;
-        }
-        .item:last-child span:nth-child(4){
-            padding: 0 5px 0 0;
-            border-left: 0;
-        }
-        .item:last-child span:last-child{
-            padding: 0 0 0 5px;
-        }*/
-
-        footer{
-            background-color: #bc614b;
-        }
-        .footer-content{
-            padding: 0 10px;
-        }
-        .footer-content p{
-            color: #F1F1F1;
-            font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;
-            font-size: 24px;
-            line-height: 50px;
-            letter-spacing: 3px;
-            text-align: right;
         }
     </style>
 </head>
 <body>
-<div class="bm-body">
-    <header>
-        <nav class="nav-bar">
-            <div class="logo-box">
-                <img src="http://www.cogitoactio.com/assets/img/logo.svg" alt="">
+<div class="bm-body" style="width: 992px;margin: 0 auto;border: 1px solid #A8A8A8;-webkit-box-shadow: 0 0 5px #333333;-moz-box-shadow: 0 0 5px #333333;box-shadow: 0 0 5px #333333;">
+    <header style="position: relative">
+        <nav class="nav-bar" style="font-family: 'PingFang SC', 'Microsoft YaHei UI', sans-serif;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;color: #191919;width: 100%;height: 91px;padding: 10px 10px 15px;background: url('http://www.cogitoactio.com/assets/img/illustration/i031.png')no-repeat bottom right;">
+            <div class="logo-box" style="display: inline-block;float: left;">
+                <img src='http://www.cogitoactio.com/assets/img/e_logo.png' alt="logo" style="width: 155px;height: 66px;">
             </div>
         </nav>
     </header>
-    <div class="bm-content">
-        <p class="bm-email-title">尊敬的 {{name}}：</p>
-        <div class="bm-email-content">
-            <p>恭喜您已经报名成功，请立刻添加知行小助理：yzyxxzl，我们会尽快与您取得联系。</p>
-            <div class="bm-email-QRCode">
-                <img src="http://www.cogitoactio.com/assets/img/illustration/i025.png" alt="">
-                <p>扫描二维码添加知行小助手</p>
+    <div class="bm-content" style="padding: 20px 10px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;color: #191919;">
+        <p class="bm-email-title" style="margin:0;padding: 0 60px;margin-top: 42px;font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;font-size: 20px;">尊敬的 {{name}}：</p>
+        <div class="bm-email-content" style="padding: 0 60px;margin-top: 10px;">
+            <p style="margin:0;font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;font-size: 20px;">恭喜您已经报名成功，请立刻添加知行小助理：yzyxxzl，我们会尽快与您取得联系。</p>
+            <div class="bm-email-QRCode" style="margin-top: 80px;text-align: center;margin-bottom: 60px;">
+                <img src='http://www.cogitoactio.com/assets/img/illustration/i025.png' alt="知行小助手二维码" style="width: 262px;height: 262px;">
+                <p style="margin:0;font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;color: #797979;font-size: 20px;">扫描二维码添加知行小助手</p>
             </div>
         </div>
         <div class="bm-tag-content">
             <div class="row">
-                <div class="item item-1">
-                    <div class="bm-tag-box">
-                        <p class="item-title">知行管理学院</p>
+                <div class="item item-1" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;color: #191919;float: left;padding: 5px;width: 27%;">
+                    <div class="bm-tag-box" style="border: 2px solid #edcdc5;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;padding: 20px 15px;text-align: center;">
+                        <p class="item-title" style="margin:0;font-size: 24px;line-height: 36px;margin-bottom: 10px;color: #e0826f;font-weight: bold;">知行管理学院</p>
                         <div class="bm-email-QRCode">
-                            <img src="http://www.cogitoactio.com/assets/img/illustration/i030.png" alt="">
+                            <img src='http://www.cogitoactio.com/assets/img/illustration/i030.png' alt="线上课程二维码" style="width: 105px;height: 105px;">
                         </div>
-                        <p class="bm-tag-bottom-text">线上课程</p>
+                        <p class="bm-tag-bottom-text" style="margin:0;font-size: 16px; color: #797979;position: relative;line-height: 24px;letter-spacing: 1px;">线上课程</p>
                     </div>
                 </div>
-                <div class="item item-2">
-                    <div class="bm-tag-box">
+                <div class="item item-2" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;color: #191919;float: left;padding: 5px;width: 46%;">
+                    <div class="bm-tag-box" style="border: 2px solid #edcdc5;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;padding: 20px 15px;text-align: center;">
                         <div class="bm-email-QRCode">
-                            <img src="http://www.cogitoactio.com/assets/img/illustration/i029.png" alt="">
+                            <img src='http://www.cogitoactio.com/assets/img/illustration/i029.png' alt="亦知亦行" style="width: 100%;padding:  0 5px;margin-top: 10px;">
                         </div>
                     </div>
                 </div>
-                <div class="item item-1">
-                    <div class="bm-tag-box">
-                        <p class="item-title">知行工坊</p>
+                <div class="item item-1" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;color: #191919;float: left;padding: 5px;width: 27%;">
+                    <div class="bm-tag-box" style="border: 2px solid #edcdc5;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;padding: 20px 15px;text-align: center;">
+                        <p class="item-title" style="margin:0;font-size: 24px;line-height: 36px;margin-bottom: 10px;color: #e0826f;font-weight: bold;">知行工坊</p>
                         <div class="bm-tag-content">
-                            <span class="bm-tag">系统 专业 实操</span>
-                            <p>改变心理模型</p>
-                            <p>掌握科学谈判方法</p>
+                            <span class="bm-tag" style="color: #797979;font-size: 16px;line-height: 24px;margin: 0 0 10px;display: inline-block;">系统 专业 实操</span>
+                            <p style="margin:0;font-size: 16px;line-height: 24px;">改变心理模型</p>
+                            <p style="margin:0;font-size: 16px;line-height: 24px;margin-bottom: 20px;">掌握科学谈判方法</p>
                         </div>
-                        <p class="bm-tag-bottom-text">线下深度课程</p>
+                        <p class="bm-tag-bottom-text" style="margin:0;font-size: 16px; color: #797979;position: relative;line-height: 24px;letter-spacing: 1px;">线下深度课程</p>
                     </div>
                 </div>
+                <div style="display:block;content: ' ';clear: both;"></div>
             </div>
         </div>
     </div>
-    <footer>
-        <div class="footer-content">
-            <p> 亦知亦行&nbsp;|&nbsp;掌控人生</p>
+    <footer style="background-color: #bc614b;">
+        <div class="footer-content" style="padding: 0 10px;">
+            <p style="margin:0;color: #F1F1F1;font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;font-size: 24px;line-height: 50px;letter-spacing: 3px;text-align: right;"> 亦知亦行&nbsp;|&nbsp;掌控人生</p>
         </div>
     </footer>
 </div>
