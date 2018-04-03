@@ -1,4 +1,12 @@
 'use strict';
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?aabebeaf95eba9076b8c3a6f11fd169c";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+
 var boxHeight = function() {
     var winWidth =  $(window).width();
     var illustrationContent = $('.illustration-content-box');
