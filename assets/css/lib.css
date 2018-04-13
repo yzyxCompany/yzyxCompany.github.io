@@ -19,7 +19,6 @@ a {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 0!important;
 }
 .clear:after,
 .clear:before {
@@ -28,4 +27,10 @@ a {
 }
 .clear:after {
   clear: both;
+}
+.opacity-0 {
+  opacity: 0!important;
+}
+.opacity-1 {
+  opacity: 1!important;
 }

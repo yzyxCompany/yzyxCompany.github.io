@@ -19,11 +19,15 @@
 @red-1: #EB5548;
 @red-2: #ED5548;
 @red-3: #FCD0CD;
+@red-4: #edcdc5;
 @blue-1: #27364E;
 @blue-2: #447BAD;
 @blue-3: #54C3F1;
 @blue-4: #059dda;
 @orange-1: #e47f52;
+@yellow-1: #fff443;
+@yellow-2: #ffe134;
+@yellow-3: #ffc03b;
 
 .boxSize1(@style){
   width: @style;
@@ -145,7 +149,6 @@ a{
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 0!important;
 }
 
 .clear{
@@ -156,4 +159,27 @@ a{
   &:after{
     clear: both;
   }
+}
+
+.BLG-R(@color1, @color2){
+  background: @color1; /* Old browsers */
+  background: -moz-linear-gradient(45deg, @color1 20%,@color2 21%,@color2 40%,@color1 41%,
+  @color1 60%,@color2 61%,@color2 80%,@color1 81%); /* FF3.6+ */
+  background: -webkit-linear-gradient(45deg, @color1 20%,@color2 21%,@color2 40%, @color1 41%,
+  @color1 60%,@color2 61%,@color2 80%,@color1 81%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(45deg, @color1 20%,@color2 21%,@color2 40%,@color1 41%,
+  @color1 60%,@color2 61%,@color2 80%,@color1 81%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(45deg, @color1 20%,@color2 21%,@color2 40%,@color1 41%,
+   @color1 60%,@color2 61%,@color2 80%,@color1 81%); /* IE10+ */
+  background: linear-gradient(45deg, @color1 20%,@color2 21%,@color2 40%,@color1 41%,
+   @color1 60%,@color2 61%,@color2 80%,@color1 81%); /* W3C */
+  //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2989d8', endColorstr='#2989d8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.opacity-0{
+  opacity: 0!important;
+}
+
+.opacity-1{
+  opacity: 1!important;
 }

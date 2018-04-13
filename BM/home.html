@@ -225,7 +225,7 @@
                 <h2>学费</h2>
                 <div class="price-content-box clear">
                     <span>原&nbsp;&nbsp;价：<font>10990元</font></span>
-                    <span>限时优惠价：<font>7990元</font></span>
+                    <span>现只需要：<font>3990元</font></span>
                 </div>
                 <div class="bm-content-tag-box">
                     <div class="bm-content-tag">
@@ -333,7 +333,7 @@
                     if (ua.indexOf('micromessenger') !== -1) {
                         axios({
                             method:'get',
-                            url:'http://www.cogitoactio.com/api/v1/wechat/auth_start',
+                            url:'http://www.cogitoactio.com/api/v1/wechat/auth_start?num=1',
                             headers: {
                                 'Content-Type': 'application/x-www-form-urlencoded'
                             }

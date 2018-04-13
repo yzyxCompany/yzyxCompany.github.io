@@ -566,8 +566,22 @@ header {
         }
         &:last-child{
           float: right;
+          position: relative;
           font{
             color: @black-5;
+          }
+          &::after{
+            position: absolute;
+            top: -60px;
+            left: 65px;
+            z-index: -1;
+            content: '大降价';
+            display: block;
+            .boxSize1(70px);
+            color: @red-1;
+            .font1(18px,62px);
+            background-image: url("../img/illustration/i033.png");
+            background-size: 70px auto;
           }
         }
       }

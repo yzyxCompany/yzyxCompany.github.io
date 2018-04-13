@@ -19,7 +19,6 @@ a {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 0!important;
 }
 .clear:after,
 .clear:before {
@@ -28,6 +27,12 @@ a {
 }
 .clear:after {
   clear: both;
+}
+.opacity-0 {
+  opacity: 0!important;
+}
+.opacity-1 {
+  opacity: 1!important;
 }
 [v-cloak] {
   display: none;
@@ -659,9 +664,25 @@ header .logo-box img {
 }
 .bm-section .bm-six-content-box .price-content-box span:last-child {
   float: right;
+  position: relative;
 }
 .bm-section .bm-six-content-box .price-content-box span:last-child font {
   color: #191919;
+}
+.bm-section .bm-six-content-box .price-content-box span:last-child::after {
+  position: absolute;
+  top: -60px;
+  left: 65px;
+  z-index: -1;
+  content: '大降价';
+  display: block;
+  width: 70px;
+  height: 70px;
+  color: #EB5548;
+  font-size: 18px;
+  line-height: 62px;
+  background-image: url("../img/illustration/i033.png");
+  background-size: 70px auto;
 }
 .bm-section .bm-six-content-box .bm-content-tag-box {
   margin-bottom: 30px;
