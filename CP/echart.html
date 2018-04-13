@@ -23,11 +23,14 @@
         </div>
         <div class="cp-result-content-box">
             <div class="cp-result-content">
+                <div id="echarts_bar1" style="height:420px;"></div>
+            </div>
+            <div class="cp-result-content">
+                <div id="echarts_bar2" style="height:420px;"></div>
+            </div>
+            <div class="cp-result-content">
                 <div id="echarts_bar3" style="height:420px;"></div>
             </div>
-        </div>
-        <div class="cp-footer-box">
-            <p>测评评语：</p>
         </div>
     </div>
 </div>
@@ -73,7 +76,6 @@
                 };
                 jsonStr.openid = urlData.o;
                 this.o = urlData.o;
-                console.log(this.o);
                 axios.post('http://www.cogitoactio.com/api/v1/svo/user_analyse',{data:jsonStr})
                     .then(function (res) {
                         console.log(res.data);

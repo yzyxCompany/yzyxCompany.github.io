@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>亦知亦行-测评系统</title>
+    <link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="../assets/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/node_modules/animate.css/animate.min.css">
+    <link rel="stylesheet" href="../assets/css/cp.main.css">
+    <link rel="ICON" href="../assets/img/main/icon.png">
+</head>
+<body>
+<div class="cp-body" id="cp_info_page" v-cloak>
+    <div class="cp-content">
+        <div class="cp-title-box">
+            <h3><img src="../assets/img/logo.svg" alt=""><span>知行测评</span></h3>
+        </div>
+        <div class="cp-result-content-box">
+            <div class="cp-result-content">
+                <h3><i class="fa fa-bookmark-o"></i>个人信息题目</h3>
+                <p class="cp-result-content-1" style="text-indent: 2em">为了帮助我们更好第解读您的答案，请您务必如实填写以下个人信息：</p>
+                <div class="cp-result-content-2">
+                    <div class="cp-form-box">
+                        <div class="cp-input-box">
+                            <label for="year">你出生于</label>
+                            <select class="cp-select" id="year" v-model="submitData.birthYear">
+                                <option v-for="n in 150" :value="1900+n">{{1900+n}}</option>
+                            </select>
+                            <label for="year">几年</label>
+                        </div>
+                        <div class="cp-input-box">
+                            <div class="cp-radio-box">
+                            你的性别是:
+                                <label class="cp-label" for="sex_1">
+                                    <input type="radio" class="cp-radio" id="sex_1" v-model="submitData.sex" value="1" name="sex">
+                                    <span class="cp-radioInput"></span>男
+                                </label>
+                                <label class="cp-label" for="sex_2">
+                                    <input type="radio" class="cp-radio" id="sex_2" v-model="submitData.sex" value="2" name="sex">
+                                    <span class="cp-radioInput"></span>女
+                                </label>
+                                <label class="cp-label" for="sex_3">
+                                    <input type="radio" class="cp-radio" id="sex_3" v-model="submitData.sex" value="0" name="sex">
+                                    <span class="cp-radioInput"></span>其他
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cp-btn-box">
+                        <a href="javascript:;" class="cp-btn" @click="submitCheck()">查看测评结果</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript">
+    var mainVue = new Vue({
+        el: '#cp_info_page',
+        data: {
+            submitData:{
+                birthYear: 2018,
+                sex: 1
+            },
+            o: ''
+        },
+        methods: {
+            submitCheck: function () {
+                var date = new Date();
+                var year = date.getFullYear();
+                if(this.submitData.birthYear >= year){
+                    alert('请务必如实填写您的出生年份！！！')
+                }else{
+                    console.log('M1');
+                    var jsonStr = {
+                        'openid': '',
+                        'info':{
+                            'year': 0,
+                            'sex': 0
+                        }
+                    };
+                    jsonStr.info.year = this.submitData.birthYear;
+                    jsonStr.info.sex = this.submitData.sex;
+                    jsonStr.openid = this.o;
+                    axios.put('http://www.cogitoactio.com/api/v1/svo/update_user_info',{data: jsonStr})
+                        .then(function (res) {
+                            var data = res.data;
+                            if(data.status === 'Success'){
+                                mainVue.isShowModal = false;
+                                alert('提交成功，即将跳转下一个页面');
+                                window.location.href = 'result.html?o='+mainVue.o;
+                            }})
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                }
+            }
+        },
+        mounted: function () {
+            function GetRequest() {
+                var url = decodeURI(location.search);
+                var theRequest = new Object();
+                if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for(var i = 0; i < strs.length; i ++) {
+                        theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+                    }
+                }
+                return theRequest;
+            }
+            var urlData = GetRequest();
+            console.log(urlData);
+            if(urlData.o === undefined || urlData.o === undefined ||urlData.length === 0){
+                window.location.href = 'index.html';
+            }else{
+                var jsonStr = {
+                    openid: ''
+                };
+                jsonStr.openid = urlData.o;
+                this.o = urlData.o;
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

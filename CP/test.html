@@ -64,35 +64,7 @@
             <div class="cp-btn-box cp-test-btn-box clear">
                 <button type="button" class="cp-btn previous-btn" v-bind:class="{'cp-btn-disable':!isPrevious}" @click="previousCheck()" v-bind:disable="!isPrevious">上一题</button>
                 <button type="button" class="cp-btn next-btn" v-bind:class="{'cp-btn-disable':!isNext}" @click="nextCheck()" v-bind:disable="!isNext" v-show="testNum!==9">下一题</button>
-                <button type="button" class="cp-btn next-btn" v-bind:class="{'cp-btn-disable':!isNext}" @click="nextCheck()" v-bind:disable="!isNext" v-show="testNum===9">查看结果</button>
-            </div>
-        </div>
-    </div>
-    <div class="cp-modal-box" id="cp_modal_box" v-show='isShowModal'>
-        <div class="cp-container">
-            <div class="cp-modal">
-                <div class="cp-modal-title">
-                    <span>请填写下面的信息</span>
-                    <div class="cp-modal-close">
-                        <a href="javascript:;" class="cp-close-btn" @click="closeModal()"></a>
-                    </div>
-                </div>
-                <div class="cp-modal-content">
-                    <div class="cp-form-box">
-                        <div class="cp-input-box">
-                            <label for="wechat">微信</label>
-                            <input type="text" maxlength="20" style="width: 50px"  v-model='formData.wechat' class="cp-input" id="wechat" placeholder="请输入微信号">
-                        </div>
-                        <div class="cp-input-box cp-phone-input-box">
-                            <label for="phone">电话<a href="javascript:;">+86</a></label><input type="text" maxlength="11" v-model='formData.phone' class="cp-input cp-phone-input" id="phone" placeholder="请填写手机号码">
-                        </div>
-                    </div>
-                </div>
-                <div class="cp-modal-footer">
-                    <div class="cp-btn-box">
-                        <a href="javascript:;" class="cp-btn" @click="closeModal()">确认</a>
-                    </div>
-                </div>
+                <button type="button" class="cp-btn next-btn" v-bind:class="{'cp-btn-disable':!isNext}" @click="nextCheck()" v-bind:disable="!isNext" v-show="testNum===9">下一步</button>
             </div>
         </div>
     </div>
@@ -118,7 +90,6 @@
             isPrevious: false,
             isNext: false,
             isLoading: true,
-            isShowModal: false,
             o: ''
         },
         methods: {

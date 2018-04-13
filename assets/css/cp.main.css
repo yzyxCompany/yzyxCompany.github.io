@@ -459,7 +459,7 @@ header .logo-box img {
   font-weight: normal;
   margin-bottom: 3px;
   color: #797979;
-  padding: 0 10px;
+  padding: 0;
 }
 .cp-content .cp-result-content-box .cp-result-content p.cp-result-content-1 {
   font-size: 16px;
@@ -490,7 +490,7 @@ header .logo-box img {
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 8px;
-  padding-left: 24px;
+  padding-left: 14px;
 }
 .cp-content .cp-result-content-box .cp-result-content .cp-result-content-2 p span {
   font-size: 12px;
@@ -514,6 +514,83 @@ header .logo-box img {
 .cp-content .cp-result-content-box .cp-result-content .cp-result-content-2 p:nth-child(3) span {
   background-color: #FFBD3D;
 }
+.cp-content .cp-result-content-box .cp-result-content .cp-result-content-2 .cp-form-box {
+  margin-top: 50px;
+  padding-left: 2em;
+}
+.cp-content .cp-result-content-box .cp-result-content .cp-result-content-2 .cp-form-box .cp-input-box {
+  margin-top: 20px;
+}
+.cp-content .cp-result-content-box .cp-result-content .cp-result-content-2 .cp-form-box .cp-input-box .cp-select {
+  border: 0;
+  border-bottom: 1px solid #797979;
+  width: 100px;
+  padding: 0 5px;
+  outline: none;
+  background-color: transparent;
+}
+.cp-content .cp-result-content-box .cp-result-content .cp-result-content-2 .cp-form-box .cp-input-box .cp-radio-box .cp-label {
+  margin: 10px 0 0 10px;
+  display: inline-block;
+}
+.cp-content .cp-result-content-box .cp-result-content .cp-result-content-2 .cp-form-box .cp-input-box .cp-radio-box .cp-radio {
+  display: none;
+}
+.cp-content .cp-result-content-box .cp-result-content .cp-result-content-2 .cp-form-box .cp-input-box .cp-radio-box .cp-radioInput {
+  background-color: #FFFFFF;
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 4px !important;
+  -moz-border-radius: 4px !important;
+  border-radius: 4px !important;
+  display: inline-block;
+  margin-right: 5px;
+  margin-top: -1px;
+  vertical-align: middle;
+  line-height: 1;
+}
+.cp-content .cp-result-content-box .cp-result-content .cp-result-content-2 .cp-form-box .cp-input-box .cp-radio-box .cp-radio:checked + .cp-radioInput:after {
+  background-color: #54C3F1;
+  width: 12px;
+  height: 12px;
+  -webkit-border-radius: 3px !important;
+  -moz-border-radius: 3px !important;
+  border-radius: 3px !important;
+  content: "";
+  margin-top: 2px;
+  margin-left: 2px;
+  display: inline-block;
+}
+.cp-content .cp-result-content-box .cp-result-content .cp-result-content-2 .cp-form-box .submit-next-btn {
+  text-align: right;
+  margin-top: 75px;
+}
+.cp-content .cp-result-content-box .cp-result-content .cp-result-content-2 .cp-form-box .submit-next-btn a {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: normal;
+  display: inline-block;
+  text-decoration: none;
+  color: #888888;
+}
+.cp-content .cp-result-content-box .cp-result-content .cp-result-content-2 .cp-form-box .submit-next-btn a i {
+  margin-right: 12px;
+  -webkit-transition: margin-right 0.5s;
+  -moz-transition: margin-right 0.5s;
+  -ms-transition: margin-right 0.5s;
+  -o-transition: margin-right 0.5s;
+  transition: margin-right 0.5s;
+}
+.cp-content .cp-result-content-box .cp-result-content .cp-result-content-2 .cp-form-box .submit-next-btn a:hover,
+.cp-content .cp-result-content-box .cp-result-content .cp-result-content-2 .cp-form-box .submit-next-btn a:focus {
+  color: #EB5548;
+}
+.cp-content .cp-result-content-box .cp-result-content .cp-result-content-2 .cp-form-box .submit-next-btn a:hover i,
+.cp-content .cp-result-content-box .cp-result-content .cp-result-content-2 .cp-form-box .submit-next-btn a:focus i {
+  margin-right: 2px;
+}
 .cp-content .cp-result-content-box .cp-result-content .cp-result-content-5 {
   margin: 10px 0 20px;
 }
@@ -522,12 +599,11 @@ header .logo-box img {
 }
 .cp-content .cp-result-content-box .cp-result-content .cp-result-content-5 p span {
   display: inline-block;
-  width: 80%;
   height: 21px;
   vertical-align: -5px;
 }
 .cp-content .cp-result-content-box .cp-result-content .cp-result-content-5 p font {
-  margin-left: 2px;
+  margin-left: 3px;
   display: inline-block;
   width: 21px;
   height: 21px;
@@ -555,6 +631,7 @@ header .logo-box img {
 .cp-content .cp-result-content-box .cp-result-content .cp-result-content-6 {
   padding-left: 10px;
   text-align: center;
+  padding-bottom: 20px;
 }
 .cp-content .cp-result-content-box .cp-result-content .cp-result-content-6 p {
   display: inline-block;

@@ -353,7 +353,7 @@ header {
         .font2(14px,normal);
         margin-bottom: 3px;
         color: @gray-5;
-        padding: 0 10px;
+        padding: 0;
         &.cp-result-content-1{
           .font1(16px,30px);
           margin-bottom: 15px;
@@ -379,7 +379,7 @@ header {
         p{
           .font1(14px,24px);
           margin-bottom: 8px;
-          padding-left: 24px;
+          padding-left: 14px;
           span{
             .font1(12px,24px);
             .borderRadius(3px);
@@ -406,6 +406,71 @@ header {
             }
           }
         }
+        .cp-form-box{
+          margin-top: 50px;
+          padding-left: 2em;
+          .cp-input-box{
+            margin-top: 20px;
+            .cp-select{
+              border: 0;
+              border-bottom: 1px solid #797979;
+              width: 100px;
+              padding: 0 5px;
+              outline: none;
+              background-color: transparent;
+            }
+            .cp-radio-box{
+              .cp-label{
+                margin:10px 0 0 10px;
+                display:inline-block
+              }
+              .cp-radio{
+                display:none
+              }
+              .cp-radioInput{
+                .BC(@white-1);
+                .boxSize1(18px);
+                background-color:#fff;
+                .border(1px,rgba(0,0,0,0.15));
+                .borderRadius(4px);
+                display:inline-block;
+                margin-right:5px;
+                margin-top:-1px;
+                vertical-align:middle;
+                line-height:1
+              }
+              .cp-radio:checked + .cp-radioInput:after{
+                .BC(@blue-3);
+                .boxSize1(12px);
+                .borderRadius(3px);
+                content:"";
+                margin-top: 2px;
+                margin-left: 2px;
+                display:inline-block;
+              }
+            }
+          }
+          .submit-next-btn{
+            text-align: right;
+            margin-top: 75px;
+            a{
+              .font2(16px,normal);
+              display: inline-block;
+              text-decoration: none;
+              color: @gray-4;
+              i{
+                margin-right: 12px;
+                .transition(margin-right 0.5s)
+              }
+              &:hover,&:focus{
+                color: @red-1;
+                i{
+                  margin-right: 2px;
+                }
+              }
+            }
+          }
+        }
       }
       .cp-result-content-5{
         margin: 10px 0 20px;
@@ -413,11 +478,11 @@ header {
           margin-bottom: 10px;
           span{
             display: inline-block;
-            .boxSize2(80%, 21px);
+            height: 21px;
             vertical-align: -5px;
           }
           font{
-            margin-left: 2px;
+            margin-left: 3px;
             display: inline-block;
             .boxSize2(21px, 21px);
             vertical-align: 1px;
@@ -446,6 +511,7 @@ header {
       .cp-result-content-6{
         padding-left: 10px;
         text-align: center;
+        padding-bottom: 20px;
         p{
           display: inline-block;
           .BC(@blue-2);
