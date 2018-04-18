@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>亦知亦行-报名系统</title>
+    <title>亦知亦行-测评系统</title>
     <link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="../assets/vendors/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/cp.main.css">
@@ -17,79 +17,22 @@
             <h3><img src="../assets/img/logo.svg" alt=""><span>知行测评</span></h3>
         </div>
         <div class="cp-index-content">
-            <p>请想象你被随机地分派了与另一个人同组（下称对方）。那是一个你现在不认识，而将来也不会遇上的人。</p>
-            <p>而你和对方都会回答下列的问题，并在每题中选出甲、乙或丙来表达你们各自的选择。</p>
-            <p>你俩的得分将是你和对方选择的分数的总分。所以，你的选择除了决定自己所取得的分数外，也决定了对方可取得的分数。同样地，他/她的选择除了决定自己所取得的分数外，也决定了你可取得的分数。</p>
-            <p>在这份问卷中，无论对你还是对对方来说，能够累积愈多分数也是愈好的。</p>
-        </div>
-        <div class="cp-test-content" style="height: auto">
-            <div class="cp-test-box" style="opacity: 1!important;">
-                <table>
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th>你所得分数</th>
-                        <th>对方所得分数</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td><span>甲</span></td>
-                        <td>500</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <td><span>乙</span></td>
-                        <td>500</td>
-                        <td>500</td>
-                    </tr>
-                    <tr>
-                        <td><span>丙</span></td>
-                        <td>550</td>
-                        <td>300</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+            <p style="margin-bottom: 10px">想知道你是社会型，自我型还是竞争型吗？想知道你的价值取向会如何影响你在谈判和社会交往中的表现吗？</p>
+            <p style="margin-bottom: 10px">我们「知行测评」推出的免费测验-社交价值取向-帮你解答。</p>
+            <p style="margin-bottom: 10px">本测试是根据荷兰教授Paul van Lange开发的问卷改编的，记分和解释均基于已发表的学术论文。</p>
+            <p style="margin-bottom: 10px">自评报告类测评结果的准确性依赖回答者。您如果想要得到一个准确的解答，请</p>
         </div>
         <div class="cp-index-content">
-            <p class="cp-index-content-1">这个例子里：</p>
             <div class="cp-index-content-2">
-                <p><i class="fa fa-hand-o-right"></i>如果你选“甲”的话，你将会获得500点分数，而对方可获得100点分数;</p>
-                <p><i class="fa fa-hand-o-right"></i>如果你选“乙”的话，你将会获得500点分数，而对方可获得500点分数;</p>
-                <p><i class="fa fa-hand-o-right"></i>如果你选“丙”的话，你将会获得550点分数，而对方可获得300点分数。</p>
+                <p><i class="fa fa-hand-o-right"></i>1、仔细阅读指令；</p>
+                <p><i class="fa fa-hand-o-right"></i>2、认真回答真实的想法或感受；</p>
             </div>
-            <p>由此可见，你的选择除了影响你自己所取得的分数外，也会影响对方可取得的分数。</p>
-            <p>在你回答下列问题之前，请紧记答案并无对错之分，只须选出你认为最合意的选择即可。</p>
-            <p>再者，请留意对你而言，能够累积愈多分数是愈好的。同样地，对对方而言，能够累积愈多分数对对方也是愈好的</p>
         </div>
         <div class="cp-btn-box">
-            <a href="javascript:;" class="cp-btn" onclick="isCheck()">开始答题</a>
+            <a href="home.html" class="cp-btn">开始测评</a>
         </div>
     </div>
 </div>
-<script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
-<script type="text/javascript">
-    'user strict';
-    var isCheck = function () {
-        var ua = navigator.userAgent.toLowerCase();
-        if (ua.indexOf('micromessenger') !== -1) {
-            axios({
-                method:'get',
-                url:'http://www.cogitoactio.com/api/v1/wechat/auth_start?num=2',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).then(function (response) {
-                window.location.href = response.data.url
-            }).catch(function (error) {
-                console.log(error);
-            });
-        } else {
-            alert('请使用微信自带浏览器打开');
-        }
-    }
-</script>
 
 </body>
 </html>

@@ -85,7 +85,7 @@
                         }
                     };
                     jsonStr.info.year = this.submitData.birthYear;
-                    jsonStr.info.sex = this.submitData.sex;
+                    jsonStr.info.sex = parseInt(this.submitData.sex);
                     jsonStr.openid = this.o;
                     axios.put('http://www.cogitoactio.com/api/v1/svo/update_user_info',{data: jsonStr})
                         .then(function (res) {
