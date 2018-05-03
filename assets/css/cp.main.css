@@ -284,9 +284,11 @@ header .logo-box img {
   width: 100%;
   height: 25px;
   display: inline-block;
-  -webkit-border-radius: 5px !important;
-  -moz-border-radius: 5px !important;
-  border-radius: 5px !important;
+  -webkit-border-radius: 15px !important;
+  -moz-border-radius: 15px !important;
+  border-radius: 15px !important;
+  margin-bottom: 5px;
+  overflow: hidden;
   background-color: #FFFFFF;
   position: relative;
 }
@@ -328,8 +330,8 @@ header .logo-box img {
   text-align: center;
   color: #FFFFFF;
   background-color: #ffc03b;
-  border-bottom-left-radius: 3px;
-  border-top-left-radius: 3px;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
 }
 @media (min-width: 768px) {
   .cp-content .cp-test-content-box {
@@ -341,7 +343,7 @@ header .logo-box img {
   }
   .cp-content .cp-test-content-box .cp-test-header .coffers-box .coffers {
     width: 100%;
-    height: 35px;
+    height: 30px;
     margin-bottom: 10px;
   }
   .cp-content .cp-test-content-box .cp-test-header .coffers-box .coffers .gold-bar {
@@ -352,7 +354,7 @@ header .logo-box img {
   }
   .cp-content .cp-test-content-box .cp-test-header .coffers-box .coffers span {
     font-size: 12px;
-    line-height: 35px;
+    line-height: 30px;
     width: 40px;
     height: auto;
   }
