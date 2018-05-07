@@ -10,36 +10,27 @@
     <link rel="stylesheet" href="../assets/css/cp.main.css">
     <link rel="ICON" href="../assets/img/main/icon.png">
     <style>
-        .cp-forward-content p{
-            text-align: center;
-            text-indent: 0;
-            font-size: 12px;
-            margin: 0 auto;
-            line-height: 35px;
-            color: #EB5548;
-        }
-        .cp-forward-content p:first-child{
-            font-size: 18px;
-            width: 220px;
-            margin-top: 200px;
-            color: #4c5564;
-            margin-bottom: 35px;
-        }
 
     </style>
 </head>
 <body>
 <div class="cp-body" id="cp_share_page" v-cloak="">
-    <div class="cp-content">
+    <div class="cp-content cp-forward-content">
         <div class="cp-title-box ">
             <h3><img src="../assets/img/logo.svg" alt=""><span>知行测评</span></h3>
         </div>
-        <div class="cp-forward-content" v-show="!isShare">
+        <div class="one" v-show="!isShare">
             <p>觉得这个测评不错，邀请你的朋友们一起来测吧</p>
             <p>点击左上角的菜单即可分享给朋友或者分享至朋友圈</p>
         </div>
-        <div class="cp-forward-content" v-show="isShare">
-            <p>分享成功！！！</p>
+        <div class="two" v-show="isShare">
+            <p class="share-OK-text"><i class="fa fa-hand-o-right"></i>分享成功！！！</p>
+        </div>
+        <div class="QR-Code-picture-box">
+            <div class="QR-Code-picture">
+                <img src="../assets/img/illustration/i006.jpg" alt="">
+            </div>
+            <span class="">扫描二维码关注公众号了解更多最新资讯，更多好玩信息等你，不容错过！</span>
         </div>
     </div>
 </div>

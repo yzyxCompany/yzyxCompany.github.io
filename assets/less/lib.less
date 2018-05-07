@@ -24,6 +24,7 @@
 @blue-2: #447BAD;
 @blue-3: #54C3F1;
 @blue-4: #059dda;
+@blue-5: #e6e9f3;
 @orange-1: #e47f52;
 @yellow-1: #fff443;
 @yellow-2: #ffe134;
@@ -174,6 +175,15 @@ a{
   background: linear-gradient(45deg, @color1 20%,@color2 21%,@color2 40%,@color1 41%,
    @color1 60%,@color2 61%,@color2 80%,@color1 81%); /* W3C */
   //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2989d8', endColorstr='#2989d8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.BLG-2(@style,@color1, @color2){
+  background: @color1; /* Old browsers */
+  background: -moz-linear-gradient(@style, @color1 0%,@color2 100%); /* FF3.6+ */
+  background: -webkit-linear-gradient(@style, @color1 0%,@color2 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(@style, @color1 0%,@color2 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(@style, @color1 0%,@color2 100%); /* IE10+ */
+  background: linear-gradient(@style, @color1 0%,@color2 100%); /* W3C */
 }
 
 .opacity-0{

@@ -99,6 +99,71 @@ header .logo-box img {
   width: 330px;
   margin: 0 auto;
 }
+.cp-content.cp-forward-content .QR-Code-picture-box {
+  text-align: center;
+}
+.cp-content.cp-forward-content .QR-Code-picture-box .QR-Code-picture {
+  width: 50%;
+  height: auto;
+  min-width: 250px;
+  padding: 5px;
+  margin: 0 auto;
+}
+.cp-content.cp-forward-content .QR-Code-picture-box .QR-Code-picture img {
+  width: 100%;
+  height: auto;
+}
+.cp-content.cp-forward-content .QR-Code-picture-box span {
+  margin-top: 5px;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: normal;
+  display: inline-block;
+  width: 50%;
+  height: auto;
+  min-width: 275px;
+}
+.cp-content.cp-forward-content .one {
+  margin-bottom: 35px;
+}
+.cp-content.cp-forward-content .two {
+  margin-bottom: 50px;
+}
+.cp-content.cp-forward-content .one p,
+.cp-content.cp-forward-content .two p {
+  text-align: center;
+  text-indent: 0;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: normal;
+  margin: 0 auto;
+  line-height: 35px;
+  color: #ED5548;
+}
+.cp-content.cp-forward-content .one p:first-child,
+.cp-content.cp-forward-content .two p:first-child {
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: normal;
+  width: 220px;
+  margin-top: 50px;
+  color: #4c5564;
+}
+.cp-content.cp-forward-content .one p.share-OK-text,
+.cp-content.cp-forward-content .two p.share-OK-text {
+  font-size: 22px;
+  line-height: 33px;
+  font-weight: normal;
+  margin-top: 75px;
+  color: #ED5548;
+  /*.borderRadius(50px);
+          padding: 5px;
+          .BLG-2(top,@white-4,@light-gray-3);*/
+}
+.cp-content.cp-forward-content .one p.share-OK-text i,
+.cp-content.cp-forward-content .two p.share-OK-text i {
+  margin-right: 10px;
+}
 .cp-content .cp-title-box {
   position: relative;
 }
