@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>知行测评-分配偏好</title>
+    <title>亦知亦行-测评系统</title>
     <link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="../assets/vendors/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../assets/css/cpv2.0.main.css">
+    <link rel="stylesheet" href="../assets/css/cp_odd.main.css">
     <link rel="ICON" href="../assets/img/main/icon.png">
     <style>
 
@@ -17,7 +17,7 @@
 <div class="cp-body" id="cp_share_page" v-cloak="">
     <div class="cp-content cp-forward-content">
         <div class="cp-title-box ">
-            <h3><img src="../assets/img/logo_cp.svg" alt=""></h3>
+            <h3><img src="../assets/img/logo.svg" alt=""><span>知行测评</span></h3>
         </div>
         <div class="one" v-show="!isShare">
             <p>觉得这个测评不错，邀请你的朋友们一起来测吧</p>
@@ -66,8 +66,8 @@
         jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
       });
       var wx_share_data = {
-        title: '知行测评-助你认识自己', // 分享标题
-        desc: '如果你觉得这个测评可以帮助你的朋友深入了解自己，想知道你的价值取向如何影响你在谈判和社会交往中的表现吗？', // 分享描述
+        title: '知行测评-认识您的角色类型', // 分享标题
+        desc: '想知道你是利他型，自我型还是竞争型吗？想知道你的价值取向会如何影响你在谈判和社会交往中的表现吗？', // 分享描述
         link: 'http://www.cogitoactio.com/CP/index.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
         imgUrl: 'http://www.cogitoactio.com/assets/img/logo-2.png', // 分享图标
         type: '', // 分享类型,music、video或link，不填默认为link
