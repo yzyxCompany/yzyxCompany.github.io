@@ -156,9 +156,6 @@ header .logo-box img {
   font-weight: normal;
   margin-top: 75px;
   color: #ED5548;
-  /*.borderRadius(50px);
-          padding: 5px;
-          .BLG-2(top,@white-4,@light-gray-3);*/
 }
 .cp-content.cp-forward-content .one p.share-OK-text i,
 .cp-content.cp-forward-content .two p.share-OK-text i {
@@ -172,7 +169,7 @@ header .logo-box img {
   font-weight: normal;
 }
 .cp-content .cp-title-box h3 span {
-  font-family: '幼圆', 'PingFang SC Thin', 'Microsoft YaHei UI', sans-serif;
+  font-family: '骞煎渾', 'PingFang SC Thin', 'Microsoft YaHei UI', sans-serif;
   display: inline-block;
   border-left: 1px solid #cacdd5;
   font-weight: normal;
@@ -256,16 +253,14 @@ header .logo-box img {
 }
 .cp-content .cp-title-box.cp-result-title-box {
   text-align: center;
-  margin-top: 50px;
-}
-.cp-content .cp-title-box.cp-result-title-box h3 span {
-  font-size: 30px;
-  line-height: 42px;
 }
 .cp-content .cp-title-box.cp-result-title-box h3 img {
   width: auto;
-  height: 55px;
-  vertical-align: -10px;
+  height: 42px;
+}
+.cp-content .cp-title-box.cp-result-title-box h3 span {
+  font-size: 27px;
+  line-height: 40px;
 }
 .cp-content .cp-btn-box .cp-btn {
   width: 250px;
@@ -311,7 +306,7 @@ header .logo-box img {
   font-size: 18px;
   line-height: 27px;
   font-weight: normal;
-  font-family: '幼圆', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
+  font-family: '骞煎渾', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
   margin-bottom: 10px;
   color: #191919;
 }
@@ -387,7 +382,7 @@ header .logo-box img {
   position: absolute;
   font-size: 12px;
   line-height: 25px;
-  font-family: '幼圆', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
+  font-family: '骞煎渾', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
   width: 30px;
   height: auto;
   bottom: 0;
@@ -438,7 +433,7 @@ header .logo-box img {
   font-size: 18px;
   line-height: 27px;
   font-weight: normal;
-  font-family: '幼圆', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
+  font-family: '骞煎渾', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
   padding-bottom: 20px;
   margin: 10px;
   border-bottom: 1px dashed #edcdc5;
@@ -474,7 +469,7 @@ header .logo-box img {
   line-height: 50px;
   color: #797979;
   font-weight: normal;
-  font-family: '幼圆', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
+  font-family: '骞煎渾', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
 }
 .cp-content .cp-test-content .cp-test-box table tbody tr {
   cursor: pointer;
@@ -506,7 +501,7 @@ header .logo-box img {
   color: #797979;
 }
 .cp-content .cp-result-content-box .cp-result-content h3 {
-  font-family: '幼圆', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
+  font-family: '骞煎渾', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
   font-size: 24px;
   line-height: 36px;
   font-weight: bold;
@@ -535,7 +530,7 @@ header .logo-box img {
   color: #191919;
 }
 .cp-content .cp-result-content-box .cp-result-content p.cp-result-content-1 span {
-  font-family: '幼圆', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
+  font-family: '骞煎渾', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
   font-size: 18px;
   line-height: 30px;
   font-weight: bold;
@@ -722,7 +717,7 @@ header .logo-box img {
   line-height: 27px;
   font-weight: normal;
   margin-top: 0;
-  font-family: '幼圆', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
+  font-family: '骞煎渾', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
 }
 .cp-modal-box {
   position: fixed;
@@ -758,7 +753,7 @@ header .logo-box img {
   font-size: 20px;
   line-height: 30px;
   font-weight: bold;
-  font-family: '幼圆', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
+  font-family: '骞煎渾', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
 }
 .cp-modal-box .cp-container .cp-modal .cp-modal-title .cp-close-btn {
   position: absolute;
