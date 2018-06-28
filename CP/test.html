@@ -12,55 +12,55 @@
     <link rel="ICON" href="../assets/img/main/icon.png">
 </head>
 <body>
-<div class="cp-body" style="height: 100%" id="cp_test_page" v-cloak>
-    <div class="cp-content">
-        <div class="cp-title-box">
-            <h3><img src="../assets/img/logo_cp.svg" alt=""></h3>
+<div class="cp-body not-scroll-page">
+    <div class="cp-content" id="cp_test_page" v-cloak>
+        <div class="cp-body-title-box" style="margin-bottom: 10px">
             <div class="process-box">
                 <p><span>{{testNum}}</span>/9</p>
             </div>
+            <img src="../assets/img/CP/cp-logo.png" alt="">
+            <h2 style="font-size: 20px;line-height: 1.5;font-weight: normal;letter-spacing: 2px">请选择你的选项</h2>
         </div>
-        <div class="cp-test-content-box">
-            <div class="cp-test-content">
-                <h5 class="cp-test-title">
-                    请选择您认为的选项：
-                </h5>
-                <div class="cp-test-box" id="cp_test_box">
-                    <table cellspacing="0" cellpadding="0">
-                        <thead>
-                        <tr>
-                            <th>我所得分数</th>
-                            <th></th>
-                            <th>对方所得分数</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr  v-for="question in question" v-bind:class="{'active':isCheckResult[testNum-1].option===question.option}" @click="isCheck(question.option,question.style,question.value[0].score,question.value[1].score)">
-                            <td>{{question.value[0].score}}</td>
-                            <td><span>{{question.option | option}}</span></td>
-                            <td>{{question.value[1].score}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+        <div class="cp-test-content" style="margin-top: 20px;background-color: rgba(210,210,210,0.2)">
+            <div class="cp-test-box" id="cp_test_box">
+                <table cellspacing="0" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th style="line-height: 45px">我所得分数</th>
+                        <th style="line-height: 45px"></th>
+                        <th style="line-height: 45px">他所得分数</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr  v-for="question in question" v-bind:class="{'active':isCheckResult[testNum-1].option===question.option}" @click="isCheck(question.option,question.style,question.value[0].score,question.value[1].score)">
+                        <td>{{question.value[0].score}}</td>
+                        <td><span>{{question.option | option}}</span></td>
+                        <td>{{question.value[1].score}}</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="cp-test-header">
+        </div>
+        <div class="cp-page-content-5">
+            <div class="cp-test-coffers-box" style="margin-top: 5px;margin-bottom: 10px">
                 <div class="coffers-box">
+                    <span>你</span>
                     <div class="coffers">
-                        <span>你</span>
-                        <div class="gold-bar" v-bind:style="{width:isCheckResult[testNum-1].val1/7+'%'}"></div>
+                        <div class="gold-bar" v-bind:style="{width:isCheckResult[testNum-1].val1/8+'%'}"><span>{{isCheckResult[testNum-1].val1}}</span></div>
                     </div>
+                </div>
+                <div class="coffers-box">
+                    <span>他</span>
                     <div class="coffers">
-                        <span>他</span>
-                        <div class="gold-bar" v-bind:style="{width:isCheckResult[testNum-1].val2/7+'%'}"></div>
+                        <div class="gold-bar" v-bind:style="{width:isCheckResult[testNum-1].val2/8+'%'}"><span>{{isCheckResult[testNum-1].val2}}</span></div>
                     </div>
                 </div>
             </div>
-            <div class="cp-btn-box cp-test-btn-box clear">
-                <button type="button" class="cp-btn previous-btn" v-bind:class="{'cp-btn-disable':!isPrevious}" @click="previousCheck()" v-bind:disable="!isPrevious">上一题</button>
-                <button type="button" class="cp-btn next-btn" v-bind:class="{'cp-btn-disable':!isNext}" @click="nextCheck()" v-bind:disable="!isNext" v-show="testNum!==9">下一题</button>
-                <button type="button" class="cp-btn next-btn" v-bind:class="{'cp-btn-disable':!isNext}" @click="nextCheck()" v-bind:disable="!isNext" v-show="testNum===9">下一步</button>
-            </div>
+        </div>
+        <div class="cp-btn-box cp-test-btn-box cp-position-btn">
+            <button type="button" class="cp-btn previous-btn" v-bind:class="{'cp-btn-disable':!isPrevious}" @click="previousCheck()" v-bind:disable="!isPrevious">上一题</button>
+            <button type="button" class="cp-btn next-btn" v-bind:class="{'cp-btn-disable':!isNext}" @click="nextCheck()" v-bind:disable="!isNext" v-show="testNum!==9">下一题</button>
+            <button type="button" class="cp-btn next-btn" v-bind:class="{'cp-btn-disable':!isNext}" @click="nextCheck()" v-bind:disable="!isNext" v-show="testNum===9">下一步</button>
         </div>
     </div>
 </div>
@@ -123,7 +123,7 @@
               .then(function (res) {
                 if(res.data.status === 'Success'){
                   if(mainVue.testNum === 9 ){
-                    window.location.href = 'info.html?o='+mainVue.o;
+                    window.location.href = 'result.html?o='+mainVue.o;
                   }else{
                     mainVue.testNum++;
                     mainVue.isPrevious = true;
@@ -143,8 +143,8 @@
         }
       },
       previousCheck: function () {
-        document.getElementById('cp_test_box').className = 'cp-test-box animated fadeOutRight';
         if(this.testNum > 1){
+          document.getElementById('cp_test_box').className = 'cp-test-box animated fadeOutRight';
           this.testNum--;
           if(this.testNum <= 1){
             this.isPrevious = false;

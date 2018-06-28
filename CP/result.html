@@ -18,83 +18,75 @@
 </header>-->
 <div class="cp-body" id="cp_result_page" v-cloak>
     <div class="cp-content">
-        <div class="cp-title-box">
-            <h3><img src="../assets/img/logo_cp.svg" alt=""></h3>
+        <div class="cp-body-title-box">
+            <img src="../assets/img/CP/cp-logo.png" alt="">
+            <h2>背景解读</h2>
         </div>
-        <div class="cp-result-content-box">
-            <div class="cp-result-content">
-                <div id="cp_result_box">
-                    <div class="cp-body-title-box">
-                        <h2>报告内容</h2>
-                    </div>
-                    <p class="cp-result-content-1"><span>背景解读</span>在进行社会分配的时候，有三种类型：</p>
-                    <div class="cp-result-content-all cp-result-content-2 clear">
-                        <p><span class="cp-result-content-tag">合作型</span>关心对方的利益，即使作出自我牺牲也愿意帮助对方。</p>
-                        <p><span class="cp-result-content-tag">自我型</span>只关心自己，并不介意对方比自己得到的多还是少。</p>
-                        <p><span class="cp-result-content-tag">竞争型</span>只关心自己和对方的差距，为了扩大差距宁愿牺牲自己的利益。</p>
-                    </div>
-                    <p class="cp-result-content-1"><span>个体结果</span>您的得分情况：</p>
-                    <div class="cp-result-content-all cp-result-content-5">
-                        <p><span class="cp-result-content-tag">合作型:</span><span v-bind:style="{width:p_val/9*75 + '%'}"></span><font>{{p_val}}</font></p>
-                        <p><span class="cp-result-content-tag">自我型:</span><span v-bind:style="{width:i_val/9*75 + '%'}"></span><font>{{i_val}}</font></p>
-                        <p><span class="cp-result-content-tag">竞争型:</span><span v-bind:style="{width:c_val/9*75 + '%'}"></span><font>{{c_val}}</font></p>
-                        <div class="echarts-box">
-                            <div id="echarts_bar1" style="height:360px;"></div>
-                        </div>
-                    </div>
-                    <p class="cp-result-content-1 cp-result-content-3">
-                        <span>一句解读</span>{{result}}
-                    </p>
-                    <div class="cp-result-content-1">
-                        <span>后续和其他测评</span>
-                        <p>1、点击左上方菜单转发邀请好友，让他们也能够了解自己的分配偏好。</p>
-                        <p>2、我们「知行测评」还会继续推出其他测评产品，帮助你了解自己。</p>
-                        <p>3、请关注我们的公众号“科学谈判”，不错过其他测评产品。</p>
-                        <div class="QR-Code-picture-box">
-                            <div class="QR-Code-picture">
-                                <img src="../assets/img/illustration/i029.png" alt="">
-                            </div>
-                            <span>扫描二维码关注公众号了解更多最新资讯，更多好玩信息等你，不容错过！</span>
-                        </div>
-                    </div>
-                </div>
-                <p class="cp-result-content-1 cp-result-content-4"></p>
-                <!--<div class="cp-btn-box" style="margin: 35px 0 50px">
-                    <a href="javascript:;" class="cp-btn" @click="isCheck()">保存测试结果</a>
-                </div>-->
+        <div class="cp-page-content-1">
+            <p style="font-size: 16px">在进行社会分配的时候，有三种类型：</p>
+        </div>
+        <div class="cp-page-content-3">
+            <div class="cp-page-content-3-1">
+                <h5><span class="tag-1"></span>合作型</h5>
+                <p>关心对方的利益，即使作出自我牺牲也愿意帮助对方。</p>
+            </div>
+            <div class="cp-page-content-3-1">
+                <h5><span class="tag-2"></span>自我型</h5>
+                <p>只关心自己，并不介意对方比自己得到的多还是少。</p>
+            </div>
+            <div class="cp-page-content-3-1">
+                <h5><span class="tag-3"></span>竞争型</h5>
+                <p>只关心自己和对方的差距，为了扩大差距宁愿牺牲自己的利益。</p>
             </div>
         </div>
-    </div>
-    <div class="cp-modal-box" id="cp_modal_box" v-show='isShowModal'>
-        <div class="cp-container">
-            <div class="cp-modal">
-                <div class="cp-modal-title">
-                    <span>请填写下面的信息</span>
-                    <div class="cp-modal-close">
-                        <a href="javascript:;" class="cp-close-btn" @click="closeModal()"></a>
-                    </div>
+        <div class="cp-body-title-box-1">
+            <h3>您的得分</h3>
+        </div>
+        <div class="cp-page-content-4">
+            <p style="font-size: 16px">您在每个类型上的得分分别为：</p>
+        </div>
+        <div class="cp-page-content-5">
+            <p><label>合作型:</label><span v-bind:style="{width:p_val/9*74 + '%'}">{{p_val}}</span></p>
+            <p><label>自我型:</label><span v-bind:style="{width:i_val/9*74 + '%'}">{{i_val}}</span></p>
+            <p><label>竞争型:</label><span v-bind:style="{width:c_val/9*74 + '%'}">{{c_val}}</span></p>
+            <div class="echarts-box">
+                <div id="echarts_bar1" style="height:360px;"></div>
+            </div>
+        </div>
+        <div class="cp-body-title-box-1">
+            <h3>解读</h3>
+        </div>
+        <div class="cp-page-content-2">
+            <p style="font-size: 20px;line-height: 30px">「{{result}}」</p>
+        </div>
+        <div class="cp-body-title-box-1">
+            <h3>转发</h3>
+        </div>
+        <div class="cp-page-content-1">
+            <p>点击<font color="#457cad" style="font-size: 20px">「右上方菜单」</font>转发邀请好友，让他们也能够了解自己的分配偏好。</p>
+        </div>
+        <div class="cp-body-title-box-1">
+            <h3>关注「科学谈判」</h3>
+        </div>
+        <div class="cp-page-content-1">
+            <p>1、请关注我们的公众号<font color="#457cad" style="font-size: 20px">“科学谈判”</font>，不错过其他测评产品。</p>
+            <p>2、<font color="#457cad" style="font-size: 20px">“科学谈判”</font>是将心理学和行为科学的理念成果转化为前沿知识，帮助企业和个人改善谈判、沟通的效率，提高领导力和解决冲突的能力，促进合作共赢。</p>
+            <div class="QR-Code-picture-box">
+                <div class="QR-Code-picture">
+                    <img src="../assets/img/CP/cp-QR-1.jpg" alt="">
                 </div>
-                <div class="cp-modal-content">
-                    <div class="cp-form-box">
-                        <div class="cp-input-box">
-                            <label for="wechat">微信</label>
-                            <input v-bind:input="isNullInput()" type="text" maxlength="20"  v-model='submitData.wechat' class="cp-input" id="wechat" placeholder="请输入微信号">
-                        </div>
-                        <div class="cp-input-box">
-                            <label for="email">邮箱</label>
-                            <input v-bind:input="isNullInput()" type="text" v-model='submitData.email' class="cp-input" id="email" placeholder="请输入邮箱地址">
-                        </div>
-                        <div class="cp-input-box cp-phone-input-box">
-                            <label for="phone">电话<a href="javascript:;">+86</a></label><input v-bind:input="isNullInput()" type="text" maxlength="11" v-model='submitData.phone' class="cp-input cp-phone-input" id="phone" placeholder="请填写手机号码">
-                        </div>
-                    </div>
+                <span>长按扫描二维码关注公众号</span>
+            </div>
+        </div>
+        <div class="cp-body-title-box-1">
+            <h3 style="font-size: 24px;letter-spacing: 1px">关注「知行管理学院」直播间</h3>
+        </div>
+        <div class="cp-page-content-1" style="margin-bottom: 60px">
+            <div class="QR-Code-picture-box">
+                <div class="QR-Code-picture">
+                    <img src="../assets/img/CP/cp-QR-2.jpg" alt="">
                 </div>
-                <div class="cp-modal-footer">
-                    <div class="cp-btn-box">
-                        <a href="javascript:;" class="cp-btn" v-bind:class="{'cp-submit':!isNull}" v-bind:disable="isNull" @click="jump(1)">提交</a>
-                        <a href="javascript:;" class="cp-btn cp-close" @click="closeModal()">取消</a>
-                    </div>
-                </div>
+                <span>长按扫描二维码关注公众号</span>
             </div>
         </div>
     </div>
@@ -258,7 +250,9 @@
               }
               myChart1.setOption({
                 tooltip: {
-                  show: true,
+                  show: function(value){
+                    if(value == 0.00) return false;
+                  }(),
                   formatter: "{a}<br>{b} : {c} ({d}%)"
                 },
                 legend: {
@@ -274,17 +268,18 @@
                   },
                   data: ['合作型', '自我型', '竞争型']
                 },
-                color: ['#93D1F3', '#FA845A','#FFBD3D'],
+                color: ['#44b8e7', '#eb624f','#ffbd3d'],
                 calculable: true,
                 series: [
                   {
                     name: '测评数据',
                     type: 'pie',
-                    radius: '75%',
+                    radius: ['40%', '70%'],
                     center: ['50%','45%'],
+                    avoidLabelOverlap: false,
                     label: {
                       normal: {
-                        position: 'inner'
+                        show: false,
                       }
                     },
                     labelLine: {
