@@ -15,7 +15,27 @@
     <div class="cp-content">
         <div class="cp-body-title-box">
             <img src="../assets/img/CP/cp-logo.png" alt="">
-            <h2>背景解读</h2>
+            <h2>您的得分</h2>
+        </div>
+        <div class="cp-page-content-4">
+            <p style="font-size: 16px">您在每个类型上的得分分别为：</p>
+        </div>
+        <div class="cp-page-content-5">
+            <p><label>合作型:</label><span v-bind:style="{width:p_val/9*74 + '%'}">{{p_val}}</span></p>
+            <p><label>自我型:</label><span v-bind:style="{width:i_val/9*74 + '%'}">{{i_val}}</span></p>
+            <p><label>竞争型:</label><span v-bind:style="{width:c_val/9*74 + '%'}">{{c_val}}</span></p>
+            <div class="echarts-box">
+                <div id="echarts_bar1" style="height:330px;"></div>
+            </div>
+        </div>
+        <div class="cp-body-title-box-1">
+            <h3>解读</h3>
+        </div>
+        <div class="cp-page-content-2">
+            <p style="font-size: 18px;line-height: 27px">「{{result}}」</p>
+        </div>
+        <div class="cp-body-title-box-1">
+            <h3>背景解读</h3>
         </div>
         <div class="cp-page-content-1">
             <p style="font-size: 16px">在进行社会分配的时候，有三种类型：</p>
@@ -34,61 +54,13 @@
                 <p>只关心自己和对方的差距，为了扩大差距宁愿牺牲自己的利益。</p>
             </div>
         </div>
-        <div class="cp-body-title-box-1">
-            <h3>您的得分</h3>
-        </div>
-        <div class="cp-page-content-4">
-            <p style="font-size: 16px">您在每个类型上的得分分别为：</p>
-        </div>
-        <div class="cp-page-content-5">
-            <p><label>合作型:</label><span v-bind:style="{width:p_val/9*74 + '%'}">{{p_val}}</span></p>
-            <p><label>自我型:</label><span v-bind:style="{width:i_val/9*74 + '%'}">{{i_val}}</span></p>
-            <p><label>竞争型:</label><span v-bind:style="{width:c_val/9*74 + '%'}">{{c_val}}</span></p>
-            <div class="echarts-box">
-                <div id="echarts_bar1" style="height:360px;"></div>
-            </div>
-        </div>
-        <div class="cp-body-title-box-1">
-            <h3>解读</h3>
-        </div>
-        <div class="cp-page-content-2">
-            <p style="font-size: 20px;line-height: 30px">「{{result}}」</p>
-        </div>
-        <div class="cp-body-title-box-1">
-            <h3>转发</h3>
-        </div>
-        <div class="cp-page-content-1">
-            <p>点击<font color="#457cad" style="font-size: 20px">「右上方菜单」</font>转发邀请好友，让他们也能够了解自己的分配偏好。</p>
-        </div>
-        <div class="cp-body-title-box-1">
-            <h3>关注「科学谈判」</h3>
-        </div>
-        <div class="cp-page-content-1">
-            <p>1、请关注我们的公众号<font color="#457cad" style="font-size: 20px">“科学谈判”</font>，不错过其他测评产品。</p>
-            <p>2、<font color="#457cad" style="font-size: 20px">“科学谈判”</font>是将心理学和行为科学的理念成果转化为前沿知识，帮助企业和个人改善谈判、沟通的效率，提高领导力和解决冲突的能力，促进合作共赢。</p>
-            <div class="QR-Code-picture-box">
-                <div class="QR-Code-picture">
-                    <img src="../assets/img/CP/cp-QR-1.jpg" alt="">
-                </div>
-                <span>长按扫描二维码关注公众号</span>
-            </div>
-        </div>
-        <div class="cp-body-title-box-1">
-            <h3 style="font-size: 24px;letter-spacing: 1px">关注「知行管理学院」直播间</h3>
-        </div>
-        <div class="cp-page-content-1" style="margin-bottom: 60px">
-            <div class="QR-Code-picture-box">
-                <div class="QR-Code-picture">
-                    <img src="../assets/img/CP/cp-QR-2.jpg" alt="">
-                </div>
-                <span>长按扫描二维码关注公众号</span>
-            </div>
+        <div class="cp-btn-box cp-not-position-btn">
+            <a href="javascript:;" class="cp-btn" @click="isCheck()">点击进入下一页</a>
         </div>
     </div>
 </div>
 <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/echarts/4.0.4/echarts.min.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
@@ -129,12 +101,7 @@
     },
     methods: {
       isCheck: function () {
-        this.$nextTick(function () {
-          html2canvas(document.querySelector(".cp-content"),options).then(function(canvas) {
-            document.body.appendChild(canvas)
-            /*console.log(canvas);*/
-          });
-        })
+        window.location.href = 'forward.html?o='+this.o;
       },
       showModal: function () {
         this.isShowModal = true
@@ -298,6 +265,7 @@
           .catch(function (error) {
             console.log(error);
           })
+
         axios({ method:'get', url:'http://www.cogitoactio.com/api/v1/wechat/get_ticket?u='+location.href})
           .then(function (response) {
             wx.config({
@@ -309,10 +277,10 @@
               jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
             });
             var wx_share_data = {
-              title: '知行测评-助你认识自己', // 分享标题
-              desc: '如果你觉得这个测评可以帮助你的朋友深入了解自己，想知道你的价值取向如何影响你在谈判和社会交往中的表现吗？', // 分享描述
+              title: '知行测评-分配偏好', // 分享标题
+              desc: '欢迎使用本免费测验，了解自己在分配资源的时候的倾向。', // 分享描述
               link: 'http://www.cogitoactio.com/CP/index.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl: 'http://www.cogitoactio.com/assets/img/logo-2.png', // 分享图标
+              imgUrl: 'http://www.cogitoactio.com/assets/img/CP/cp-logo-1.png', // 分享图标
               type: '', // 分享类型,music、video或link，不填默认为link
               dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
               success: function () {

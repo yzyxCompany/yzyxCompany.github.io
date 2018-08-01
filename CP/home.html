@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>知行测评-分配偏好</title>
     <link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">
-    <link rel="stylesheet" href="../assets/vendors/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/cpv2.0.main.css">
     <link rel="ICON" href="../assets/img/main/icon.png">
 </head>
@@ -76,26 +75,7 @@
             </div>
         </div>
         <div class="cp-page-content-4">
-            <p>假如对方选择了“丙”的话，那么分数将显示为：</p>
-        </div>
-        <div class="cp-page-content-5">
-            <div class="cp-test-coffers-box" style="margin-top: 5px;margin-bottom: 10px">
-                <div class="coffers-box">
-                    <span>你</span>
-                    <div class="coffers">
-                        <div class="gold-bar" style="width:30%;padding-right: 5px;">300</div>
-                    </div>
-                </div>
-                <div class="coffers-box">
-                    <span>他</span>
-                    <div class="coffers">
-                        <div class="gold-bar" style="width:50%;padding-right: 5px;">500</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="cp-page-content-4">
-            <p>那么你们的总分数将是：</p>
+            <p>假如对方选择了“丙”的话，那么你们的总比分将是：</p>
         </div>
         <div class="cp-page-content-5">
             <div class="cp-test-coffers-box" style="margin-top: 5px;margin-bottom: 10px">
@@ -108,50 +88,75 @@
                 <div class="coffers-box">
                     <span>他</span>
                     <div class="coffers">
-                        <div class="gold-bar" style="width:60%;padding-right: 5px;">600</div>
+                        <div class="gold-bar" style="width:65%;padding-right: 5px;">650</div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="cp-page-content-4" style="margin-top: 25px">
-            <p style="font-size: 15px">所以，你的选择决定了自己的分数，也决定了对方的分数。同样，对方的选择除了决定对方的分数，也决定了你的分数。</p>
-        </div>
-        <div class="cp-page-content-1">
-            <p>你和对方的目标都是积累最多的分数。</p>
+            <p style="font-size: 15px">所以，你的选择决定你的分数，也决定了对方的分数。同样，对方的选择决定对方的分数，也决定了你的分数。</p>
         </div>
         <div class="cp-page-content-2">
-            <p>请谨记答案并无对错之分，你只需选出你认为最合意的选择即可。为了得到真实的反馈，请给出你的真实答案。</p>
+            <p>请谨记，答案并无对错之分，请选出你认为最想要的选择。为了得到真实的答案，请回答你的真实答案。</p>
         </div>
 
         <div class="cp-btn-box cp-not-position-btn">
-            <a href="javascript:;" class="cp-btn" onclick="isCheck()">开始答题</a>
+            <div class="cp-form-box">
+                <div class="cp-input-box">
+                    <div class="cp-radio-box">
+                        <label class="cp-label" for="isLogin_1" style="font-size: 12px;line-height: 18px;margin: 0 0 8px;display: block;width: 100%;border: 0">
+                            <input type="checkbox" class="cp-radio" onchange="isLoginSubmit()" id="isLogin_1" value="1" name="isLogin">
+                            <span class="cp-radioInput"></span>已详细阅读此测评介绍，了解测评规则
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:;" id="cp_home_btn" class="cp-btn cp-btn-disable" onclick="isCheck()">开始答题</a>
         </div>
     </div>
 </div>
 <script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/sweetalert/2.1.0/sweetalert.min.js"></script>
 <script type="text/javascript">
   'user strict';
-  var isCheck = function () {
-    var ua = navigator.userAgent.toLowerCase();
-    if (ua.indexOf('micromessenger') !== -1) {
-      axios({
-        method:'get',
-        url:'http://www.cogitoactio.com/api/v1/wechat/auth_start?num=2',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      }).then(function (response) {
-        window.location.href = response.data.url
-      }).catch(function (error) {
-        console.log(error);
-      });
-    } else {
-      alert('请使用微信自带浏览器打开');
-    }
-  };
+  var a = true;
+  var cp_home_btn = document.getElementById('cp_home_btn');
+  var isLogin_1 = document.getElementById('isLogin_1');
   window.onload = function (ev) {
-    alert('务必请详细阅读此页面。')
-  }
+    a = true;
+    cp_home_btn.className = 'cp-btn cp-btn-disable';
+    isLogin_1.checked = false;
+  };
+    var isCheck = function () {
+      if(!a){
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.indexOf('micromessenger') !== -1) {
+          axios({
+            method:'get',
+            url:'http://www.cogitoactio.com/api/v1/wechat/auth_start?num=2',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            }
+          }).then(function (response) {
+            window.location.href = response.data.url
+          }).catch(function (error) {
+            console.log(error);
+          });
+        } else {
+          alert('请使用微信自带浏览器打开');
+        }
+      }else{
+        console.log('未认真查看')
+      }
+    };
+    var isLoginSubmit = function () {
+      a = !a;
+      if(a){
+        cp_home_btn.className = 'cp-btn cp-btn-disable'
+      }else{
+        cp_home_btn.className = 'cp-btn'
+      }
+    }
 </script>
 
 </body>

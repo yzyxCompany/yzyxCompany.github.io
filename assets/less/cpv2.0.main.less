@@ -344,6 +344,9 @@ html, body {
     .BC(@white-2);
     position: relative;
     .boxSize2(100%,180px);
+    p{
+      margin: 0;
+    }
     .cp-test-box{
       .opacity-0;
       &.animated{
@@ -543,21 +546,10 @@ html, body {
 
 .masking{
   position: fixed;
+  top: 0;
   left: 0;
-  z-index: 200;
-  display: none;
-  .transition(display 0.6s);
-  &.masking-loading{
-    top: 0;
-    .boxSize2(100%, 100%);
-    .BC(@white-1);
-    p{
-      .boxSizeW(100%);
-      text-align: center;
-      .font2(20px,normal);
-      position: absolute;
-      top: 50%;
-      margin: -15px 0 0;
-    }
-  }
+  z-index: 800;
+  .BC(rgba(0,0,0,0.15));
+  //.transition(display 0.6s);
+  .boxSize1(100%);
 }

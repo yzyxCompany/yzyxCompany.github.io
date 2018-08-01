@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>知行测评-“黑三角”人格</title>
+    <link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="../assets/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/node_modules/animate.css/animate.min.css">
+    <link rel="stylesheet" href="../assets/css/cpv2.0.main.css">
+    <link rel="ICON" href="../assets/img/main/icon.png">
+</head>
+<body>
+<div class="cp-body not-scroll-page">
+    <div class="cp-content" id="cp_test_page" v-cloak>
+        <div class="cp-body-title-box" style="margin-bottom: 10px">
+            <div class="process-box">
+                <p><span>1</span>/9</p>
+            </div>
+            <img src="../assets/img/CP/cp-logo.png" alt="">
+            <h2 style="font-size: 20px;line-height: 1.5;font-weight: normal;letter-spacing: 2px">请选择你的选项</h2>
+        </div>
+        <div class="cp-test-content" style="margin-top: 20px;background-color: rgba(210,210,210,0.2)">
+            <div class="cp-test-content-title">
+                <p>你是不是冷酷无情？</p>
+            </div>
+            <div class="cp-test-content-option">
+                <p><span>A</span>几乎总是</p>
+                <p><span>B</span>经常</p>
+                <p><span>C</span>有事</p>
+                <p><span>D</span>很少</p>
+                <p><span>E</span>几乎从不</p>
+            </div>
+        </div>
+        <div class="cp-btn-box cp-test-btn-box" style="margin-top: 100px">
+            <button type="button" class="cp-btn previous-btn">上一题</button>
+            <button type="button" class="cp-btn next-btn">下一题</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript">
+  var mainVue = new Vue({
+    el: '#cp_test_page',
+    data: {
+      questions: [
+        '你是不是比较冷酷无情？',
+        '和别人交流的时候，为了达到目的，总有人会付出代价，你会觉得应该是对方付出代价吗？',
+        '和别人交流的时候，为了达到目的，你会特意奉承对方吗？',
+        '你做事的时候会考虑是否附和道德规范吗？',
+        '你是不是非常注重追求声望和地位？',
+        '你对社会问题的看法是否比较偏激？',
+        '如果做了伤害别人的事，你会自责吗？',
+        '和别人交流的时候，为了达到目的，你会故意撒谎或者欺骗一下对方吗？',
+        '你是不是觉得别人很自然应该帮你的忙？',
+        '和别人交流的时候，为了达到目的，你会有意使用对你有利的表达方式吗？',
+        '你是不是很喜欢受人崇拜？',
+        '你是不是很喜欢被人重视？'
+      ]
+    },
+    methods: {
+    },
+    mounted: function () {
+
+    }
+  });
+</script>
+
+</body>
+</html>

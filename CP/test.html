@@ -21,6 +21,22 @@
             <img src="../assets/img/CP/cp-logo.png" alt="">
             <h2 style="font-size: 20px;line-height: 1.5;font-weight: normal;letter-spacing: 2px">请选择你的选项</h2>
         </div>
+        <div class="cp-page-content-5">
+            <div class="cp-test-coffers-box" style="margin-top: 5px;margin-bottom: 10px">
+                <div class="coffers-box">
+                    <span>你</span>
+                    <div class="coffers">
+                        <div class="gold-bar" v-bind:style="{width:isCheckResult[testNum-1].val1/8+'%'}"><span>{{isCheckResult[testNum-1].val1}}</span></div>
+                    </div>
+                </div>
+                <div class="coffers-box">
+                    <span>他</span>
+                    <div class="coffers">
+                        <div class="gold-bar" v-bind:style="{width:isCheckResult[testNum-1].val2/8+'%'}"><span>{{isCheckResult[testNum-1].val2}}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="cp-test-content" style="margin-top: 20px;background-color: rgba(210,210,210,0.2)">
             <div class="cp-test-box" id="cp_test_box">
                 <table cellspacing="0" cellpadding="0">
@@ -41,23 +57,7 @@
                 </table>
             </div>
         </div>
-        <div class="cp-page-content-5">
-            <div class="cp-test-coffers-box" style="margin-top: 5px;margin-bottom: 10px">
-                <div class="coffers-box">
-                    <span>你</span>
-                    <div class="coffers">
-                        <div class="gold-bar" v-bind:style="{width:isCheckResult[testNum-1].val1/8+'%'}"><span>{{isCheckResult[testNum-1].val1}}</span></div>
-                    </div>
-                </div>
-                <div class="coffers-box">
-                    <span>他</span>
-                    <div class="coffers">
-                        <div class="gold-bar" v-bind:style="{width:isCheckResult[testNum-1].val2/8+'%'}"><span>{{isCheckResult[testNum-1].val2}}</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="cp-btn-box cp-test-btn-box cp-position-btn">
+        <div class="cp-btn-box cp-test-btn-box" style="margin-top: 100px">
             <button type="button" class="cp-btn previous-btn" v-bind:class="{'cp-btn-disable':!isPrevious}" @click="previousCheck()" v-bind:disable="!isPrevious">上一题</button>
             <button type="button" class="cp-btn next-btn" v-bind:class="{'cp-btn-disable':!isNext}" @click="nextCheck()" v-bind:disable="!isNext" v-show="testNum!==9">下一题</button>
             <button type="button" class="cp-btn next-btn" v-bind:class="{'cp-btn-disable':!isNext}" @click="nextCheck()" v-bind:disable="!isNext" v-show="testNum===9">下一步</button>
