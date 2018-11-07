@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>亦知亦行 谈判清单</title>
+    <link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="../assets/node_modules/animate.css/animate.css">
+    <link rel="stylesheet" href="../assets/css/qdv1.0.main.css">
+    <link rel="ICON" href="../assets/img/main/icon.png">
+</head>
+<body>
+<div class="qd-content" id="qd_login_page">
+    <!-- sign in -->
+    <div class="qd-section" id="loginSection1" v-show="loginPage===1">
+        <div class="qd-login-box qd-login-box__signIn">
+            <div class="qd-login-box__top">
+                <div class="qd-login-logo__1">
+                    <!--<img src="../assets/img/qd/qd-logo-1.png" alt="">-->
+                </div>
+            </div>
+            <div class="qd-login-box__content clear">
+                <form action="#" class="qd-form">
+                    <div class="qd-input-box qd-input-box__1">
+                        <input type="text" class="qd-input" id="qd_input__account__1" placeholder="请输入您的账号" style="background-image: url('../assets/img/qd/icon/account.svg')">
+                    </div>
+                    <div class="qd-input-box qd-input-box__1">
+                        <input type="password" class="qd-input" id="qd_input__password__1" placeholder="请输入您的密码" style="background-image: url('../assets/img/qd/icon/pass.svg')">
+                    </div>
+                    <div class="qd-input-box qd-input-box__1">
+                        <input type="text" class="qd-input qd-input__securityCode__1" id="qd_input__securityCode__1" placeholder="请输入验证码" style="background-image: url('../assets/img/qd/icon/securityCode.svg')">
+                        <span></span>
+                    </div>
+                    <a href="javascript:;" class="qd-forget-pass" @click="toUrl(3)">忘记密码？</a>
+                </form>
+            </div>
+            <div class="qd-login-box__foot">
+                <div class="qd-btn-box">
+                    <a href="home.html" class="qd-btn qd-btn__1 qd-btn__block">登&nbsp;&nbsp;&nbsp;录</a>
+                </div>
+                <div class="qd-foot-text-box">
+                    <p class="qd-foot-text__1">还没账户？<a href="javascript:;" class="qd-foot-text__btn__1" @click="toUrl(2)">立刻注册</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- sign up -->
+    <div class="qd-section" id="loginSection2" v-show="loginPage===2">
+        <div class="qd-login-box qd-login-box__signUp">
+            <div class="qd-login-box__top">
+                <div class="qd-login-logo__2">
+                    <!--<img src="../assets/img/qd/qd-logo-1.png" alt="">-->
+                </div>
+            </div>
+            <div class="qd-login-box__content clear">
+                <form action="#" class="qd-form">
+                    <div class="qd-input-box qd-input-box__1">
+                        <input type="text" class="qd-input" id="qd_input__account__2" placeholder="请输入账号" style="background-image: url('../assets/img/qd/icon/account.svg')">
+                    </div>
+                    <div class="qd-input-box qd-input-box__1">
+                        <input type="password" class="qd-input" id="qd_input__password__2__1" placeholder="请输入密码" style="background-image: url('../assets/img/qd/icon/pass.svg')">
+                    </div>
+                    <div class="qd-input-box qd-input-box__1">
+                        <input type="password" class="qd-input" id="qd_input__password__2__2" placeholder="请再次确认密码" style="background-image: url('../assets/img/qd/icon/pass.svg')">
+                    </div>
+                    <div class="qd-input-box qd-input-box__1">
+                        <input type="text" class="qd-input" id="qd_input__secretKey__2" placeholder="请输入亦知亦行提供的密钥️" style="background-image: url('../assets/img/qd/icon/securityCode.svg')">
+                    </div>
+                </form>
+            </div>
+            <div class="qd-login-box__foot">
+                <div class="qd-btn-box">
+                    <input type="checkbox" class="qd-checkbox" id="qd_login_checkbox" value="bm" v-model="isCheck" name="register">
+                    <label for="qd_login_checkbox"></label>已阅读<a href="javascript:;">注册条款</a>
+                    <a href="javascript:;" class="qd-btn qd-btn__1 qd-btn__block">注&nbsp;&nbsp;&nbsp;册</a>
+                </div>
+                <div class="qd-foot-text-box">
+                    <p class="qd-foot-text__1">已有账户？<a href="javascript:;" class="qd-foot-text__btn__1" @click="toUrl(1)">立即登录</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="qd-section" id="loginSection3">-->
+    <!--<div class="qd-login-box">-->
+    <!--<div class="qd-login-box__top"></div>-->
+    <!--<div class="qd-login-box__content"></div>-->
+    <!--<div class="qd-login-box__foot"></div>-->
+    <!--</div>-->
+    <!--</div>-->
+</div>
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript">
+  'user strict';
+  var mainVue = new Vue({
+    el: '#qd_login_page',
+    data: {
+      loginPage:1,
+      isCheck: false
+    },
+    methods: {
+      toUrl:function (val) {
+        window.location.href = 'login.html?p=' + val
+      }
+    },
+    mounted: function () {
+      function GetRequest() {
+        var url = decodeURI(location.search);
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+          var str = url.substr(1);
+          strs = str.split("&");
+          for(var i = 0; i < strs.length; i ++) {
+            theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+          }
+        }
+        return theRequest;
+      }
+      var urlData = GetRequest();
+      if(urlData.p == undefined || parseInt(urlData.p) > 3 || parseInt(urlData.p) < 1){
+        this.loginPage = 1
+      }else{
+        this.loginPage = parseInt(urlData.p)
+        console.log(this.loginPage)
+      }
+    }
+  });
+</script>
+</body>
+</html>

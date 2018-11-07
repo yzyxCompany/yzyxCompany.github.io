@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>亦知亦行 谈判清单</title>
+    <link rel="stylesheet" href="../../assets/node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="../../assets/node_modules/animate.css/animate.css">
+    <link rel="stylesheet" href="../../assets/css/qdv1.0.main.css">
+    <link rel="ICON" href="../../assets/img/main/icon.png">
+</head>
+<body>
+<div class="qd-content" id="qd_login_page">
+    <!-- 1 -->
+    <div class="qd-section" id="newIndexSection1" v-show="indexPage === 1">
+        <div class="qd-index-box qd-index-box__1">
+            <div class="qd-index-box__top">
+                <h3>创建清单</h3>
+            </div>
+            <div class="qd-index-box__content clear">
+                <div class="qd-index-text-box">
+                    <h4 class="qd-index-text-h4">全面、深入、系统的准备是谈判策略的来源， 是成功的基石。</h4>
+                    <div class="qd-index-text qd-index-text__1">
+                        <p>本清单帮助您全面准备谈判、力求达到以下的目标：</p>
+                        <span>1、系统全面收集信息；</span>
+                        <span>2、协助和其他组员沟通；</span>
+                        <span>3、谈判中作为备忘，防止偏离既定战略。</span>
+                    </div>
+                    <div class="qd-index-text qd-index-text__1">
+                        <p>谈判准备的过程的四个步骤：</p>
+                        <span>1、了解自己，拷问灵魂；</span>
+                        <span>2、获取核心信息，有根据地评估对方；</span>
+                        <span>3、系统全面地评估谈判的环境；</span>
+                        <span>4、制定战略和应急方案。</span>
+                    </div>
+                    <div class="qd-index-text qd-index-text__1">
+                        <p>温馨提示：</p>
+                        <span>完成清单所有内容预计需要30分钟，请注意时间安排。</span>
+                    </div>
+                </div>
+            </div>
+            <div class="qd-index-box__foot">
+                <div class="qd-btn-box">
+                    <input type="checkbox" class="qd-checkbox" id="qd_index_checkbox" value="bm" v-model="isCheck" name="register">
+                    <label for="qd_index_checkbox"></label>不再提示
+                    <a href="javascript:;" class="qd-btn qd-btn__1 qd-btn__block" @click="toUrl(2)">下&nbsp;&nbsp;一&nbsp;&nbsp;步</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="qd-section" id="newIndexSection2" v-show="indexPage === 2">
+        <div class="qd-index-box qd-index-box__2">
+            <div class="qd-index-box__top">
+                <h3>创建清单</h3>
+            </div>
+            <div class="qd-index-box__content clear">
+                <form action="#" class="qd-index-form">
+                    <div class="qd-input-box qd-input-box__1">
+                        <span>己&ensp;&ensp;&ensp;&ensp;方：</span>
+                        <input type="text" class="qd-input" id="qd_index_input__1" placeholder="请输入此次谈判的己方（选填）">
+                    </div>
+                    <div class="qd-input-box qd-input-box__1">
+                        <span>对&ensp;&ensp;&ensp;&ensp;方：</span>
+                        <input type="text" class="qd-input" id="qd_index_input__2" placeholder="请输入此次谈判的对方">
+                    </div>
+                    <div class="qd-input-box qd-radio-box__1">
+                        <span>己&ensp;方&ensp;为：</span>
+                        <input type="radio" class="qd-radio" id="qd_index_radio__1" name="SideType" value="A" checked><label for="qd_index_radio__1"></label><span class="qd-radio-text">甲方</span>
+                        <input type="radio" class="qd-radio" id="qd_index_radio__2" name="SideType" value="B"><label for="qd_index_radio__2"></label><span class="qd-radio-text">乙方</span>
+                        <input type="radio" class="qd-radio" id="qd_index_radio__3" name="SideType" value="C"><label for="qd_index_radio__3"></label><span class="qd-radio-text">未知</span>
+                    </div>
+                    <div class="qd-input-box qd-input-box__1">
+                        <span>项目名称：</span>
+                        <input type="text" class="qd-input" id="qd_index_input__3" placeholder="请输入此次谈判的项目名称">
+                    </div>
+                </form>
+            </div>
+            <div class="qd-index-box__foot">
+                <div class="qd-btn-box">
+                    <a href="javascript:;" class="qd-btn qd-btn__1 qd-btn__block" @click="toUrl(3)">下&nbsp;&nbsp;一&nbsp;&nbsp;步</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="qd-section" id="newIndexSection3" v-show="indexPage === 3">
+        <div class="qd-index-box qd-index-box__3">
+            <div class="qd-index-box__top">
+                <h3>谈判清单</h3>
+                <p><span>己方：</span>某某有限公司（或企业）1-1</p>
+                <p><span>对方：</span>某某有限公司（或企业）1-2</p>
+            </div>
+            <div class="qd-index-box__content clear">
+                <div class="qd-index-module-btn-box">
+                    <div class="qd-module-btn-box active">
+                        <a href="#" class="qd-module-btn">议题篇</a>
+                    </div>
+                    <div class="qd-module-btn-box">
+                        <a href="#" class="qd-module-btn">背景篇</a>
+                    </div>
+                    <div class="qd-module-btn-box">
+                        <a href="#" class="qd-module-btn">策略篇</a>
+                    </div>
+                </div>
+            </div>
+            <div class="qd-index-box__foot">
+                <div class="qd-btn-box">
+                    <a href="../home.html" class="qd-btn qd-btn__1 qd-btn__block">返&nbsp;回&nbsp;目&nbsp;录</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript">
+  'user strict';
+  var mainVue = new Vue({
+    el: '#qd_login_page',
+    data: {
+      indexPage:1,
+      isCheck: false
+    },
+    methods: {
+      toUrl:function (val) {
+        window.location.href = 'index.html?p=' + val
+      }
+    },
+    mounted: function () {
+      function GetRequest() {
+        var url = decodeURI(location.search);
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+          var str = url.substr(1);
+          strs = str.split("&");
+          for(var i = 0; i < strs.length; i ++) {
+            theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+          }
+        }
+        return theRequest;
+      }
+      var urlData = GetRequest();
+      if(urlData.p == undefined || parseInt(urlData.p) > 3 || parseInt(urlData.p) < 1){
+        this.indexPage = 1
+      }else{
+        this.indexPage = parseInt(urlData.p);
+        console.log(this.indexPage)
+      }
+    }
+  });
+</script>
+</body>
+</html>

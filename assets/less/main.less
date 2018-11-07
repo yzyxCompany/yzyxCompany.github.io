@@ -193,6 +193,23 @@ html,body{
       margin: 0 auto 10px;
       max-width: 480px;
     }
+    &.course-section-header{
+      position: relative;
+      margin-bottom: 0;
+      h2{
+        margin-bottom: 0;
+        &::after{
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          .boxSize2(50px,2px);
+          .BC(@blue-3);
+          content: ' ';
+        }
+      }
+    }
   }
   .row{
     margin: 0;
@@ -233,6 +250,13 @@ html,body{
         max-width: inherit;
         margin: 0 auto 15px;
       }
+      &.course-section-header{
+        h2{
+          &::after{
+            .boxSize2(75px,2px);
+          }
+        }
+      }
     }
     .row>.item{
       padding: 5px;
@@ -262,6 +286,14 @@ html,body{
         .font2(14px,normal);
         .boxSizeW(55%);
         margin: 0 auto 20px;
+      }
+      &.course-section-header{
+        h2{
+          &::after{
+            bottom: -20px;
+            .boxSize2(100px,3px);
+          }
+        }
       }
     }
   }
@@ -371,6 +403,62 @@ html,body{
         .boxSizeW(120px);
         padding: 21px 0;
       }
+    }
+  }
+  .course-page-box{
+    margin-top: 10px;
+    .course-picture-box{
+      img{
+        .boxSizeW(100%);
+      }
+    }
+    .course-content-box{
+      margin-top: 30px;
+      p{
+        padding: 0 5px;
+        .font2(14px,normal);
+      }
+    }
+    &.course-page-box__2{
+      margin-top: 50px;
+    }
+    @media (min-width: 768px){
+      .course-content-box{
+        margin-top: 40px;
+        p{
+          padding: 0 21px;
+          .font2(16px,normal);
+        }
+      }
+    }
+    @media (min-width: 992px){
+      .course-content-box{
+        p{
+          padding: 0 30px;
+        }
+      }
+    }
+    @media (min-width: 1200px){
+      &.course-page-box__2{
+        margin-top: 80px;
+      }
+      padding: 0 20px;
+      .course-content-box{
+        margin-top: 55px;
+        p{
+          letter-spacing: 1px;
+          padding: 0 40px;
+          .font2(18px,normal);
+        }
+      }
+    }
+  }
+  &.course-page-section{
+    &.course-page-section-2{
+      background: url('../img/main/course_bg6_1.png') left top no-repeat,
+      url('../img/main/course_bg6_2.png') right bottom no-repeat;
+      background-size: 100% auto;
+      .BC(@white-2);
     }
   }
   .company-module-box{

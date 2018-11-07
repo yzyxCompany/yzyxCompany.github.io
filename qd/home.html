@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>亦知亦行 谈判清单</title>
+    <link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="../assets/node_modules/animate.css/animate.css">
+    <link rel="stylesheet" href="../assets/css/qdv1.0.main.css">
+    <link rel="ICON" href="../assets/img/main/icon.png">
+</head>
+<body>
+<div class="qd-content" id="qd_home_page">
+    <!-- home page -->
+    <div class="qd-section">
+        <div class="qd-home-box">
+            <div class="qd-home-box__top">
+                <div class="qd-logo__1">
+                    <img src="../assets/img/qd/logo/qd-logo-3.png" alt="">
+                </div>
+                <div class="qd-home-top__btnBox">
+                    <a href="new/index.html?p=1" class="qd-new-btn"></a>
+                    <a href="javascript:;" class="qd-example-btn"></a>
+                </div>
+            </div>
+            <div class="qd-home-box__content">
+                <div class="qd-home-catalog-box">
+                    <div class="qd-home-catalog" v-for="data in datas">
+                        <div class="qd-home-catalog-title-box">
+                            <a class="qd-home-catalog__title">{{data.title}}</a>
+                            <span class="qd-home-catalog__date">{{data.date}}</span>
+                        </div>
+                        <div class="qd-home-catalog-content-box">
+                            <p class="qd-home-catalog__both"><span>己方：</span>{{data.both1}}</p>
+                            <p class="qd-home-catalog__both"><span>对方：</span>{{data.both2}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="qd-home-box__foot">
+                <nav class="qd-navigation-box">
+                    <ul class="qd-pagination-box">
+                        <li class="qd-nav-previous-box">
+                            <a href="javaScript:;"> < </a>
+                        </li>
+                        <li class="qd-nav-btn-box">
+                            <a href="javaScript:;" class="qd-nav-btn">1</a>
+                            <a href="javaScript:;" class="qd-nav-btn">2</a>
+                            <a href="javaScript:;" class="qd-nav-btn">3</a>
+                            <a href="javaScript:;" class="qd-nav-btn">4</a>
+                            <a href="javaScript:;" class="qd-nav-btn">5</a>
+                        </li>
+                        <li class="qd-nav-next-box">
+                            <a href="javaScript:;"> > </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript">
+    'user strict';
+    var mainVue = new Vue({
+        el: '#qd_home_page',
+        data: {
+            datas:[
+                {
+                    title: '谈判项目一',
+                    date: '2018-08-01',
+                    both1: '某某有限公司（或企业）1-1',
+                    both2: '某某有限公司（或企业）1-2',
+                },
+                {
+                    title: '谈判项目二',
+                    date: '2018-08-02',
+                    both1: '某某有限公司（或企业）2-1',
+                    both2: '某某有限公司（或企业）2-2',
+                },
+                {
+                    title: '谈判项目三',
+                    date: '2018-08-03',
+                    both1: '某某有限公司（或企业）3-1',
+                    both2: '某某有限公司（或企业）3-2',
+                },
+                {
+                    title: '谈判项目四',
+                    date: '2018-08-04',
+                    both1: '某某有限公司（或企业）4-1',
+                    both2: '某某有限公司（或企业）4-2',
+                },
+                {
+                    title: '谈判项目五',
+                    date: '2018-08-05',
+                    both1: '某某有限公司（或企业）5-1',
+                    both2: '某某有限公司（或企业）5-2',
+                },
+            ],
+        },
+        methods: {
+
+        },
+        mounted: function () {
+
+        }
+    });
+</script>
+</body>
+</html>

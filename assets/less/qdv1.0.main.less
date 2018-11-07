@@ -1,0 +1,518 @@
+/*
+ *
+ *
+ *
+ */
+//引入公共less
+@import "./lib.less";
+
+@color_1: #5f95ed;
+
+//页面样式
+* {
+  font-family: 'PingFang SC', 'Microsoft YaHei UI', sans-serif !important;
+  color: @black-4;
+  .boxSize(border-box)
+}
+
+ul{
+  padding: 0;
+  margin: 0;
+}
+
+li{
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: @color_1;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-user-select: none;
+  -moz-user-focus: none;
+  -moz-user-select: none;
+}
+
+.RadioOrCheckboxLabel{
+  display: inline-block;
+  .boxSize1(12px);
+  .border(1px, @gray-1);
+  position: relative;
+  vertical-align: -4px;
+  margin-right: 5px;
+  margin-left: 3px;
+  margin-bottom: 2px;
+  &::after {
+    .transition(opacity .5s ease);
+    cursor: pointer;
+    position: absolute;
+    content: '';
+    opacity: 0;
+  }
+}
+
+.RadioOrCheckboxChecked{
+  .BC(@color_1);
+  .boxSize1(8px);
+  top:1px;
+  left:1px;
+  opacity: 1.0;
+}
+
+html, body {
+  .boxSize1(100%);
+  .font2(12px, normal)
+}
+
+.qd-content {
+  .BC(@white-1);
+  .boxSize1(100%);
+  .qd-header-box{
+    .qd-page-title-box{
+      .boxSize2(100%,35px);
+      position: fixed;
+      .boxShadow(0 0 3px @gray-1);
+      z-index: 999;
+      .BC(@white-1);
+      .qd-close-new-btn{
+        position: absolute;
+        display: block;
+        left: 0px;
+        top: 0;
+        .boxSize1(35px);
+        .BS('../img/qd/icon/close.svg',16px 16px);
+      }
+      .qd-page-title{
+        .font3(16px,35px,normal);
+        margin: 0;
+        text-align: center;
+        .boxSizeW(100%);
+        color: @color_1;
+      }
+    }
+  }
+  .qd-section {
+    .boxSize1(100%);
+    .qd-login-box {
+      position: absolute;
+      .boxSize1(100%);
+      &.qd-login-box__signIn {
+        .qd-login-box__top {
+          height: 330px;
+          background: url("../img/qd/qd-login-bg-1.png")no-repeat center bottom;
+          background-size: 100% 100%;
+        }
+        .qd-forget-pass {
+          float: right;
+          display: inline-block;
+        }
+      }
+      &.qd-login-box__signUp{
+        .qd-login-box__top {
+          height: 200px;
+          background: url("../img/qd/qd-login-bg-1.png")no-repeat center bottom;
+          background-size: 100% 145%;
+        }
+        .qd-forget-pass {
+          float: right;
+          display: inline-block;
+        }
+      }
+      .qd-login-box__top{
+        .qd-login-logo__1{
+          .boxSize2(100%,250px);
+          .BS("../img/qd/logo/qd-logo-1.png",190px 190px);
+        }
+
+        .qd-login-logo__2{
+          .boxSize2(100%,130px);
+          .BS("../img/qd/logo/qd-logo-2.png",190px auto);
+        }
+      }
+      .qd-login-box__content {
+        padding: 0 35px;
+        .qd-form{
+          .qd-input-box{
+            .qd-input{
+              width: 100%;
+              padding-left: 36px;
+              background: 8px 6px no-repeat;
+              background-size: 20px 20px;
+            }
+          }
+        }
+      }
+      .qd-login-box__foot {
+        padding: 0 35px;
+        width: 100%;
+        margin-top: 50px;
+        .qd-foot-text-box {
+          text-align: center;
+          margin: 0;
+          .font1(14px, 30px);
+        }
+        @media screen and (min-device-height: 600px) {
+          position: absolute;
+          bottom: 0;
+          margin-top: 0;
+        }
+      }
+    }
+    .qd-home-box{
+      .boxSize1(100%);
+      background: @white-2 url("../img/qd/qd-login-bg-1.png")no-repeat center top;
+      background-size: 100% 33%;
+      .qd-home-box__top{
+        .qd-logo__1{
+          text-align: center;
+          padding: 30px 0;
+          .boxSize2(100%,116px);
+          img{
+            .boxSizeW(280px);
+          }
+        }
+        .qd-home-top__btnBox{
+          text-align: center;
+          .clear;
+          padding: 5px 20px;
+          a{
+            display: inline-block;
+            float: left;
+            color: @white-1;
+            background: no-repeat center;
+          }
+          .qd-new-btn{
+            .BC(rgba(255,255,255,0.2));
+            .border(1px,@light-gray-2);
+            background-image: url("../img/qd/icon/add.svg");
+            background-size: auto 25px;
+            .boxSize2(calc(100% - 35px), 30px);
+            margin-right: 5px;
+            .borderRadius(10px);
+          }
+          .qd-example-btn{
+            background-image: url("../img/qd/icon/example.svg");
+            background-size: auto 30px;
+            .boxSize1(30px);
+          }
+        }
+      }
+      .qd-home-box__content{
+        .BC(@white-2);
+        min-height: 300px;
+        padding: 10px 0 10px;
+        .qd-home-catalog-box{
+          .qd-home-catalog{
+            &:first-child{
+              margin-top: 0;
+            }
+            .BC(@white-1);
+            padding: 15px 20px;
+            margin-top: 10px;
+            .qd-home-catalog-title-box{
+              .clear;
+              .qd-home-catalog__title{
+                color: @black-4;
+                margin: 0;
+                .font2(18px,normal);
+                float: left;
+                font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif !important;
+              }
+              .qd-home-catalog__date{
+                float: right;
+                .font2(12px,normal);
+                color: @gray-1;
+                margin-top: 5px;
+              }
+            }
+            .qd-home-catalog-content-box{
+              margin-top: 10px;
+              .qd-home-catalog__both{
+                margin: 0 0 2px;
+                color: @gray-5;
+                .font2(12px,normal);
+                span{
+                  color: @gray-5;
+                }
+              }
+            }
+          }
+        }
+      }
+      .qd-home-box__foot{
+        .BC(@white-1);
+        .qd-navigation-box{
+          .qd-pagination-box{
+            text-align: center;
+            padding: 10px 0;
+            li{
+              display: inline-block;
+              a{
+                color: @gray-2;
+                display: inline-block;
+                .boxSize2(20px,40px);
+                .font1(14px,40px);
+                span{
+
+                }
+              }
+            }
+            /*.qd-nav-previous-box,
+            .qd-nav-next-box{
+
+            }
+            .qd-nav-btn-box{
+
+            }*/
+          }
+        }
+      }
+    }
+    .qd-index-box{
+      padding: 0 25px;
+      &.qd-index-box__1,
+      &.qd-index-box__3{
+        .qd-index-box__top {
+          h3 {
+            padding: 30px 0 20px;
+          }
+        }
+      }
+      &.qd-index-box__2{
+        .qd-index-box__top {
+          h3 {
+            padding: 120px 0 60px;
+          }
+        }
+      }
+      .qd-index-box__top{
+        h3{
+          text-align: center;
+          margin: 0;
+          .font2(24px, normal);
+        }
+        p{
+          margin: 0;
+        }
+      }
+      &.qd-index-box__3{
+        .qd-index-box__top {
+          p{
+            color: @gray-5;
+            .font2(14px,normal);
+            margin-bottom: 5px;
+            span{
+              color: @black-4;
+              .font2(14px,normal);
+            }
+          }
+        }
+      }
+      .qd-index-box__content{
+        .qd-index-text-box{
+          .qd-index-text-h4{
+            .font2(16px,normal);
+            margin: 0;
+          }
+          .qd-index-text{
+            margin-top: 20px;
+            p{
+              .font2(14px,normal);
+              margin: 0 0 3px;
+            }
+            span{
+              color: @gray-5;
+              .font2(13px,normal);
+              display: block;
+            }
+          }
+        }
+        .qd-index-form{
+          .qd-input-box{
+            span{
+              font-size: 14px;
+            }
+            .qd-input{
+              width: calc(100% - 80px);
+            }
+            &.qd-radio-box__1{
+              span{
+                margin-right: 5px;
+              }
+            }
+          }
+        }
+        .qd-index-module-btn-box{
+          margin-top: 25px;
+          .qd-module-btn-box{
+            padding: 15px 0;
+            .qd-module-btn{
+              display: block;
+              .font1(20px,64px);
+              .borderRadius(10px);
+              .boxShadow(0 0 5px @gray-5);
+              text-align: center;
+              color: @color_1;
+            }
+            &.active{
+              .qd-module-btn{
+                .border(1px,@color_1);
+                .boxShadow(0 0 5px @color_1);
+                color: @black-4;
+              }
+            }
+          }
+        }
+      }
+      .qd-index-box__foot {
+        width: 100%;
+        margin-top: 50px;
+        padding-bottom: 30px;
+        @media screen and (min-device-height: 600px) {
+          width: calc(100% - 50px);
+          position: absolute;
+          bottom: 0;
+          margin-top: 0;
+        }
+      }
+    }
+    .qd-new-box{
+      padding: 0 25px;
+      position: absolute;
+      .boxSize1(100%);
+      background: @white-2 url("../img/qd/qd-bg-2.png")no-repeat center bottom;
+      background-size: 100% auto;
+      .qd-new-box__content{
+        h2{
+          //.font2(50px,normal);
+          .font3(50px,88px,normal);
+          width: 50px;
+          margin: 0 auto;
+          padding-top: 100px;
+          font-family: '幼圆', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
+        }
+        .qd-new-box-text{
+          padding: 25px 22px;
+          margin-top: 20px;
+          position: relative;
+          .border(1px,@color_1);
+          .BC(rgba(255,255,255,0.35));
+          .borderRadius(5px);
+          .boxShadow(0 2px 5px @gray-3);
+          span{
+            display: inline-block;
+            .boxSize1(16px);
+            .transform(rotate(-45deg));
+            .border(1px,transparent);
+            border-top-color: @color_1;
+            border-right-color: @color_1;
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            margin-left: -8px;
+            .BC(@white-2)
+          }
+          p{
+            text-align: left;
+            margin: 0;
+            .font3(13px,24px,normal)
+          }
+        }
+      }
+      .qd-new-box__foot {
+        width: 100%;
+        margin-top: 50px;
+        padding-bottom: 30px;
+        @media screen and (min-device-height: 600px) {
+          width: calc(100% - 50px);
+          position: absolute;
+          bottom: 0;
+          margin-top: 0;
+        }
+        .qd-btn-box{
+          .qd-btn{
+            .boxShadow(0 0 20px @light-gray-1 inset)
+          }
+        }
+      }
+    }
+  }
+}
+
+.qd-input-box {
+  &.qd-radio-box__1{
+    margin-top: 25px;
+    margin-bottom: 15px;
+    .qd-radio{
+      display:none;
+    }
+    label {
+      margin-left: 5px;
+      .borderRadius(6px);
+      .RadioOrCheckboxLabel;
+    }
+    .qd-radio:checked+label::after{
+      .borderRadius(4px);
+      .RadioOrCheckboxChecked;
+    }
+  }
+  &.qd-input-box__1 {
+    border-bottom: 1px solid @light-gray-2;
+    margin-bottom: 15px;
+    .qd-input {
+      border: 0;
+      .font1(14px, 25px);
+      letter-spacing: 1px;
+      outline: none;
+      .BC(transparent);
+      padding: 6px 10px 4px 6px;
+      &::-webkit-input-placeholder {
+        .font1(12px, 25px);
+        color: @light-gray-2;
+      }
+      &::-moz-placeholder { /* Mozilla Firefox 19+ */
+        .font1(12px, 25px);
+        color: @light-gray-2;
+      }
+      &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        .font1(12px, 25px);
+        color: @light-gray-2;
+      }
+      &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        .font1(12px, 25px);
+        color: @light-gray-2;
+      }
+    }
+  }
+}
+
+.qd-btn-box {
+  padding: 10px 0;
+  .qd-btn {
+    display: inline-block;
+    color: @white-1;
+    .font1(18px, 42px);
+    text-align: center;
+  }
+  .qd-btn__block {
+    width: 100%;
+    display: block;
+  }
+  .qd-btn__1 {
+    .BC(@color_1);
+    .borderRadius(6px);
+  }
+  .qd-btn__2 {
+    .BC(rgba(255,255,255,0.1));
+    .borderRadius(21px);
+  }
+  .qd-checkbox{
+    display:none;
+  }
+  label {
+    .RadioOrCheckboxLabel;
+  }
+  .qd-checkbox:checked+label::after{
+    .RadioOrCheckboxChecked;
+  }
+}
