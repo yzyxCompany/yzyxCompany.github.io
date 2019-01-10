@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <style>
+        @media(max-width: 992px){
+            .bm-body{
+                width: 100%!important;
+            }
+            .bm-content .bm-email-title{
+                padding: 0 10px!important;
+            }
+            .bm-content .bm-email-content{
+                padding: 0 10px!important;
+            }
+            .bm-tag-content .row .item{
+                width: 100%!important;
+            }
+        }
+        .item .bm-tag-bottom-text::after,
+        .item .bm-tag-bottom-text::before{
+            position: absolute;
+            top: 11px;
+            margin: 0 auto;
+            display: block;
+            content: '';
+            height: 2px;
+            background-color: #edcdc5;
+        }
+        .item:first-child .bm-tag-bottom-text::after{
+            left: 0;
+            width: calc(50% - 43px);
+        }
+        .item:first-child .bm-tag-bottom-text::before{
+            right: 0;
+            width: calc(50% - 40px);
+        }
+
+        .item:last-child .bm-tag-bottom-text::after{
+            left: 0;
+            width: calc(50% - 56px);
+        }
+        .item:last-child .bm-tag-bottom-text::before{
+            right: 0;
+            width: calc(50% - 55px);
+        }
+    </style>
+</head>
+<body>
+<div class="bm-body" style="width: 992px;margin: 0 auto;border: 1px solid #A8A8A8;-webkit-box-shadow: 0 0 5px #333333;-moz-box-shadow: 0 0 5px #333333;box-shadow: 0 0 5px #333333;">
+    <header style="position: relative">
+        <nav class="nav-bar" style="font-family: 'PingFang SC', 'Microsoft YaHei UI', sans-serif;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;color: #191919;width: 100%;height: 91px;padding: 10px 10px 15px;background: url('http://www.cogitoactio.com/assets/img/illustration/i031.png')no-repeat bottom right;">
+            <div class="logo-box" style="display: inline-block;float: left;">
+                <img src='http://www.cogitoactio.com/assets/img/e_logo.png' alt="logo" style="width: 155px;height: 66px;">
+            </div>
+        </nav>
+    </header>
+    <div class="bm-content" style="padding: 20px 10px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;color: #191919;">
+        <p class="bm-email-title" style="padding: 0 60px;margin: 42px 0 0;font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;font-size: 20px;">尊敬的 {{name}}：</p>
+        <div class="bm-email-content" style="padding: 0 30px;margin-top: 5px">
+            <p style="margin:0;font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;padding: 0 30px;font-size: 20px;line-height: 33px">恭喜您已经报名成功，请立刻添加知行小助理：yzyxxzl，客服咨询时间：<font color="#bc614b">8:00-21:00</font>。我们会提前一周拉您进入社群，定时发放课前预习资料。</p>
+            <div class="bm-email-QRCode" style="margin-top: 55px;text-align: center;margin-bottom: 42px;">
+                <img src='http://www.cogitoactio.com/assets/img/illustration/i025.png' alt="知行小助手二维码" style="width: 247px;height: 247px;">
+                <p style="margin:0;font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;color: #797979;font-size: 18px;">扫描二维码添加知行小助手</p>
+            </div>
+            <div style="border-top: 2px dashed #edcdc5;padding: 56px 30px 0">
+                <p style="margin:0;font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;font-size: 20px;">因会议费用不包含住宿及停车等服务，如果您有相关需求，请自行预定。</p>
+                <p style="font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;font-size: 20px;margin: 50px 0 0;">为方便您的出行，亦知亦行将提供以下信息：</p>
+            </div>
+            <div style="padding: 0 30px;">
+                <p  style="font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;font-size: 20px;margin: 42px 0 0;">1、北京外国专家大厦住宿预定：</p>
+                <div style="margin-left: 30px">
+                    <p style="font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;font-size: 20px;margin: 24px 0 0;">可拨打<font color="#bc614b">18510776340</font>（北京外国专家大厦销售部）进行预定。</p>
+                    <p style="font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;font-size: 20px;margin: 24px 0 0;">1居室套间（大床或双床）：协议价&nbsp;<font color="#bc614b">550</font>&nbsp;元</p>
+                    <p style="font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;font-size: 20px;margin: 24px 0 0;">2居室套件（2卧大床房）：协议价&nbsp;<font color="#bc614b">750</font>&nbsp;元</p>
+                </div>
+            </div>
+            <div style="margin: 42px 0 120px; padding: 0 30px;">
+                <p style="font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;font-size: 20px;">2、停车费：参会人员: <font color="#bc614b">10</font>元/天，非参会人员: <font color="#bc614b">30</font>元/小时。</p>
+                <p style="font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;font-size: 20px;margin: 24px 0 0 30px;">请在前台领取停车证！</p>
+            </div>
+        </div>
+        <div class="bm-tag-content">
+            <div class="row">
+                <div class="item item-1" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;color: #191919;float: left;padding: 5px;width: 27%;">
+                    <div class="bm-tag-box" style="border: 2px solid #edcdc5;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;padding: 20px 15px;text-align: center;">
+                        <p class="item-title" style="margin:0;font-size: 24px;line-height: 36px;margin-bottom: 10px;color: #e0826f;font-weight: bold;">知行管理学院</p>
+                        <div class="bm-email-QRCode">
+                            <img src='http://www.cogitoactio.com/assets/img/illustration/i030.png' alt="线上课程二维码" style="width: 105px;height: 105px;">
+                        </div>
+                        <p class="bm-tag-bottom-text" style="margin:0;font-size: 16px; color: #797979;position: relative;line-height: 24px;letter-spacing: 1px;">线上课程</p>
+                    </div>
+                </div>
+                <div class="item item-2" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;color: #191919;float: left;padding: 5px;width: 46%;">
+                    <div class="bm-tag-box" style="border: 2px solid #edcdc5;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;padding: 20px 15px;text-align: center;">
+                        <div class="bm-email-QRCode">
+                            <img src='http://www.cogitoactio.com/assets/img/illustration/i029.png' alt="亦知亦行" style="width: 100%;padding:  0 5px;margin-top: 10px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="item item-1" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;color: #191919;float: left;padding: 5px;width: 27%;">
+                    <div class="bm-tag-box" style="border: 2px solid #edcdc5;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;padding: 20px 15px;text-align: center;">
+                        <p class="item-title" style="margin:0;font-size: 24px;line-height: 36px;margin-bottom: 10px;color: #e0826f;font-weight: bold;">知行工坊</p>
+                        <div class="bm-tag-content">
+                            <span class="bm-tag" style="color: #797979;font-size: 16px;line-height: 24px;margin: 0 0 10px;display: inline-block;">系统 专业 实操</span>
+                            <p style="margin:0;font-size: 16px;line-height: 24px;">改变心理模型</p>
+                            <p style="margin:0;font-size: 16px;line-height: 24px;margin-bottom: 20px;">掌握科学谈判方法</p>
+                        </div>
+                        <p class="bm-tag-bottom-text" style="margin:0;font-size: 16px; color: #797979;position: relative;line-height: 24px;letter-spacing: 1px;">线下深度课程</p>
+                    </div>
+                </div>
+                <div style="display:block;content: ' ';clear: both;"></div>
+            </div>
+        </div>
+    </div>
+    <footer style="background-color: #bc614b;">
+        <div class="footer-content" style="padding: 0 10px;">
+            <p style="margin:0;color: #F1F1F1;font-family: '幼圆','PingFang SC', 'Microsoft YaHei UI', sans-serif;font-size: 24px;line-height: 50px;letter-spacing: 3px;text-align: right;"> 亦知亦行&nbsp;|&nbsp;掌控人生</p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

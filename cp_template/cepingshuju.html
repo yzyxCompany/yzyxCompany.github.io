@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>"社会偏好"测评数据</title>
+    <link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="ICON" href="../assets/img/main/icon.png">
+    <style>
+        body{
+            color: #2a364c;
+            width: 2080px;
+            margin: 0 auto;
+        }
+        table{
+            width: auto;
+        }
+        .blue{
+            background-color: #78aac6;
+        }
+        .red{
+            background-color: #eb624f;
+        }
+        .yellow{
+            background-color: #f1b239;
+        }
+        .pTag{
+            color:#FFFFFF;
+            padding: 3px 5px;
+            font-size: 12px;
+            border-radius: 3px;
+            margin: 0 0 8px;
+            width: 120px;
+        }
+        .pTag span:first-child{
+            margin-right: 5px;
+        }
+        th{
+            text-align: center;
+        }
+        .pTag:last-child{
+            margin-bottom: 0!important;
+        }
+    </style>
+</head>
+<body>
+<div id="cepingshuju">
+    <el-card class="box-card" style="margin: 10px">
+        <div slot="header" class="clearfix">
+            <span v-show="showShuJu===true">“社会偏好”答题情况</span>
+            <span v-show="showShuJu===false">“社会偏好”测评试题</span>
+            <el-button  v-show="showShuJu===true" style="float: right; padding: 5px 10px" @click="cutCard" type="primary">测评试题</el-button>
+            <el-button  v-show="showShuJu===false" style="float: right; padding: 5px 10px" @click="cutCard" type="primary">答题情况</el-button>
+        </div>
+        <div class="text item">
+            <div v-show="showShuJu===true">
+                <div class="el-table el-table--fit el-table--border el-table--scrollable-x el-table--enable-row-hover el-table--enable-row-transition"   style="overflow-x: scroll;width: 2240px">
+                    <div style="width: 2240px;">
+                        <div class="hidden-columns"><div></div> <div></div></div>
+                        <div class="el-table__header-wrapper">
+                            <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"  style="width: 2240px">
+                                <colgroup>
+                                    <col name="el-table_1_column_1" width="50">
+                                    <col name="el-table_1_column_2" width="120">
+                                    <col name="el-table_1_column_3" width="120">
+                                    <col name="el-table_1_column_4" width="500">
+                                    <col name="el-table_1_column_5" width="100">
+                                    <col name="el-table_1_column_6" width="150">
+                                    <col name="el-table_1_column_7" width="150">
+                                    <col name="el-table_1_column_8" width="150">
+                                    <col name="el-table_1_column_9" width="150">
+                                    <col name="el-table_1_column_10" width="150">
+                                    <col name="el-table_1_column_11" width="150">
+                                    <col name="el-table_1_column_12" width="150">
+                                    <col name="el-table_1_column_13" width="150">
+                                    <col name="el-table_1_column_14" width="150">
+                                    <col name="gutter" width="0">
+                                </colgroup>
+                                <thead class="has-gutter">
+                                <tr class="">
+                                    <th colspan="1" rowspan="1" class="el-table_1_column_1     is-leaf"><div class="cell">序号</div></th>
+                                    <th colspan="1" rowspan="1" class="el-table_1_column_2     is-leaf"><div class="cell">用户</div></th>
+                                    <th colspan="1" rowspan="1" class="el-table_1_column_3     is-leaf"><div class="cell">测评名称</div></th>
+                                    <th colspan="1" rowspan="1" class="el-table_1_column_4     is-leaf"><div class="cell">答题情况</div></th>
+                                    <th colspan="1" rowspan="1" class="el-table_1_column_5     is-leaf"><div class="cell">答题数量</div></th>
+                                    <th colspan="1" rowspan="1" class="el-table_1_column_6     is-leaf"><div class="cell">题目一</div></th>
+                                    <th colspan="1" rowspan="1" class="el-table_1_column_7     is-leaf"><div class="cell">题目二</div></th>
+                                    <th colspan="1" rowspan="1" class="el-table_1_column_8     is-leaf"><div class="cell">题目三</div></th>
+                                    <th colspan="1" rowspan="1" class="el-table_1_column_9     is-leaf"><div class="cell">题目四</div></th>
+                                    <th colspan="1" rowspan="1" class="el-table_1_column_10    is-leaf"><div class="cell">题目五</div></th>
+                                    <th colspan="1" rowspan="1" class="el-table_1_column_11    is-leaf"><div class="cell">题目六</div></th>
+                                    <th colspan="1" rowspan="1" class="el-table_1_column_12    is-leaf"><div class="cell">题目七</div></th>
+                                    <th colspan="1" rowspan="1" class="el-table_1_column_13    is-leaf"><div class="cell">题目八</div></th>
+                                    <th colspan="1" rowspan="1" class="el-table_1_column_14    is-leaf"><div class="cell">题目九</div></th>
+                                    <th class="gutter" style="width: 0px; display: none;"></th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="el-table__body-wrapper is-scrolling-none"  style="overflow: hidden">
+                            <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"  style="width: 2240px;overflow: hidden">
+                                <colgroup>
+                                    <col name="el-table_1_column_1" width="50">
+                                    <col name="el-table_1_column_2" width="120">
+                                    <col name="el-table_1_column_3" width="120">
+                                    <col name="el-table_1_column_4" width="500">
+                                    <col name="el-table_1_column_5" width="100">
+                                    <col name="el-table_1_column_6" width="150">
+                                    <col name="el-table_1_column_7" width="150">
+                                    <col name="el-table_1_column_8" width="150">
+                                    <col name="el-table_1_column_9" width="150">
+                                    <col name="el-table_1_column_10" width="150">
+                                    <col name="el-table_1_column_11" width="150">
+                                    <col name="el-table_1_column_12" width="150">
+                                    <col name="el-table_1_column_13" width="150">
+                                    <col name="el-table_1_column_14" width="150">
+                                    <col name="gutter" width="0">
+                                </colgroup>
+                                <tbody>
+                                <tr v-for="(data, index) in datas" class="el-table__row">
+                                    <td rowspan="1" colspan="1" class="el-table_1_column_1  ">
+                                        <div class="cell">{{index+1}}</div>
+                                    </td>
+                                    <td rowspan="1" colspan="1" class="el-table_1_column_2  ">
+                                        <div class="cell">{{data.openid}}</div>
+                                    </td>
+                                    <td rowspan="1" colspan="1" class="el-table_1_column_3  ">
+                                        <div class="cell">{{data.markCode | isCode}}</div>
+                                    </td>
+                                    <td rowspan="1" colspan="1" class="el-table_1_column_4  ">
+                                        <div class="cell">
+                                        <span :class="{'blue':answer==='prosocial','red':answer==='individualistic','yellow':answer==='competitive'}"
+                                              style="color:#FFFFFF;padding: 3px 5px;font-size: 12px;border-radius: 3px;margin-right: 2px" v-for="answer in data.answer">
+                                            {{answer | isType}}
+                                        </span>
+                                        </div>
+                                    </td>
+                                    <td rowspan="1" colspan="1" class="el-table_1_column_5  ">
+                                        <div class="cell">{{data.p_num | isNum}}</div>
+                                    </td>
+                                    <td rowspan="1" colspan="1" v-for="(question, index) in data.questions.questions" :class="'el-table_1_column_'+parseInt(index+6) ">
+                                        <div class="cell">
+                                            <p class="pTag" :class="{'blue':result.style==='prosocial','red':result.style==='individualistic','yellow':result.style==='competitive'}"
+                                               v-for="result in question['questions_'+parseInt(index+1)]">
+                                                {{result.option}}、{{result.style | isType}}(<span v-for="val in result['value']">{{val.score}}</span>)
+                                            </p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <input type="text" v-model="page"><el-button type="primary" @click="getData1">跳转</el-button>
+                </div>
+            </div>
+            <div v-show="showShuJu===false">
+                <div class="el-table el-table--fit el-table--border el-table--scrollable-x el-table--enable-row-hover el-table--enable-row-transition">
+                    <div class="hidden-columns"><div></div> <div></div></div>
+                    <div class="el-table__header-wrapper">
+                        <table cellspacing="0" cellpadding="0" border="0" class="el-table__header" style="width: 200px;">
+                            <colgroup>
+                                <col name="el-table_1_column_1" width="50">
+                                <col v-for="(data, index) in datas2" v-bind:name="'el-table_1_column_'+parseInt(index+2)" width="150">
+                                <col name="gutter" width="0">
+                            </colgroup>
+                            <thead class="has-gutter">
+                            <tr class="">
+                                <th colspan="1" rowspan="1" class="el-table_1_column_1     is-leaf"><div class="cell">编号</div></th>
+                                <th v-for="(data, index) in datas2" colspan="1" rowspan="1" v-bind:class="'el-table_1_column_'+parseInt(index+2)" class="is-leaf"><div class="cell">{{index+1}}</div></th>
+                                <th class="gutter" style="width: 0px; display: none;"></th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="el-table__body-wrapper is-scrolling-none">
+                        <table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width: 200px;">
+                            <colgroup>
+                                <col name="el-table_1_column_1" width="50">
+                                <col v-for="(data, index) in datas2" v-bind::name="'el-table_1_column_'+parseInt(index+2)" width="150">
+                                <col name="gutter" width="0">
+                            </colgroup>
+                            <tbody>
+                            <tr class="el-table__row">
+                                <td rowspan="1" colspan="1" class="el-table_1_column_1  ">
+                                    <div class="cell">题目</div>
+                                </td>
+                                <td v-for="(data, index) in datas2"  :class="'el-table_1_column_'+parseInt(index+2)">
+                                    <div class="cell">
+                                        <p class="pTag" :class="{'blue':data.value_1.style==='prosocial','red':data.value_1.style==='individualistic','yellow':data.value_1.style==='competitive'}">
+                                            {{data.value_1.style | isType}}(<span v-for="val in data.value_1['value']">{{val}}</span>)
+                                        </p>
+                                        <p class="pTag" :class="{'blue':data.value_2.style==='prosocial','red':data.value_2.style==='individualistic','yellow':data.value_2.style==='competitive'}">
+                                            {{data.value_2.style | isType}}(<span v-for="val in data.value_2['value']">{{val}}</span>)
+                                        </p>
+                                        <p class="pTag" :class="{'blue':data.value_3.style==='prosocial','red':data.value_3.style==='individualistic','yellow':data.value_3.style==='competitive'}">
+                                            {{data.value_3.style | isType}}(<span v-for="val in data.value_3['value']">{{val}}</span>)
+                                        </p>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </el-card>
+</div>
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript">
+  'user strict';
+  var getData1 = function(markCode,page,size){
+    axios.get('http://www.cogitoactio.com/api/v1/backend/evaluation_project/get_answer_list?markCode=' + markCode + '&page=' + page + '&size=' + size)
+      .then(function (res) {
+        console.log(res)
+        var results = res.data.data;
+        mainVue.datas = res.data.data;
+        console.log('A'<'B');
+        for(var n=0; n < results.length; n++){
+          for(var m=0; m < results[n].questions.questions.length; m++){
+            var num1 = m +1;
+            mainVue.datas[n].questions.questions[m]['questions_' + num1] = sortByKey(results[n].questions.questions[m]['questions_' + num1], 'option')
+          }
+        }
+        console.log(mainVue.datas)
+      })
+      .catch(function (error) {
+        console.log(error)
+      });
+  };
+
+  var getData2 = function(markCode,page,size){
+    axios.get('http://www.cogitoactio.com/api/v1/backend/evaluation_project/get_question_list?markCode=' + markCode + '&page=' + page + '&size=' + size)
+      .then(function (res) {
+        console.log(res)
+        mainVue.datas2 = res.data.data;
+
+      })
+      .catch(function (error) {
+        console.log(error)
+      });
+  }
+
+  var sortByKey = function(array,key){
+    return array.sort(function(a,b){
+      var x=a[key];
+      var y=b[key];
+      return ((x<y)?-1:((x>y)?1:0));
+    });
+  }
+  var mainVue = new Vue({
+    el: '#cepingshuju',
+    data: {
+      page: 1,
+      size: 10,
+      markCode: 'svo',
+      datas: [],
+      datas2: [],
+      datas3: [
+        {
+          a:'1',
+          b:'2',
+          c:'3'
+        }
+      ],
+      test: '',
+      showShuJu: true
+    },
+    methods: {
+      cutCard: function(){
+        console.log(this.showShuJu)
+        this.showShuJu = !this.showShuJu;
+      },
+      getData1: function () {
+        if(this.page>0)
+          getData1('svo',this.page,this.size)
+      }
+    },
+    filters:{
+      isType: function(val){
+        if(val === 'prosocial'){
+          return '社会型'
+        }else if(val === 'individualistic'){
+          return '自我型'
+        }else if(val === 'competitive'){
+          return '竞争性'
+        }else{
+          return '未知'
+        }
+      },
+      isCode:function (val) {
+        if(val === 'svo'){
+          return '社会偏好'
+        }
+      },
+      isNum:function (val) {
+        if(val === 0){
+          return 9
+        }else{
+          return val
+        }
+      }
+    },
+    mounted: function () {
+      getData1('svo',1,10);
+      getData2('svo',1,10);
+    }
+  });
+</script>
+</body>
+</html>
