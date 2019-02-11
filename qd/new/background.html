@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>亦知亦行 谈判清单</title>
+    <link rel="stylesheet" href="../../assets/node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="../../assets/node_modules/animate.css/animate.css">
+    <link rel="stylesheet" href="../../assets/css/qdv1.0.main.css">
+    <link rel="ICON" href="../../assets/img/main/icon.png">
+</head>
+<body>
+<div class="qd-content" id="qd_login_page" v-cloak>
+    <div class="qd-header-box">
+        <div class="qd-page-title-box">
+            <a href="../home.html" class="qd-close-new-btn"></a>
+            <h3 class="qd-page-title">背景篇</h3>
+        </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="qd-section" id="newIndexSection2">
+        <div class="qd-background-list-header">
+            <h3>谈判项目一</h3>
+        </div>
+        <div class="qd-background-list-content" v-for="(data,index) in listData" v-if="backgroundPage === index+1">
+            <div class="qd-background-list-box">
+                <div class="qd-background-list-box-title">
+                    <p id="qd_background_list_box_title_text">{{data.title}}</p>
+                </div>
+                <div class="qd-background-list-box-content" v-if="data.type === 1">
+                    <p v-for="(data2, index) in data.option" @click="selectBtn = index+1" :class = "{'active': selectBtn === index+1}">{{data2}}</p>
+                    <p @click="selectBtn = 0" :class = "{'active': selectBtn === 0}">不确定（待定）</p>
+                </div>
+                <div class="qd-background-list-box-content" v-if="data.type === 2">
+                    <div class="qd-box">
+                        <div class="qd-select-progress"><span :style="{'width':(selectBtn - 1)*25+'%'}" :class="{'qd-select-progress-0':selectBtn == 0}"></span></div>
+                        <div class="qd-background-list-box-select" v-for="(data2, index2) in data.option">
+                            <a  @click="selectTag(index2+1)" :class = "{'active': selectBtn === index2+1}">{{data2}}</a>
+                        </div>
+                    </div>
+                    <p @click="selectBtn = 0" :class = "{'active': selectBtn === 0}">不确定（待定）</p>
+                </div>
+                <div class="qd-background-list-box-content qd-background-list-box-content-textarea" v-if="data.type === 3">
+                    <textarea class="qd-input-textarea" rows="10" placeholder="请输入相关内容"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="qd-background-list-footer">
+            <div class="qd-btn-box">
+                <a href="javascript:;" @click="toPreviousPage()" class="qd-btn qd-btn__1 qd-btn__previous"> < </a>
+                <a href="index.html?p=3" class="qd-btn qd-btn__1 qd-btn__next">返&nbsp;回&nbsp;目&nbsp;录</a>
+                <a href="javascript:;" @click="toNextPage()" class="qd-btn qd-btn__1 qd-btn__next"> > </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript">
+    'user strict';
+    var mainVue = new Vue({
+        el: '#qd_login_page',
+        data: {
+            backgroundPage: 1,
+            selectBtn: -1,
+            listData:[
+                {
+                type: 1,
+                user: 1,
+                title:'本谈判是一次性还是长期的？',
+                option:['一次性的','长期的'],
+                select:''
+            },{
+                type: 1,
+                user: 1,
+                title:'谈判的内容是资源还是价值观？',
+                option:['资源（钱、物质）','价值观','两者都有'],
+                select:''
+            },{
+                type: 2,
+                user: 2,
+                title:'你对对方的信任程度？',
+                option:['不信任','比较不信任','中等','比较信任','信任'],
+                select:''
+            },{
+                type: 2,
+                user: 2,
+                title:'你的风险偏好如何？',
+                option:['回避','相对回避','中等','相对追求','追求'],
+                select:''
+            },{
+                type: 2,
+                user: 2,
+                title:'你在此次谈判中处于优势还是劣势？',
+                option:['劣势','相对劣势','中等','相对优势','优势'],
+                select:''
+            },{
+                type: 3,
+                user: 1,
+                title:'不管优势还是劣势，你的影响力的来源都有哪些？',
+                option:[''],
+                select:''
+            },{
+                type: 2,
+                user: 2,
+                title:'根据您的判断对方对你方的信任程度如何？',
+                option:['不信任','比较不信任','中等','比较信任','信任'],
+                select:''
+            },{
+                type: 2,
+                user: 2,
+                title:'根据您的判断对方的风险偏好如何？',
+                option:['回避','相对回避','中等','相对追求','追求'],
+                select:''
+            },{
+                type: 3,
+                user: 2,
+                title:'根据您的判断对方的影响力的来源有哪些？',
+                option:[''],
+                select:''
+            }
+            ]
+        },
+        methods: {
+            toPreviousPage:function () {
+                if(mainVue.backgroundPage > 1){
+                    mainVue.selectBtn = -1;
+                    mainVue.backgroundPage --;
+                }
+            },
+            toNextPage:function (val) {
+                if(mainVue.backgroundPage < 9){
+                    mainVue.selectBtn = -1;
+                    mainVue.backgroundPage ++;
+                }
+            },
+            selectTag:function (val) {
+                mainVue.selectBtn = val;
+            }
+        },
+        updated:function () {
+            var textWidth = document.querySelector('.qd-background-list-box-title').clientWidth;
+            if(this.listData[this.backgroundPage - 1].title.length * 16 > textWidth-40) {
+                document.getElementById('qd_background_list_box_title_text').style.lineHeight = 20 + 'px';
+            }
+        },
+        mounted: function () {
+        }
+    });
+</script>
+</body>
+</html>

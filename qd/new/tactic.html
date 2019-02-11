@@ -2,9 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>亦知亦行 谈判清单</title>
+    <link rel="stylesheet" href="../../assets/node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="../../assets/node_modules/animate.css/animate.css">
+    <link rel="stylesheet" href="../../assets/css/qdv1.0.main.css">
+    <link rel="ICON" href="../../assets/img/main/icon.png">
 </head>
 <body>
+<div class="qd-content" id="qd_login_page" v-cloak>
+    <div class="qd-header-box">
+        <div class="qd-page-title-box">
+            <a href="../home.html" class="qd-close-new-btn"></a>
+            <h3 class="qd-page-title">谈判项目一</h3>
+        </div>
+    </div>
+    <!-- 2 -->
+    <div class="qd-section" id="newIndexSection2">
+        <div class="qd-background-list-header">
+            <h3>谈判项目一</h3>
+        </div>
+        <div class="qd-background-list-content">
+            <div class="qd-background-list-box">
+                <div class="qd-background-list-box-title">
+                    <p id="qd_background_list_box_title_text">根据您的填写，系统推荐此次谈判的的方式采用对立式策略</p>
+                </div>
+                <div class="qd-tactic-list-box-content">
+                    <div class="qd-tactic-btn-box">
+                        <div class="qd-tactic-btn"  @click="btnActive = 1" :class="{'active':btnActive === 1}">
+                            <div class="qd-tactic-img-box">
+                                <img src="../../assets/img/qd/icon/i001.svg" alt="无">
+                            </div>
+                            <p class="qd-tactic-btn-text">对立式策略</p>
+                            <span v-show="recommend===1">（系统推荐）</span>
+                        </div>
+                        <div class="qd-tactic-btn" @click="btnActive = 2" :class="{'active':btnActive === 2}">
+                            <div class="qd-tactic-img-box">
+                                <img src="../../assets/img/qd/icon/i002.svg" alt="无">
+                            </div>
+                            <p class="qd-tactic-btn-text">双赢式策略</p>
+                            <span v-show="recommend===2">（系统推荐）</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="qd-issues-list-foot">
+            <div class="qd-btn-box">
+                <a href="index.html?p=3" class="qd-btn qd-btn__1 qd-btn__block">返&nbsp;回&nbsp;目&nbsp;录</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript">
+    'user strict';
+    var mainVue = new Vue({
+        el: '#qd_login_page',
+        data: {
+            issuesPage:1,
+            isCheck: false,
+            title: '根据您的填写，系统推荐此次谈判的的方式采用对立式策略',
+            recommend: 1,
+            btnActive: 1,
+        },
+        methods: {
+            toUrl:function (val) {
+                window.location.href = 'tactic.html?p=' + val
+            }
+        },
+        mounted: function () {
+            var textWidth = document.querySelector('.qd-background-list-box-title').clientWidth;
+            if(this.title.length * 16 > textWidth-40) {
+                document.getElementById('qd_background_list_box_title_text').style.lineHeight = 20 + 'px';
+            }
+        }
+    });
+</script>
 </body>
 </html>

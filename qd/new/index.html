@@ -11,11 +11,12 @@
     <link rel="ICON" href="../../assets/img/main/icon.png">
 </head>
 <body>
-<div class="qd-content" id="qd_login_page">
+<div class="qd-content" id="qd_login_page" v-cloak>
     <!-- 1 -->
     <div class="qd-section" id="newIndexSection1" v-show="indexPage === 1">
         <div class="qd-index-box qd-index-box__1">
             <div class="qd-index-box__top">
+                <a href="../home.html"></a>
                 <h3>创建清单</h3>
             </div>
             <div class="qd-index-box__content clear">
@@ -54,23 +55,18 @@
     <div class="qd-section" id="newIndexSection2" v-show="indexPage === 2">
         <div class="qd-index-box qd-index-box__2">
             <div class="qd-index-box__top">
+                <a href="../home.html"></a>
                 <h3>创建清单</h3>
             </div>
-            <div class="qd-index-box__content clear">
-                <form action="#" class="qd-index-form">
-                    <div class="qd-input-box qd-input-box__1">
-                        <span>己&ensp;&ensp;&ensp;&ensp;方：</span>
-                        <input type="text" class="qd-input" id="qd_index_input__1" placeholder="请输入此次谈判的己方（选填）">
-                    </div>
+            <div class="qd-index-box__content qd-index-box_form_content clear">
+                <form action="#" class="qd-index-form qd-index-form__new">
                     <div class="qd-input-box qd-input-box__1">
                         <span>对&ensp;&ensp;&ensp;&ensp;方：</span>
                         <input type="text" class="qd-input" id="qd_index_input__2" placeholder="请输入此次谈判的对方">
                     </div>
-                    <div class="qd-input-box qd-radio-box__1">
-                        <span>己&ensp;方&ensp;为：</span>
-                        <input type="radio" class="qd-radio" id="qd_index_radio__1" name="SideType" value="A" checked><label for="qd_index_radio__1"></label><span class="qd-radio-text">甲方</span>
-                        <input type="radio" class="qd-radio" id="qd_index_radio__2" name="SideType" value="B"><label for="qd_index_radio__2"></label><span class="qd-radio-text">乙方</span>
-                        <input type="radio" class="qd-radio" id="qd_index_radio__3" name="SideType" value="C"><label for="qd_index_radio__3"></label><span class="qd-radio-text">未知</span>
+                    <div class="qd-input-box qd-input-box__1">
+                        <span>己&ensp;&ensp;&ensp;&ensp;方：</span>
+                        <input type="text" class="qd-input" id="qd_index_input__1" placeholder="请输入此次谈判的己方（选填）">
                     </div>
                     <div class="qd-input-box qd-input-box__1">
                         <span>项目名称：</span>
@@ -90,20 +86,27 @@
     <div class="qd-section" id="newIndexSection3" v-show="indexPage === 3">
         <div class="qd-index-box qd-index-box__3">
             <div class="qd-index-box__top">
+                <a href="../home.html"></a>
                 <h3>谈判清单</h3>
-                <p><span>己方：</span>某某有限公司（或企业）1-1</p>
-                <p><span>对方：</span>某某有限公司（或企业）1-2</p>
             </div>
             <div class="qd-index-box__content clear">
+                <div class="qd-index-info-box">
+                    <h2>谈判项目一</h2>
+                    <p><span>己方：</span>某某有限公司（或企业）1-1</p>
+                    <p><span>对方：</span>某某有限公司（或企业）1-2</p>
+                </div>
                 <div class="qd-index-module-btn-box">
                     <div class="qd-module-btn-box active">
-                        <a href="#" class="qd-module-btn">议题篇</a>
+                        <a href="issues.html?p=1" class="qd-module-btn">议&nbsp;&nbsp;题&nbsp;&nbsp;篇</a>
+                        <span>未添加</span>
                     </div>
                     <div class="qd-module-btn-box">
-                        <a href="#" class="qd-module-btn">背景篇</a>
+                        <a href="background.html?p=1" class="qd-module-btn">背&nbsp;&nbsp;景&nbsp;&nbsp;篇</a>
+                        <span>未完成</span>
                     </div>
                     <div class="qd-module-btn-box">
-                        <a href="#" class="qd-module-btn">策略篇</a>
+                        <a href="tactic.html?p=1" class="qd-module-btn">策&nbsp;&nbsp;略&nbsp;&nbsp;篇</a>
+                        <span>未生成</span>
                     </div>
                 </div>
             </div>

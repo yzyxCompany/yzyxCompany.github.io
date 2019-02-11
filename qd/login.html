@@ -11,7 +11,7 @@
     <link rel="ICON" href="../assets/img/main/icon.png">
 </head>
 <body>
-<div class="qd-content" id="qd_login_page">
+<div class="qd-content" id="qd_login_page" v-cloak>
     <!-- sign in -->
     <div class="qd-section" id="loginSection1" v-show="loginPage===1">
         <div class="qd-login-box qd-login-box__signIn">
@@ -23,14 +23,14 @@
             <div class="qd-login-box__content clear">
                 <form action="#" class="qd-form">
                     <div class="qd-input-box qd-input-box__1">
-                        <input type="text" class="qd-input" id="qd_input__account__1" placeholder="请输入您的账号" style="background-image: url('../assets/img/qd/icon/account.svg')">
+                        <input type="text" class="qd-input" id="qd_input__account__1" v-model="signInData.account" placeholder="请输入您的账号" style="background-image: url('../assets/img/qd/icon/account.svg')">
                     </div>
                     <div class="qd-input-box qd-input-box__1">
-                        <input type="password" class="qd-input" id="qd_input__password__1" placeholder="请输入您的密码" style="background-image: url('../assets/img/qd/icon/pass.svg')">
+                        <input type="password" class="qd-input" id="qd_input__password__1" v-model="signInData.pass" placeholder="请输入您的密码" style="background-image: url('../assets/img/qd/icon/pass.svg')">
                     </div>
                     <div class="qd-input-box qd-input-box__1">
-                        <input type="text" class="qd-input qd-input__securityCode__1" id="qd_input__securityCode__1" placeholder="请输入验证码" style="background-image: url('../assets/img/qd/icon/securityCode.svg')">
-                        <span></span>
+                        <input type="text" class="qd-input qd-input__securityCode__1" id="qd_input__securityCode__1" v-model="signInData.code" placeholder="请输入验证码" style="background-image: url('../assets/img/qd/icon/securityCode.svg')">
+                        <a href="javaScript:;" @click="updateCode" class="qd-input-btn qd-btn__code__1"><img src="http://jwxw.gzcc.cn/CheckCode.aspx?" alt="验证码"></a>
                     </div>
                     <a href="javascript:;" class="qd-forget-pass" @click="toUrl(3)">忘记密码？</a>
                 </form>
@@ -82,6 +82,39 @@
             </div>
         </div>
     </div>
+
+    <div class="qd-section" id="loginSection3" v-show="loginPage===3">
+        <div class="qd-login-box qd-login-box__signIn">
+            <div class="qd-login-box__top">
+                <div class="qd-login-logo__1">
+                    <!--<img src="../assets/img/qd/qd-logo-1.png" alt="">-->
+                </div>
+            </div>
+            <div class="qd-login-box__content clear">
+                <form action="#" class="qd-form">
+                    <div class="qd-input-box qd-input-box__1">
+                        <input type="text" class="qd-input" id="qd_input__account__3" placeholder="请输入账号" style="background-image: url('../assets/img/qd/icon/account.svg')">
+                    </div>
+                    <div class="qd-input-box qd-input-box__1">
+                        <input type="text" class="qd-input" id="qd_input__secretKey__3" placeholder="请输入邮箱验证码" style="background-image: url('../assets/img/qd/icon/securityCode.svg')">
+                        <a href="javaScript:;" @click="getCode" class="qd-input-btn qd-btn__input__1">获取验证码</a>
+                    </div>
+                    <div class="qd-input-box qd-input-box__1">
+                        <input type="text" class="qd-input qd-input__securityCode__1" id="qd_input__securityCode__3" placeholder="请输入验证码" style="background-image: url('../assets/img/qd/icon/securityCode.svg')">
+                        <a href="javaScript:;" @click="updateCode" class="qd-input-btn qd-btn__code__1"><img src="http://jwxw.gzcc.cn/CheckCode.aspx?" alt="验证码"></a>
+                    </div>
+                </form>
+            </div>
+            <div class="qd-login-box__foot">
+                <div class="qd-btn-box">
+                    <a href="javascript:;" class="qd-btn qd-btn__1 qd-btn__block">确&nbsp;&nbsp;&nbsp;定</a>
+                </div>
+                <div class="qd-foot-text-box">
+                    <p class="qd-foot-text__1"><a href="javascript:;" class="qd-foot-text__btn__1" @click="toUrl(1)">返回登录</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--<div class="qd-section" id="loginSection3">-->
     <!--<div class="qd-login-box">-->
     <!--<div class="qd-login-box__top"></div>-->
@@ -98,12 +131,38 @@
     el: '#qd_login_page',
     data: {
       loginPage:1,
-      isCheck: false
+      isCheck: false,
+        isShowModule:0,
+        signInData:{
+          account:'',
+            pass:'',
+            code:''
+        },
+        signUpData:{
+          account:'',
+            pass:'',
+            rePass:'',
+            code:''
+        },
+        forgetPassData:{
+          account:'',
+            code:'',
+            email:''
+        },
+        userInfor:{},
+        securityCodeSrc:'',
     },
     methods: {
       toUrl:function (val) {
         window.location.href = 'login.html?p=' + val
-      }
+      },
+        getCode:function () {
+            console.log(mainVue.forgetPassData);
+        },
+        updateCode:function () {
+
+          console.log(mainVue.securityCodeSrc);
+        }
     },
     mounted: function () {
       function GetRequest() {
