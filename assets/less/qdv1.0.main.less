@@ -653,6 +653,10 @@ html, body {
             .font2(22px,normal);
             margin: 0;
           }
+          span{
+            color: @gray-5;
+            padding-left: 1px;
+          }
         }
         .qd-new-issues-content{
           .qd-input-box{
@@ -899,6 +903,10 @@ html, body {
     .BC(@red-1);
     .borderRadius(6px);
   }
+  .qd-btn__4 {
+    .BC(@light-gray-4);
+    .borderRadius(6px);
+  }
   .qd-checkbox{
     display:none;
   }
@@ -907,5 +915,10 @@ html, body {
   }
   .qd-checkbox:checked+label::after{
     .RadioOrCheckboxChecked;
+  }
+  &.qd-btn-box-2{
+    width: 50%;
+    float: left;
+    padding: 10px;
   }
 }

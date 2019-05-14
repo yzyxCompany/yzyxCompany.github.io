@@ -28,12 +28,12 @@
                 <div class="qd-home-catalog-box">
                     <div class="qd-home-catalog" v-for="data in datas">
                         <div class="qd-home-catalog-title-box">
-                            <a href="new/index.html?p=3" class="qd-home-catalog__title">{{data.title}}</a>
-                            <span class="qd-home-catalog__date">{{data.date}}</span>
+                            <a v-bind:href="'new/menu.html?qdId=' + data._id" class="qd-home-catalog__title">{{data.title}}</a>
+                            <span class="qd-home-catalog__date">2019-01-01</span>
                         </div>
                         <div class="qd-home-catalog-content-box">
-                            <p class="qd-home-catalog__both"><span>己方：</span>{{data.both1}}</p>
-                            <p class="qd-home-catalog__both"><span>对方：</span>{{data.both2}}</p>
+                            <p class="qd-home-catalog__both"><span>己方：</span>{{data.both2}}</p>
+                            <p class="qd-home-catalog__both"><span>对方：</span>{{data.both1}}</p>
                         </div>
                     </div>
                 </div>
@@ -46,10 +46,6 @@
                         </li>
                         <li class="qd-nav-btn-box">
                             <a href="javaScript:;" class="qd-nav-btn">1</a>
-                            <a href="javaScript:;" class="qd-nav-btn">2</a>
-                            <a href="javaScript:;" class="qd-nav-btn">3</a>
-                            <a href="javaScript:;" class="qd-nav-btn">4</a>
-                            <a href="javaScript:;" class="qd-nav-btn">5</a>
                         </li>
                         <li class="qd-nav-next-box">
                             <a href="javaScript:;"> > </a>
@@ -60,51 +56,65 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
 <script type="text/javascript">
     'user strict';
+
     var mainVue = new Vue({
         el: '#qd_home_page',
         data: {
-            datas:[
-                {
-                    title: '谈判项目一',
-                    date: '2018-08-01',
-                    both1: '某某有限公司（或企业）1-1',
-                    both2: '某某有限公司（或企业）1-2',
-                },
-                {
-                    title: '谈判项目二',
-                    date: '2018-08-02',
-                    both1: '某某有限公司（或企业）2-1',
-                    both2: '某某有限公司（或企业）2-2',
-                },
-                {
-                    title: '谈判项目三',
-                    date: '2018-08-03',
-                    both1: '某某有限公司（或企业）3-1',
-                    both2: '某某有限公司（或企业）3-2',
-                },
-                {
-                    title: '谈判项目四',
-                    date: '2018-08-04',
-                    both1: '某某有限公司（或企业）4-1',
-                    both2: '某某有限公司（或企业）4-2',
-                },
-                {
-                    title: '谈判项目五',
-                    date: '2018-08-05',
-                    both1: '某某有限公司（或企业）5-1',
-                    both2: '某某有限公司（或企业）5-2',
-                },
-            ],
+            datas: [],
+            userId:''
         },
-        methods: {
-
-        },
+        methods: {},
         mounted: function () {
+            var ua = navigator.userAgent.toLowerCase();
+            if (ua.indexOf('micromessenger') !== -1) {
+                function GetRequest() {
+                    var url = decodeURI(location.search);
+                    var theRequest = new Object();
+                    if (url.indexOf("?") != -1) {
+                        var str = url.substr(1);
+                        strs = str.split("&");
+                        for (var i = 0; i < strs.length; i++) {
+                            theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                        }
+                    }
+                    return theRequest;
+                }
 
+                var urlData = GetRequest();
+                if (urlData.openid === undefined || urlData.openid === '') {
+                    axios({
+                        method: 'get',
+                        url: 'http://www.cogitoactio.com/api/v1/wechat/auth_start?num=3',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
+                    }).then(function (response) {
+                        window.location.href = response.data.url
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                } else {
+                    var jsonStr = {
+                        userId: '',
+                    };
+                    jsonStr.userId = urlData.openid;
+                    this.userId = urlData.openid;
+                    localStorage.setItem("userId", jsonStr.userId);
+                    axios.post("http://www.cogitoactio.com/api/v1/negotiation/getNegotiationList", jsonStr).then(function (res) {
+                        console.log(res.data.data);
+                        mainVue.datas = res.data.data
+                    }).catch(function (error) {
+                        console.log(error);
+                    })
+                }
+            } else {
+                alert('请使用微信自带浏览器打开');
+            }
         }
     });
 </script>

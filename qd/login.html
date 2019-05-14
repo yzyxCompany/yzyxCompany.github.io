@@ -13,11 +13,30 @@
 <body>
 <div class="qd-content" id="qd_login_page" v-cloak>
     <!-- sign in -->
-    <div class="qd-section" id="loginSection1" v-show="loginPage===1">
+    <div class="qd-section" id="loginSection1">
         <div class="qd-login-box qd-login-box__signIn">
             <div class="qd-login-box__top">
                 <div class="qd-login-logo__1">
                     <!--<img src="../assets/img/qd/qd-logo-1.png" alt="">-->
+                </div>
+            </div>
+            <div class="qd-login-box__content clear">
+                <p style="font-size: 32px;text-align: center;padding: 60px 0">暂未微信授权登录</p>
+            </div>
+            <div class="qd-login-box__foot" style="position: static;margin-top: 60px">
+                <div class="qd-btn-box">
+                    <a href="javascript:;" @click="login()" class="qd-btn qd-btn__1 qd-btn__block">登&nbsp;&nbsp;&nbsp;录</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- sign in
+    <div class="qd-section" id="loginSection1" v-show="loginPage===1">
+        <div class="qd-login-box qd-login-box__signIn">
+            <div class="qd-login-box__top">
+                <div class="qd-login-logo__1">
+                    <img src="../assets/img/qd/qd-logo-1.png" alt="">
                 </div>
             </div>
             <div class="qd-login-box__content clear">
@@ -46,12 +65,12 @@
         </div>
     </div>
 
-    <!-- sign up -->
+     sign up
     <div class="qd-section" id="loginSection2" v-show="loginPage===2">
         <div class="qd-login-box qd-login-box__signUp">
             <div class="qd-login-box__top">
                 <div class="qd-login-logo__2">
-                    <!--<img src="../assets/img/qd/qd-logo-1.png" alt="">-->
+                    <img src="../assets/img/qd/qd-logo-1.png" alt="">
                 </div>
             </div>
             <div class="qd-login-box__content clear">
@@ -87,7 +106,7 @@
         <div class="qd-login-box qd-login-box__signIn">
             <div class="qd-login-box__top">
                 <div class="qd-login-logo__1">
-                    <!--<img src="../assets/img/qd/qd-logo-1.png" alt="">-->
+                    <img src="../assets/img/qd/qd-logo-1.png" alt="">
                 </div>
             </div>
             <div class="qd-login-box__content clear">
@@ -115,77 +134,37 @@
             </div>
         </div>
     </div>
-    <!--<div class="qd-section" id="loginSection3">-->
-    <!--<div class="qd-login-box">-->
-    <!--<div class="qd-login-box__top"></div>-->
-    <!--<div class="qd-login-box__content"></div>-->
-    <!--<div class="qd-login-box__foot"></div>-->
-    <!--</div>-->
-    <!--</div>-->
+    <div class="qd-section" id="loginSection3">
+    <div class="qd-login-box">
+    <div class="qd-login-box__top"></div>
+    <div class="qd-login-box__content"></div>
+    <div class="qd-login-box__foot"></div>
+    </div>
+    </div>-->
 </div>
 <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
 <script type="text/javascript">
-  'user strict';
-  var mainVue = new Vue({
-    el: '#qd_login_page',
-    data: {
-      loginPage:1,
-      isCheck: false,
-        isShowModule:0,
-        signInData:{
-          account:'',
-            pass:'',
-            code:''
+    'user strict';
+    var mainVue = new Vue({
+        el: '#qd_login_page',
+        data: {},
+        methods: {
+            login: function () {
+                axios({
+                    method:'get',
+                    url:'http://www.cogitoactio.com/api/v1/wechat/auth_start?num=3',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                }).then(function (response) {
+                    window.location.href = response.data.url
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
         },
-        signUpData:{
-          account:'',
-            pass:'',
-            rePass:'',
-            code:''
-        },
-        forgetPassData:{
-          account:'',
-            code:'',
-            email:''
-        },
-        userInfor:{},
-        securityCodeSrc:'',
-    },
-    methods: {
-      toUrl:function (val) {
-        window.location.href = 'login.html?p=' + val
-      },
-        getCode:function () {
-            console.log(mainVue.forgetPassData);
-        },
-        updateCode:function () {
-
-          console.log(mainVue.securityCodeSrc);
-        }
-    },
-    mounted: function () {
-      function GetRequest() {
-        var url = decodeURI(location.search);
-        var theRequest = new Object();
-        if (url.indexOf("?") != -1) {
-          var str = url.substr(1);
-          strs = str.split("&");
-          for(var i = 0; i < strs.length; i ++) {
-            theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
-          }
-        }
-        return theRequest;
-      }
-      var urlData = GetRequest();
-      if(urlData.p == undefined || parseInt(urlData.p) > 3 || parseInt(urlData.p) < 1){
-        this.loginPage = 1
-      }else{
-        this.loginPage = parseInt(urlData.p)
-        console.log(this.loginPage)
-      }
-    }
-  });
+    });
 </script>
 </body>
 </html>

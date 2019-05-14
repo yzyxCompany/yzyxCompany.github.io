@@ -810,6 +810,10 @@ body {
   font-weight: normal;
   margin: 0;
 }
+.qd-content .qd-modal-box .qd-modal-content .qd-new-issues-box .qd-new-issues-header span {
+  color: #797979;
+  padding-left: 1px;
+}
 .qd-content .qd-modal-box .qd-modal-content .qd-new-issues-box .qd-new-issues-content .qd-input-box .qd-input {
   outline: none;
   border: 1px solid #5f95ed;
@@ -1134,6 +1138,12 @@ body {
   -moz-border-radius: 6px !important;
   border-radius: 6px !important;
 }
+.qd-btn-box .qd-btn__4 {
+  background-color: #d0d0d0;
+  -webkit-border-radius: 6px !important;
+  -moz-border-radius: 6px !important;
+  border-radius: 6px !important;
+}
 .qd-btn-box .qd-checkbox {
   display: none;
 }
@@ -1166,4 +1176,9 @@ body {
   top: 1px;
   left: 1px;
   opacity: 1;
+}
+.qd-btn-box.qd-btn-box-2 {
+  width: 50%;
+  float: left;
+  padding: 10px;
 }

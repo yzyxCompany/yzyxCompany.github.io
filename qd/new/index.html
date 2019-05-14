@@ -11,12 +11,12 @@
     <link rel="ICON" href="../../assets/img/main/icon.png">
 </head>
 <body>
-<div class="qd-content" id="qd_login_page" v-cloak>
+<div class="qd-content" id="qd_index_page" v-cloak>
     <!-- 1 -->
     <div class="qd-section" id="newIndexSection1" v-show="indexPage === 1">
         <div class="qd-index-box qd-index-box__1">
             <div class="qd-index-box__top">
-                <a href="../home.html"></a>
+                <a v-bind:href="'../home.html?openid='+userId"></a>
                 <h3>创建清单</h3>
             </div>
             <div class="qd-index-box__content clear">
@@ -43,8 +43,9 @@
             </div>
             <div class="qd-index-box__foot">
                 <div class="qd-btn-box">
-                    <input type="checkbox" class="qd-checkbox" id="qd_index_checkbox" value="bm" v-model="isCheck" name="register">
-                    <label for="qd_index_checkbox"></label>不再提示
+                    <!--<input type="checkbox" class="qd-checkbox" id="qd_index_checkbox" value="bm" v-model="isCheck"-->
+                           <!--name="register">-->
+                    <!--<label for="qd_index_checkbox"></label>不再提示-->
                     <a href="javascript:;" class="qd-btn qd-btn__1 qd-btn__block" @click="toUrl(2)">下&nbsp;&nbsp;一&nbsp;&nbsp;步</a>
                 </div>
             </div>
@@ -55,22 +56,25 @@
     <div class="qd-section" id="newIndexSection2" v-show="indexPage === 2">
         <div class="qd-index-box qd-index-box__2">
             <div class="qd-index-box__top">
-                <a href="../home.html"></a>
+                <a v-bind:href="'../home.html?openid='+userId"></a>
                 <h3>创建清单</h3>
             </div>
             <div class="qd-index-box__content qd-index-box_form_content clear">
                 <form action="#" class="qd-index-form qd-index-form__new">
                     <div class="qd-input-box qd-input-box__1">
                         <span>对&ensp;&ensp;&ensp;&ensp;方：</span>
-                        <input type="text" class="qd-input" id="qd_index_input__2" placeholder="请输入此次谈判的对方">
+                        <input type="text" v-model="qdData.both1" class="qd-input" id="qd_index_input__2"
+                               placeholder="请输入此次谈判的对方">
                     </div>
                     <div class="qd-input-box qd-input-box__1">
                         <span>己&ensp;&ensp;&ensp;&ensp;方：</span>
-                        <input type="text" class="qd-input" id="qd_index_input__1" placeholder="请输入此次谈判的己方（选填）">
+                        <input type="text" v-model="qdData.both2" class="qd-input" id="qd_index_input__1"
+                               placeholder="请输入此次谈判的己方（选填）">
                     </div>
                     <div class="qd-input-box qd-input-box__1">
                         <span>项目名称：</span>
-                        <input type="text" class="qd-input" id="qd_index_input__3" placeholder="请输入此次谈判的项目名称">
+                        <input type="text" v-model="qdData.title" class="qd-input" id="qd_index_input__3"
+                               placeholder="请输入此次谈判的项目名称">
                     </div>
                 </form>
             </div>
@@ -81,80 +85,85 @@
             </div>
         </div>
     </div>
-
-    <!-- 3 -->
-    <div class="qd-section" id="newIndexSection3" v-show="indexPage === 3">
-        <div class="qd-index-box qd-index-box__3">
-            <div class="qd-index-box__top">
-                <a href="../home.html"></a>
-                <h3>谈判清单</h3>
-            </div>
-            <div class="qd-index-box__content clear">
-                <div class="qd-index-info-box">
-                    <h2>谈判项目一</h2>
-                    <p><span>己方：</span>某某有限公司（或企业）1-1</p>
-                    <p><span>对方：</span>某某有限公司（或企业）1-2</p>
-                </div>
-                <div class="qd-index-module-btn-box">
-                    <div class="qd-module-btn-box active">
-                        <a href="issues.html?p=1" class="qd-module-btn">议&nbsp;&nbsp;题&nbsp;&nbsp;篇</a>
-                        <span>未添加</span>
-                    </div>
-                    <div class="qd-module-btn-box">
-                        <a href="background.html?p=1" class="qd-module-btn">背&nbsp;&nbsp;景&nbsp;&nbsp;篇</a>
-                        <span>未完成</span>
-                    </div>
-                    <div class="qd-module-btn-box">
-                        <a href="tactic.html?p=1" class="qd-module-btn">策&nbsp;&nbsp;略&nbsp;&nbsp;篇</a>
-                        <span>未生成</span>
-                    </div>
-                </div>
-            </div>
-            <div class="qd-index-box__foot">
-                <div class="qd-btn-box">
-                    <a href="../home.html" class="qd-btn qd-btn__1 qd-btn__block">返&nbsp;回&nbsp;目&nbsp;录</a>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
 <script type="text/javascript">
-  'user strict';
-  var mainVue = new Vue({
-    el: '#qd_login_page',
-    data: {
-      indexPage:1,
-      isCheck: false
-    },
-    methods: {
-      toUrl:function (val) {
-        window.location.href = 'index.html?p=' + val
-      }
-    },
-    mounted: function () {
-      function GetRequest() {
-        var url = decodeURI(location.search);
-        var theRequest = new Object();
-        if (url.indexOf("?") != -1) {
-          var str = url.substr(1);
-          strs = str.split("&");
-          for(var i = 0; i < strs.length; i ++) {
-            theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
-          }
+    'user strict';
+    var mainVue = new Vue({
+        el: '#qd_index_page',
+        data: {
+            indexPage: 1,
+            isCheck: false,
+            userId: '',
+            qdData: {
+                both1: '', //己方
+                both2: '', //对方
+                title: '', //项目名称
+                issues: [],
+                background: [],  //背景篇
+                tactic: [{
+                    name: '对立式',
+                    content: '',
+                }, {
+                    name: '双赢式',
+                    content: '',
+                }]
+            }
+        },
+        methods: {
+            toUrl: function (val) {
+                if (val === 3) {
+                    var jsonStr = {
+                        userId: '',
+                        data: []
+                    }
+                    if(this.qdData.both1 === '' || this.qdData.both2 === '' || this.qdData.title === ''){
+                        alert('请填写完全')
+                    }else{
+                        jsonStr.userId = this.userId;
+                        jsonStr.data = this.qdData;
+                        console.log(jsonStr);
+                        axios.post("/api/v1/negotiation/addNegotiation", JSON.stringify(jsonStr)).then(function (res) {
+                            console.log(res.data.data);
+                            window.location.href = 'menu.html?&qdId='+res.data.data;
+                        }).catch(function (error) {
+                            console.log(error);
+                        })
+                    }
+                } else {
+                    window.location.href = 'index.html?p=' + val
+                }
+            }
+        },
+        mounted: function () {
+            var userId = localStorage.getItem('userId');
+            this.userId = userId;
+            if(userId === null){
+                window.location.href = '../home.html'
+            }
+
+            function GetRequest() {
+                var url = decodeURI(location.search);
+                var theRequest = new Object();
+                if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for (var i = 0; i < strs.length; i++) {
+                        theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                    }
+                }
+                return theRequest;
+            }
+
+            var urlData = GetRequest();
+            if (urlData.p == undefined || parseInt(urlData.p) > 2 || parseInt(urlData.p) < 1) {
+                this.indexPage = 1
+            } else {
+                this.indexPage = parseInt(urlData.p);
+            }
         }
-        return theRequest;
-      }
-      var urlData = GetRequest();
-      if(urlData.p == undefined || parseInt(urlData.p) > 3 || parseInt(urlData.p) < 1){
-        this.indexPage = 1
-      }else{
-        this.indexPage = parseInt(urlData.p);
-        console.log(this.indexPage)
-      }
-    }
-  });
+    });
 </script>
 </body>
 </html>
