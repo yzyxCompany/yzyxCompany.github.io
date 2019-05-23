@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>亦知亦行 谈判清单</title>
+    <title>亦知亦行 谈判助手</title>
     <link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="../assets/node_modules/animate.css/animate.css">
     <link rel="stylesheet" href="../assets/css/qdv1.0.main.css">
@@ -19,39 +19,66 @@
                 <div class="qd-logo__1">
                     <img src="../assets/img/qd/logo/qd-logo-3.png" alt="">
                 </div>
-                <div class="qd-home-top__btnBox">
+                <!--<div class="qd-home-top__btnBox">
                     <a href="new/index.html?p=1" class="qd-new-btn"></a>
                     <a href="javascript:;" class="qd-example-btn"></a>
-                </div>
+                </div>-->
             </div>
             <div class="qd-home-box__content">
                 <div class="qd-home-catalog-box">
-                    <div class="qd-home-catalog" v-for="data in datas">
+                    <div class="qd-home-catalog">
+                        <div class="qd-add-btn-box" :class="{'qd-add-btn-box-active':isOpenWeb}">
+                            <span v-show="!isOpenWeb" class="qd-add-btn" @click="isOpenWeb = true">+</span>
+                            <span class="qd-add-btn-title-box" v-show="isOpenWeb">添加</span>
+                            <div class="qd-index-box__content qd-index-box_form_content clear" v-show="isOpenWeb">
+                                <form action="#" class="qd-index-form qd-index-form__new">
+                                    <div class="qd-input-box qd-input-box__1">
+                                        <span>对&ensp;&ensp;&ensp;&ensp;方</span>
+                                        <input type="text" v-model="qdData.both1" class="qd-input"
+                                               id="qd_index_input__2"
+                                               placeholder="请输入此次谈判的对方">
+                                    </div>
+                                    <div class="qd-input-box qd-input-box__1">
+                                        <span>己&ensp;&ensp;&ensp;&ensp;方</span>
+                                        <input type="text" v-model="qdData.both2" class="qd-input"
+                                               id="qd_index_input__1"
+                                               placeholder="请输入此次谈判的己方（选填）">
+                                    </div>
+                                    <div class="qd-input-box qd-input-box__1">
+                                        <span>项目名称</span>
+                                        <input type="text" v-model="qdData.title" class="qd-input"
+                                               id="qd_index_input__3"
+                                               placeholder="请输入此次谈判的项目名称">
+                                    </div>
+                                </form>
+                                <div class="qd-add-btn-box">
+                                    <div class="qd-btn-box">
+                                        <a href="javascript:;" @click="addQd()" class="qd-btn qd-btn__1 qd-btn-box-2">添&nbsp;加</a>
+                                    </div>
+                                    <div class="qd-btn-box">
+                                        <a href="javascript:;" @click="closeAddWeb()"
+                                           class="qd-btn qd-btn__3 qd-btn-box-2">取&nbsp;消</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qd-home-catalog" v-for="data in datas" @click="toDetail(data._id)">
                         <div class="qd-home-catalog-title-box">
-                            <a v-bind:href="'new/menu.html?qdId=' + data._id" class="qd-home-catalog__title">{{data.title}}</a>
-                            <span class="qd-home-catalog__date">2019-01-01</span>
+                            <a href="javascript:;" class="qd-home-catalog__title">{{data.title}}</a>
+                            <span class="qd-home-catalog__date">{{data.addDate | dateShift}}</span>
                         </div>
                         <div class="qd-home-catalog-content-box">
                             <p class="qd-home-catalog__both"><span>己方：</span>{{data.both2}}</p>
                             <p class="qd-home-catalog__both"><span>对方：</span>{{data.both1}}</p>
                         </div>
+                        <!--<div class="qd-home-catalog-delete-btn">
+                            <div class="qd-btn-box">
+                                <a href="javascript:;" @click="deleteCatalog(data.id)" class="qd-btn qd-btn__3">删除</a>
+                            </div>
+                        </div>-->
                     </div>
                 </div>
-            </div>
-            <div class="qd-home-box__foot">
-                <nav class="qd-navigation-box">
-                    <ul class="qd-pagination-box">
-                        <li class="qd-nav-previous-box">
-                            <a href="javaScript:;"> < </a>
-                        </li>
-                        <li class="qd-nav-btn-box">
-                            <a href="javaScript:;" class="qd-nav-btn">1</a>
-                        </li>
-                        <li class="qd-nav-next-box">
-                            <a href="javaScript:;"> > </a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
         </div>
     </div>
@@ -66,9 +93,95 @@
         el: '#qd_home_page',
         data: {
             datas: [],
-            userId:''
+            userId: '',
+            isOpenWeb: false,
+            qdData: {
+                both1: '', //己方
+                both2: '', //对方
+                title: '', //项目名称
+                issues: [],
+                background: [],  //背景篇
+                addDate: '',
+                tactic: [{
+                    name: '对立式',
+                    content: '',
+                }, {
+                    name: '双赢式',
+                    content: '',
+                }]
+            }
         },
-        methods: {},
+        filters: {
+            dateShift: function (val) {
+                var datetime = new Date(val);
+                var year = datetime.getFullYear(),
+                    month = ("0" + (datetime.getMonth() + 1)).slice(-2),
+                    date = ("0" + datetime.getDate()).slice(-2)
+                // 拼接
+                var result = year + "-" + month + "-" + date;
+                // 返回
+                return result;
+            }
+        },
+        methods: {
+            toDetail: function (id) {
+                window.location.href = 'new/menu.html?qdId=' + id
+            },
+            closeAddWeb: function () {
+                console.log(123)
+                mainVue.isOpenWeb = false;
+                console.log(this.isOpenWeb)
+            },
+            addQd: function () {
+                var jsonStr = {
+                    userId: '',
+                    data: []
+                }
+                if (this.qdData.both1 === '' || this.qdData.both2 === '' || this.qdData.title === '') {
+                    alert('请填写完全')
+                } else {
+                    jsonStr.userId = this.userId;
+                    jsonStr.data = this.qdData;
+                    jsonStr.data.addDate = (new Date()).getTime();
+                    console.log(jsonStr);
+                    axios.post("/api/v1/negotiation/addNegotiation", JSON.stringify(jsonStr)).then(function (res) {
+                        console.log(res.data.data);
+                        mainVue.getQdList();
+                    }).catch(function (error) {
+                        console.log(error);
+                    })
+                }
+            },
+            deleteCatalog: function (val) {
+                console.log(val)
+            },
+            getQdList: function () {
+                var jsonStr = {
+                    userId: '',
+                };
+                jsonStr.userId = this.userId
+                axios.post("http://www.cogitoactio.com/api/v1/negotiation/getNegotiationList", jsonStr).then(function (res) {
+                    mainVue.datas = res.data.data.reverse();
+                    mainVue.isOpenWeb = false;
+                    mainVue.qdData = {
+                        both1: '', //己方
+                        both2: '', //对方
+                        title: '', //项目名称
+                        issues: [],
+                        background: [],  //背景篇
+                        tactic: [{
+                            name: '对立式',
+                            content: '',
+                        }, {
+                            name: '双赢式',
+                            content: '',
+                        }]
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                })
+            }
+        },
         mounted: function () {
             var ua = navigator.userAgent.toLowerCase();
             if (ua.indexOf('micromessenger') !== -1) {
@@ -107,7 +220,7 @@
                     localStorage.setItem("userId", jsonStr.userId);
                     axios.post("http://www.cogitoactio.com/api/v1/negotiation/getNegotiationList", jsonStr).then(function (res) {
                         console.log(res.data.data);
-                        mainVue.datas = res.data.data
+                        mainVue.datas = res.data.data.reverse();
                     }).catch(function (error) {
                         console.log(error);
                     })

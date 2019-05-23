@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>亦知亦行 谈判清单</title>
+    <title>亦知亦行 谈判助手</title>
     <link rel="stylesheet" href="../../assets/node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="../../assets/node_modules/animate.css/animate.css">
     <link rel="stylesheet" href="../../assets/css/qdv1.0.main.css">
@@ -14,7 +14,8 @@
             position: static !important;
             margin-top: 60px !important;
         }
-        .weightOverproof span{
+
+        .weightOverproof span {
             color: #EB5548;
             font-size: 16px;
         }
@@ -34,29 +35,82 @@
     <div class="qd-section" id="newIndexSection2">
         <div class="qd-issues-list-header">
             <h3>{{qdData.title}}</h3>
-            <p>1、点击添加议题。</p>
-            <p>2、拖动议题对议题进行重要性排序。</p>
-            <p>3、点击议题添加议题的相关内容。</p>
+            <p>己方：{{qdData.both2}}</p>
+            <p>对方：{{qdData.both1}}</p>
         </div>
         <div class="qd-issues-list-content">
-            <div class="qd-module-btn-box" v-for="(data,index) in issuesData" :class="{'active':data.status}">
-                <a href="javascript:;" @click="openModal(2,index)" class="qd-module-btn">{{data.name}}（权重：{{data.weight}}）</a>
-                <span v-if="!data.status">未完成</span>
-                <a class="qd-module-del-btn" @click="delIssues(index)" href="javascript:;"></a>
+            <div class="qd-module-btn-box clear" v-show="issuesData.length>0">
+                <a href="javascript:;" class="qd-module-btn"
+                   style="color: white;font-size:16px;background-color: #B5D1E4;border-top: 1px solid #B5D1E4;border-bottom: 1px solid white;border-right: 1px solid white;">议题</a>
+                <a href="javascript:;" class="qd-module-btn"
+                   style="color: white;font-size:16px;background-color: #B5D1E4;border-top: 1px solid #B5D1E4;border-bottom: 1px solid white;border-right: 1px solid white;">权重</a>
+                <a href="javascript:;" class="qd-module-btn"
+                   style="color: white;font-size:16px;background-color: #B5D1E4;border-top: 1px solid #B5D1E4;border-bottom: 1px solid white;">操作</a>
             </div>
-            <div class="qd-module-btn-box" v-show="issuesData.length<5">
-                <a href="javascript:;" @click="openModal(1)" class="qd-module-btn">点&nbsp;&nbsp;击&nbsp;&nbsp;添&nbsp;&nbsp;加&nbsp;&nbsp;议&nbsp;&nbsp;题</a>
+            <div class="qd-module-btn-box clear" v-for="(data,index) in issuesData">
+                <div class="qd-module-btn">
+                    <span @click="openModal(2,index)" style="display: block" v-show="isAlter===0||isAlter!==index+1">{{data.name}}</span>
+                    <div v-show="isAlter===index+1" class="qd-input-box qd-input-box__1">
+                        <input v-model="modalData.name" type="text" class="qd-input" placeholder="议题名称">
+                    </div>
+                </div>
+                <div class="qd-module-btn">
+                    <span v-show="isAlter===0||isAlter!==index+1" style="display: block">{{data.weight}}</span>
+                    <div v-show="isAlter===index+1" class="qd-input-box qd-input-box__1">
+                        <input v-model="modalData.weight" type="text" class="qd-input" placeholder="议题权重">
+                    </div>
+                </div>
+                <div class="qd-module-btn">
+                    <a class="qd-module-small-btn qd-module-small-btn-1" v-show="isAlter===0||isAlter!==index+1"
+                       @click="alterIssues(index)" href="javascript:;"></a>
+                    <a class="qd-module-small-btn qd-module-small-btn-2" v-show="isAlter===0||isAlter!==index+1"
+                       @click="delIssues(index)" href="javascript:;"></a>
+                    <a class="qd-module-small-btn qd-module-small-btn-3" v-show="isAlter===index+1"
+                       @click="reAlter(index)" href="javascript:;"></a>
+                    <a class="qd-module-small-btn qd-module-small-btn-4" v-show="isAlter===index+1"
+                       @click="closeAlter()" href="javascript:;"></a>
+                </div>
+                <!--<span class="qd-label" v-if="!data.status" v-show="data.content[0].content==='' || data.content[1].content===''">未完成</span>-->
+            </div>
+            <div class="qd-home-catalog" v-show="issuesData.length<5">
+                <div class="qd-add-btn-box" :class="{'qd-add-btn-box-active':isOpenWeb}">
+                    <span v-show="!isOpenWeb" class="qd-add-btn" @click="openModal(1)">+</span>
+                    <span class="qd-add-btn-title-box" v-show="isOpenWeb">添加</span>
+                    <div class="qd-index-box__content qd-index-box_form_content clear" v-show="isOpenWeb">
+                        <form action="#" class="qd-index-form qd-index-form__new">
+                            <div class="qd-input-box qd-input-box__1">
+                                <span>议&ensp;&ensp;&ensp;&ensp;题</span>
+                                <input v-model="modalData.name" type="text" class="qd-input" placeholder="请输入议题名称">
+                            </div>
+                            <div class="qd-input-box qd-input-box__1">
+                                <span>权&ensp;&ensp;&ensp;&ensp;重</span>
+                                <input v-model="modalData.weight" type="text" class="qd-input" placeholder="请输入此议题权重">
+                            </div>
+                        </form>
+                        <div class="qd-add-btn-box">
+                            <div class="qd-btn-box">
+                                <a href="javascript:;" @click="addIssues()" class="qd-btn qd-btn__1 qd-btn-box-2">添&nbsp;加</a>
+                            </div>
+                            <div class="qd-btn-box">
+                                <a href="javascript:;" @click="closeAddWeb()"
+                                   class="qd-btn qd-btn__3 qd-btn-box-2">取&nbsp;消</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="qd-issues-list-foot" v-bind:class="{'positionStatic':issuesData.length>3}">
-            <div class="qd-btn-box qd-btn-box-2">
-                <a href="javascript:;" class="qd-btn qd-btn__block" @click="openModal(3)"
-                   :class="{'qd-btn__1':issuesData.length>0,'qd-btn__4':issuesData.length===0}">设&nbsp;置&nbsp;权&nbsp;重</a>
-            </div>
+        <div class="qd-issues-list-foot" v-bind:class="{'positionStatic':issuesData.length>=3}">
             <div class="qd-btn-box qd-btn-box-2">
                 <a v-bind:href="'menu.html?qdId='+qdId"
-                   class="qd-btn qd-btn__1 qd-btn__block">返&nbsp;回&nbsp;上&nbsp;一&nbsp;级</a>
+                   class="qd-btn qd-btn__1 qd-btn__block" style="line-height: 35px">返&nbsp;回</a>
+            </div>
+            <div class="qd-btn-box qd-btn-box-2">
+                <a href="javascript:;"
+                   class="qd-btn qd-btn__1 qd-btn__block"
+                   style="line-height: 35px;background-color: transparent;color: #333333">
+                    总权重:&nbsp;&nbsp;<span>{{allWeight}}</span></a>
             </div>
         </div>
     </div>
@@ -82,24 +136,27 @@
                 </div>
                 <div class="qd-new-issues-content">
                     <div class="qd-new-issues-details-box">
-                        <p class="qd-new-issues-details" @click="modalNum = 4">渴&nbsp;&nbsp;望（{{modalData.content[0].content}}）</p>
-                        <p class="qd-new-issues-details" @click="modalNum = 5">底&nbsp;&nbsp;线（{{modalData.content[1].content}}）</p>
+                        <p class="qd-new-issues-details" @click="modalNum = 4">渴&nbsp;&nbsp;望（{{modalData.content[0].content | isNull}}）</p>
+                        <p class="qd-new-issues-details" @click="modalNum = 5">底&nbsp;&nbsp;线（{{modalData.content[1].content | isNull}}）</p>
                     </div>
                 </div>
             </div>
-            <div class="qd-new-issues-box" v-show="modalNum === 3">
-                <div class="qd-new-issues-header">
-                    <p>权重</p>
-                    <span>权重，是此议题所占比重（总权重≤100）</span>
-                </div>
-                <div class="qd-new-issues-content">
-                    <div class="qd-input-box qd-input-box__1" v-for="(data,index) in issuesData">
-                        <span>{{data.name}}：</span>
-                        <input type="text" oninput = "value=value.replace(/[^\d]/g,'')" v-model="issuesData[index].weight" @change="changeWeight()" class="qd-input" placeholder="请分配此议题权重">
-                    </div>
-                    <p style="text-align: right" v-bind:class="{'weightOverproof': allWeight > 100}">总权重：<span>{{allWeight}}</span><span v-show="allWeight > 100">（总权重不可超过100）</span></p>
-                </div>
-            </div>
+            <!--<div class="qd-new-issues-box" v-show="modalNum === 3">-->
+                <!--<div class="qd-new-issues-header">-->
+                    <!--<p>权重</p>-->
+                    <!--<span>权重，是此议题所占比重（总权重≤100）</span>-->
+                <!--</div>-->
+                <!--<div class="qd-new-issues-content">-->
+                    <!--<div class="qd-input-box qd-input-box__1" v-for="(data,index) in issuesData">-->
+                        <!--<span>{{data.name}}：</span>-->
+                        <!--<input type="text" oninput="value=value.replace(/[^\d]/g,'')" v-model="issuesData[index].weight"-->
+                               <!--@change="changeWeight()" class="qd-input" placeholder="请分配此议题权重">-->
+                    <!--</div>-->
+                    <!--<p style="text-align: right" v-bind:class="{'weightOverproof': allWeight > 100}">-->
+                        <!--总权重：&nbsp;&nbsp;<span>{{allWeight}}</span><span-->
+                            <!--v-show="allWeight > 100">（总权重不可超过100）</span></p>-->
+                <!--</div>-->
+            <!--</div>-->
             <div class="qd-new-issues-box" v-show="modalNum === 4">
                 <div class="qd-new-issues-header">
                     <p>渴望</p>
@@ -110,19 +167,13 @@
                         <input type="text" v-model="modalData.content[0].content" class="qd-input"
                                placeholder="请输入此议题的渴望">
                     </div>
-                    <div class="qd-btn-box">
-                        <p class="qd-btn" @click="modalSettingParam.settingLongFor = true">预估对手渴望</p>
-                    </div>
-                    <div class="qd-input-box" v-show="modalSettingParam.settingLongFor">
-                        <input style="margin-bottom: 10px" type="text" v-model="modalData.content[0].both" class="qd-input"
-                               placeholder="请输入您预估对手对此议题的渴望">
-                    </div>
-                    <div class="qd-input-box">
-                        <input type="text" oninput = "value=value.replace(/[^\d]/g,'')" v-model="modalData.content[0].grade" class="qd-input" placeholder="请为此选项打分（满分10分）">
-                    </div>
+                    <!--<div class="qd-input-box">-->
+                        <!--<input type="text" oninput="value=value.replace(/[^\d]/g,'')"-->
+                               <!--v-model="modalData.content[0].grade" class="qd-input" placeholder="请为此选项打分（满分10分）">-->
+                    <!--</div>-->
                 </div>
             </div>
-            <div class="qd-new-issues-box" v-show="modalNum === 5">
+            <div class="qd-new-issues-box" v-show="modalNum === 5" style="margin-top: 10px">
                 <div class="qd-new-issues-header">
                     <p>底线</p>
                     <span>底线，指最差情况下你所能接受的结果</span>
@@ -132,35 +183,12 @@
                         <input type="text" v-model="modalData.content[1].content" class="qd-input"
                                placeholder="请输入此议题的底线">
                     </div>
-                    <div class="qd-btn-box">
-                        <p class="qd-btn" @click="modalSettingParam.settingBaseline = true">预估对手底线</p>
-                    </div>
-                    <div class="qd-input-box" v-show="modalSettingParam.settingBaseline">
-                        <input style="margin-bottom: 10px" type="text" v-model="modalData.content[1].both1" class="qd-input"
-                               placeholder="请输入您预估对手对此议题的底线">
-                    </div>
-                    <div class="qd-input-box">
-                        <input type="text" oninput = "value=value.replace(/[^\d]/g,'')" v-model="modalData.content[1].grade" class="qd-input" placeholder="请为此选项打分（满分10分）">
-                    </div>
+                    <!--<div class="qd-input-box">-->
+                        <!--<input type="text" oninput="value=value.replace(/[^\d]/g,'')"-->
+                               <!--v-model="modalData.content[1].grade" class="qd-input" placeholder="请为此选项打分（满分10分）">-->
+                    <!--</div>-->
                 </div>
             </div>
-            <!--<div class="qd-new-issues-box" v-show="modalNum === 6">
-                <div class="qd-new-issues-header">
-                    <p>评分</p>
-                    <span>评分，是给此议题一个评价（满分100分）</span>
-                </div>
-                <div class="qd-new-issues-content">
-                    <div class="qd-input-box">
-                        <input type="text" class="qd-input" placeholder="请输入此议题的评分">
-                    </div>
-                    <div class="qd-btn-box">
-                        <p class="qd-btn" @click="modalSettingParam.settingGrade = true">预估对手评分</p>
-                    </div>
-                    <div class="qd-input-box" v-show="modalSettingParam.settingGrade">
-                        <input type="text" class="qd-input" placeholder="请输入您预估对手对此议题的评分">
-                    </div>
-                </div>
-            </div>-->
         </div>
         <div class="qd-modal-footer">
             <div class="qd-modal-btn-box" v-show="modalNum === 1">
@@ -175,10 +203,13 @@
             <div class="qd-modal-btn-box" v-show="modalNum === 3 || modalNum === 4 || modalNum === 5 || modalNum === 6">
                 <div class="qd-btn-box">
                     <a v-show="modalNum === 4 && modalData.content[0].content === '' || modalNum === 5 && modalData.content[1].content === ''"
-                       href="javascript:;" @click="setIssuesContent()" class="qd-btn qd-btn__1 qd-btn__block">确&nbsp;定</a>
+                       href="javascript:;" @click="setIssuesContent()"
+                       class="qd-btn qd-btn__1 qd-btn__block">确&nbsp;定</a>
                     <a v-show="modalNum === 4 && modalData.content[0].content != '' || modalNum === 5 && modalData.content[1].content != ''"
-                       href="javascript:;" @click="setIssuesContent()" class="qd-btn qd-btn__1 qd-btn__block">修&nbsp;改</a>
-                    <a v-show="modalNum === 3" href="javascript:;" @click="setWeight()" class="qd-btn qd-btn__1 qd-btn__block">保&nbsp;存</a>
+                       href="javascript:;" @click="setIssuesContent()"
+                       class="qd-btn qd-btn__1 qd-btn__block">修&nbsp;改</a>
+                    <a v-show="modalNum === 3" href="javascript:;" @click="setWeight()"
+                       class="qd-btn qd-btn__1 qd-btn__block">保&nbsp;存</a>
                 </div>
                 <div class="qd-btn-box">
                     <a href="javascript:;" @click="modalNum = 2" class="qd-btn qd-btn__3 qd-btn__block">返&nbsp;回</a>
@@ -201,6 +232,11 @@
             issuesData: [],
             qdId: '',
             userId: '',
+            isAlter: 0,
+            beforeData: {
+                name: '',
+                weight: ''
+            },
             modalData: {
                 number: 0,
                 name: '',
@@ -223,13 +259,24 @@
                 settingGrade: false
             },
             modalIndex: 0,
-            allWeight:0
+            allWeight: 0,
+            isOpenWeb: false,
 
+        },
+        filters: {
+            isNull: function (val) {
+                if(val === ''){
+                    return '未设置';
+                }else{
+                    return val;
+                }
+            }
         },
         methods: {
             openModal: function (val, index) {
                 if (val === 1) {
-                    this.modalNum = 1;
+                    this.isOpenWeb = true;
+                    this.isAlter = 0
                     this.modalData = {
                         number: 0,
                         name: '',
@@ -245,6 +292,7 @@
                         }]
                     }
                 } else if (val === 2) {
+                    this.isOpenWeb = false;
                     console.log(this.issuesData);
                     this.modalSettingParam = {
                         settingWeight: false,
@@ -255,10 +303,8 @@
                     this.modalNum = 2;
                     this.modalIndex = index
                     this.modalData = JSON.parse(JSON.stringify(this.issuesData[index]))
-                }else if (val === 3) {
-                    this.modalNum = 3;
+                    this.showModal = true;
                 }
-                this.showModal = true;
             },
 
             /*
@@ -268,6 +314,7 @@
             delIssues: function (index) {
                 var res = confirm("确定删除此议题？");
                 if (res) {
+                    this.allWeight = this.allWeight - this.issuesData[index].weight
                     this.issuesData.splice(index, 1);
                     this.qdData.issues = this.issuesData;
                     mainVue.updatedIssues(2);
@@ -277,53 +324,116 @@
             },
             addIssues: function () {
                 if (this.modalData.name === '') {
-                    console.log(123);
-                } else {
-                    var repetition = false;
-                    for (var i in this.issuesData) {
-                        if (this.modalData.name === this.issuesData[i].name) {
-                            repetition = true;
-                            break;
+                    alert('请输入议题名称');
+                } else if(this.modalData.weight === ''){
+                    alert('请输入此议题权重');
+                }else {
+                    var allWeight = this.allWeight + Number(this.modalData.weight);
+                    if(allWeight > 100){
+                        this.modalData.weight = 0;
+                        alert('总权重大于100，请重新分配！！！');
+                    }else {
+                        var repetition = false;
+                        for (var i in this.issuesData) {
+                            if (this.modalData.name === this.issuesData[i].name) {
+                                repetition = true;
+                                break;
+                            }
+                        }
+                        if (repetition) {
+                            alert('议题名称重复');
+                        } else {
+                            this.allWeight = allWeight
+                            this.modalData.number = this.issuesData.length + 1;
+                            this.issuesData.push(this.modalData);
+                            this.qdData.issues = this.issuesData;
+                            mainVue.updatedIssues(1);
+                            mainVue.isOpenWeb = false;
                         }
                     }
-                    if (repetition) {
-                        alert('议题名称重复');
-                    } else {
-                        this.modalData.number = this.issuesData.length + 1;
-                        this.issuesData.push(this.modalData);
+
+                }
+
+            },
+
+            alterIssues: function (val) {
+                this.isOpenWeb = false;
+                this.isAlter = val + 1;
+                this.modalData = JSON.parse(JSON.stringify(this.issuesData[val]));
+                this.beforeData.name = this.modalData.name;
+                this.beforeData.weight = this.modalData.weight;
+            },
+
+            reAlter: function (index) {
+                if (this.modalData.name === '') {
+                    alert('请输入议题名称');
+                } else if(this.modalData.weight === ''){
+                    alert('请输入此议题权重');
+                }else if (this.beforeData.name === this.modalData.name && this.beforeData.weight === this.modalData.weight) {
+                    this.isAlter = 0;
+                } else {
+                    var allWeight = this.allWeight - this.beforeData.weight + Number(this.modalData.weight)
+                    if(allWeight > 100){
+                        this.modalData.weight = this.beforeData.weight;
+                        alert('总权重大于100，请重新分配！！！');
+                    }else {
+                        this.allWeight = allWeight;
+                        this.issuesData[index] = JSON.parse(JSON.stringify(this.modalData));
                         this.qdData.issues = this.issuesData;
-                        mainVue.updatedIssues(1);
+                        mainVue.updatedIssues(3);
                     }
                 }
 
             },
 
-            setIssuesContent:function(index){
+            closeAlter: function () {
+                this.modalData = {
+                    number: 0,
+                    name: '',
+                    weight: 0,
+                    content: [{
+                        content: '',
+                        grade: '',
+                        both1: ''
+                    }, {
+                        content: '',
+                        grade: '',
+                        both1: '',
+                    }]
+                }
+                this.isAlter = 0;
+            },
+
+            setIssuesContent: function (index) {
                 this.issuesData[this.modalIndex] = JSON.parse(JSON.stringify(this.modalData));
                 this.qdData.issues = this.issuesData;
                 mainVue.updatedIssues(3);
             },
 
-            changeWeight:function(){
+            changeWeight: function () {
                 var sum = 0
                 for (var i in this.issuesData) {
-                    sum =  sum + Number(this.issuesData[i].weight);
+                    sum = sum + Number(this.issuesData[i].weight);
                 }
                 this.allWeight = sum
             },
 
-            setWeight:function(){
-                if(this.allWeight>100){
+            setWeight: function () {
+                if (this.allWeight > 100) {
                     alert('权重总数超过100，请合理分配');
-                }else if(this.allWeight<=100&&this.allWeight>0){
+                } else if (this.allWeight <= 100 && this.allWeight > 0) {
                     this.qdData.issues = JSON.parse(JSON.stringify(this.issuesData));
                     mainVue.updatedIssues(4);
-                }else{
+                } else {
                     alert('权重分配异常，请重新分配');
                     for (var i in this.issuesData) {
                         this.issuesData[i].weight = 0
                     }
                 }
+            },
+
+            closeAddWeb: function () {
+                mainVue.isOpenWeb = false;
             },
 
             updatedIssues: function (val) {
@@ -337,15 +447,14 @@
                 jsonStr.data = this.qdData;
                 axios.post("http://www.cogitoactio.com/api/v1/negotiation/updateNegotiation ", jsonStr).then(function (res) {
                     if (res.data.data) {
-                        if(val===1){
+                        if (val === 1) {
                             mainVue.showModal = false;
-                        }else if(val===2){
+                        } else if (val === 2) {
                             alert('删除成功')
-                        }else if(val===3){
-                            alert('保存成功');
-                            mainVue.modalNum = 2
-                        }else if(val===4){
-                            alert('保存成功');
+                        } else if (val === 3) {
+                            mainVue.modalNum = 2;
+                            mainVue.isAlter = 0;
+                        } else if (val === 4) {
                             mainVue.showModal = false;
                         }
                     } else {
@@ -392,6 +501,11 @@
                     console.log(res);
                     mainVue.qdData = res.data.data[0];
                     mainVue.issuesData = res.data.data[0].issues;
+                    var allWeight = 0;
+                    for (var i in res.data.data[0].issues) {
+                        allWeight = allWeight + Number(res.data.data[0].issues[i].weight);
+                    }
+                    mainVue.allWeight = allWeight;
                 }).catch(function (error) {
                     console.log(error);
                 })

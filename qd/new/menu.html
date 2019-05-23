@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>亦知亦行 谈判清单</title>
+    <title>亦知亦行 谈判助手</title>
     <link rel="stylesheet" href="../../assets/node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="../../assets/node_modules/animate.css/animate.css">
     <link rel="stylesheet" href="../../assets/css/qdv1.0.main.css">
     <link rel="ICON" href="../../assets/img/main/icon.png">
+    <style>
+        .qd-module-btn{
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: 0 0 5px #5f95ed;
+            -moz-box-shadow: 0 0 5px  #5f95ed;
+            box-shadow: 0 0 5px  #5f95ed;
+        }
+    </style>
 </head>
 <body>
 <div class="qd-content" id="qd_menu_page" v-cloak>
@@ -29,15 +39,15 @@
                 <div class="qd-index-module-btn-box">
                     <div class="qd-module-btn-box active">
                         <a v-bind:href="'issues.html?qdId='+qdId" class="qd-module-btn">议&nbsp;&nbsp;题&nbsp;&nbsp;篇</a>
-                        <span v-show="qdData.issues.length === 0">未添加</span>
+                        <span class="qd-label" v-show="qdData.issues.length === 0">未添加</span>
                     </div>
                     <div class="qd-module-btn-box">
                         <a v-bind:href="'background.html?p=1&qdId='+qdId" class="qd-module-btn">背&nbsp;&nbsp;景&nbsp;&nbsp;篇</a>
-                        <span>未完成</span>
+                        <span class="qd-label">未完成</span>
                     </div>
                     <div class="qd-module-btn-box">
                         <a v-bind:href="'tactic.html?p=1&qdId='+qdId"  class="qd-module-btn">策&nbsp;&nbsp;略&nbsp;&nbsp;篇</a>
-                        <span>未生成</span>
+                        <span class="qd-label">未生成</span>
                     </div>
                 </div>
             </div>
