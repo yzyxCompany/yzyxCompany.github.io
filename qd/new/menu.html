@@ -18,6 +18,12 @@
             -moz-box-shadow: 0 0 5px  #5f95ed;
             box-shadow: 0 0 5px  #5f95ed;
         }
+        .qd-disable-module-btn{
+            background-color: #f0f0f0;
+            color: #92BAF4;
+            border: 1px solid #92BAF4;
+            box-shadow: none;
+        }
     </style>
 </head>
 <body>
@@ -42,11 +48,13 @@
                         <span class="qd-label" v-show="qdData.issues.length === 0">未添加</span>
                     </div>
                     <div class="qd-module-btn-box">
-                        <a v-bind:href="'background.html?p=1&qdId='+qdId" class="qd-module-btn">背&nbsp;&nbsp;景&nbsp;&nbsp;篇</a>
+                        <a href="javascript:;" class="qd-module-btn qd-disable-module-btn" v-if="qdData.issues.length===0">背&nbsp;&nbsp;景&nbsp;&nbsp;篇</a>
+                        <a v-bind:href="'background.html?p=1&qdId='+qdId" class="qd-module-btn" v-else>背&nbsp;&nbsp;景&nbsp;&nbsp;篇</a>
                         <span class="qd-label">未完成</span>
                     </div>
                     <div class="qd-module-btn-box">
-                        <a v-bind:href="'tactic.html?p=1&qdId='+qdId"  class="qd-module-btn">策&nbsp;&nbsp;略&nbsp;&nbsp;篇</a>
+                        <a href="javascript:;" class="qd-module-btn qd-disable-module-btn" v-if="qdData.issues.length===0||qdData.background.length===0">策&nbsp;&nbsp;略&nbsp;&nbsp;篇</a>
+                        <a v-bind:href="'tactic.html?p=1&qdId='+qdId" class="qd-module-btn" v-else>策&nbsp;&nbsp;略&nbsp;&nbsp;篇</a>
                         <span class="qd-label">未生成</span>
                     </div>
                 </div>

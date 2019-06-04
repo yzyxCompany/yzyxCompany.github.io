@@ -31,6 +31,8 @@ a {
   -webkit-user-select: none;
   -moz-user-focus: none;
   -moz-user-select: none;
+
+  outline: none;
 }
 
 [v-cloak] {
@@ -74,18 +76,20 @@ html, body {
   .qd-header-box {
     .qd-page-title-box {
       .boxSize2(100%, 35px);
-      .boxShadow(0 0 3px @gray-1);
       .BC(@white-1);
+      z-index: 1000;
       .qd-close-new-btn {
         position: absolute;
         display: block;
         left: 0px;
         top: 0;
         .boxSize1(35px);
-        .BS('../img/qd/icon/home.svg', 20px 20px);
+        .BS('../img/qd/icon/fanhui.svg', 18px 18px);
       }
       .qd-page-title {
         .font3(16px, 35px, normal);
+        .boxShadow(0 0 3px @gray-1);
+        border-bottom: 1px solid @gray-1;
         margin: 0;
         text-align: center;
         .boxSizeW(100%);
@@ -477,20 +481,19 @@ html, body {
     }
     .qd-issues-list-header {
       padding: 0 20px;
+      height: 92px;
       h3 {
-        .font3(24px, 100px, normal);
+        color: @black-4!important;
+        .font3(24px, 50px, normal);
       }
       p {
-        color: @white-1;
+        color: @black-4;
         margin: 0;
         .font2(14px, normal);
       }
     }
     .qd-issues-list-header,
     .qd-background-list-header {
-      height: 230px;
-      background: url("../img/qd/qd-login-bg-1.png") no-repeat center bottom;
-      background-size: 100% 100%;
       h3 {
         margin: 0;
         text-align: center;
@@ -499,17 +502,20 @@ html, body {
       }
     }
     .qd-background-list-header {
+      height: 230px;
+      background: url("../img/qd/qd-login-bg-1.png") no-repeat center bottom;
+      background-size: 100% 100%;
       h3 {
         .font3(24px, 160px, normal);
       }
     }
     .qd-issues-list-content {
-      padding: 0 20px;
-      margin-top: -50px;
+      padding: 0;
       .qd-module-btn-box {
         padding: 0;
         .qd-module-btn {
           .font1(14px, 43px);
+          border: 0;
           letter-spacing: 1px;
           .BC(@white-1);
           color: @black-4;
@@ -518,9 +524,24 @@ html, body {
           .transition(height .5s ease);
           height: 43px;
           float: left;
-          border-top: 0;
           &:nth-child(1){
-            width: 60%;
+            width: 10%;
+          }
+          &:nth-child(2){
+            width: 40%;
+            border-left: 0;
+          }
+          &:nth-child(3){
+            width: 20%;
+            border-left: 0;
+          }
+          &:nth-child(4){
+            width: 20%;
+            border-left: 0;
+          }
+          &:nth-child(5){
+            width: 10%;
+            border-left: 0;
           }
           .qd-input-box{
             width: 100%;
@@ -528,16 +549,7 @@ html, body {
               width: 100%;
               text-align: center;
               padding: 0;
-              color: @red-1;
             }
-          }
-          &:nth-child(2){
-            width: 20%;
-            border-left: 0;
-          }
-          &:nth-child(3){
-            width: 20%;
-            border-left: 0;
           }
         }
         .qd-label {
@@ -560,20 +572,30 @@ html, body {
             .BS('../img/qd/icon/close_blue.svg', 12px 12px);
           }
           &.qd-module-small-btn-3{
-            .BS('../img/qd/icon/re_blue.svg', 12px 12px);
+            .BS('../img/qd/icon/top_blue.svg', 12px 12px);
           }
           &.qd-module-small-btn-4{
-            .BS('../img/qd/icon/close_blue.svg', 12px 12px);
+            .BS('../img/qd/icon/bottom_blue.svg', 12px 12px);
+          }
+          &.qd-module-small-btn-5{
+            .BS('../img/qd/icon/see_blue.svg', 16px 16px);
+          }
+        }
+        &.qd-module-add-btn-box{
+          .qd-module-add-btn{
+            width: 50%;
+            font-size: 24px;
+            line-height: 43px;
+            display: inline-block;
           }
         }
       }
 
-      .qd-home-catalog {
+      /*.qd-home-catalog {
         position: relative;
         .BC(@white-1);
-        padding: 0px 20px;
-        margin-top: 10px;
-        .border(1px, #B5D1E4);
+        margin-top: 0;
+        border-top: 0;
         .qd-add-btn-box {
           color: @black-4;
           text-align: center;
@@ -634,7 +656,7 @@ html, body {
             }
           }
         }
-      }
+      }*/
     }
     .qd-issues-list-foot {
       .qd-btn-box-style-2;
@@ -793,14 +815,11 @@ html, body {
   }
   .qd-modal-box {
     .qd-modal-content {
-      display: flex;
-      align-items: center;
       .qd-new-issues-box {
         padding: 0 20px;
-        margin-top: -150px;
         .boxSize2(100%, auto);
         .qd-new-issues-header {
-          padding: 0 0 15px;
+          padding: 15px 0;
           p {
             .font2(22px, normal);
             margin: 0;
@@ -846,9 +865,22 @@ html, body {
           }
           .qd-new-issues-details-box {
             .qd-new-issues-details {
-              .qd-btn-style-2;
               margin: 0 0 10px;
-              .boxShadow(2px 2px 5px @gray-1);
+            }
+            .qd-new-issues-details-input{
+              border: 0;
+              border-bottom: 1px solid @gray-5;
+              line-height:21px;
+              outline: none;
+              padding: 14px 8px 0;
+              width: 150px;
+            }
+            .qd-new-issues-details-grade{
+              display: inline-block;
+              width: calc(100% - 155px);
+              .qd-new-issues-details-input{
+                width: 35px;
+              }
             }
           }
         }
@@ -888,8 +920,8 @@ html, body {
       top: 20px;
       right: 20px;
       display: inline-block;
-      .boxSize1(30px);
-      .BS('../img/qd/icon/close.svg', 30px 30px);
+      .boxSize1(20px);
+      .BS('../img/qd/icon/fanhui.svg', 20px 20px);
     }
   }
   .qd-modal-content {

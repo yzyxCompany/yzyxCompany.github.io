@@ -60,6 +60,7 @@ a {
   -webkit-user-select: none;
   -moz-user-focus: none;
   -moz-user-select: none;
+  outline: none;
 }
 [v-cloak] {
   display: none;
@@ -110,10 +111,8 @@ body {
 .qd-content .qd-header-box .qd-page-title-box {
   width: 100%;
   height: 35px;
-  -webkit-box-shadow: 0 0 3px #B8B8B8 !important;
-  -moz-box-shadow: 0 0 3px #B8B8B8 !important;
-  box-shadow: 0 0 3px #B8B8B8 !important;
   background-color: #FFFFFF;
+  z-index: 1000;
 }
 .qd-content .qd-header-box .qd-page-title-box .qd-close-new-btn {
   position: absolute;
@@ -122,13 +121,17 @@ body {
   top: 0;
   width: 35px;
   height: 35px;
-  background: url('../img/qd/icon/home.svg') no-repeat center;
-  background-size: 20px 20px;
+  background: url('../img/qd/icon/fanhui.svg') no-repeat center;
+  background-size: 18px 18px;
 }
 .qd-content .qd-header-box .qd-page-title-box .qd-page-title {
   font-size: 16px;
   line-height: 35px;
   font-weight: normal;
+  -webkit-box-shadow: 0 0 3px #B8B8B8 !important;
+  -moz-box-shadow: 0 0 3px #B8B8B8 !important;
+  box-shadow: 0 0 3px #B8B8B8 !important;
+  border-bottom: 1px solid #B8B8B8;
   margin: 0;
   text-align: center;
   width: 100%;
@@ -570,24 +573,20 @@ body {
 }
 .qd-content .qd-section .qd-issues-list-header {
   padding: 0 20px;
+  height: 92px;
 }
 .qd-content .qd-section .qd-issues-list-header h3 {
+  color: #2a364c !important;
   font-size: 24px;
-  line-height: 100px;
+  line-height: 50px;
   font-weight: normal;
 }
 .qd-content .qd-section .qd-issues-list-header p {
-  color: #FFFFFF;
+  color: #2a364c;
   margin: 0;
   font-size: 14px;
   line-height: 21px;
   font-weight: normal;
-}
-.qd-content .qd-section .qd-issues-list-header,
-.qd-content .qd-section .qd-background-list-header {
-  height: 230px;
-  background: url("../img/qd/qd-login-bg-1.png") no-repeat center bottom;
-  background-size: 100% 100%;
 }
 .qd-content .qd-section .qd-issues-list-header h3,
 .qd-content .qd-section .qd-background-list-header h3 {
@@ -596,14 +595,84 @@ body {
   color: #FFFFFF;
   font-family: '幼圆', '圆体', 'PingFang SC', 'Microsoft YaHei UI', sans-serif !important;
 }
+.qd-content .qd-section .qd-background-list-header {
+  height: 230px;
+  background: url("../img/qd/qd-login-bg-1.png") no-repeat center bottom;
+  background-size: 100% 100%;
+}
 .qd-content .qd-section .qd-background-list-header h3 {
   font-size: 24px;
   line-height: 160px;
   font-weight: normal;
 }
 .qd-content .qd-section .qd-issues-list-content {
-  padding: 0 20px;
-  margin-top: -50px;
+  padding: 0;
+  /*.qd-home-catalog {
+        position: relative;
+        .BC(@white-1);
+        margin-top: 0;
+        border-top: 0;
+        .qd-add-btn-box {
+          color: @black-4;
+          text-align: center;
+          margin: 0;
+          .transition(height .5s ease);
+          height: 43px;
+          &.qd-add-btn-box-active {
+            height: 165px;
+          }
+          .qd-add-btn{
+            font-size: 24px;
+            line-height: 43px;
+            display: block;
+          }
+          .qd-add-btn-title-box {
+            font-size: 16px;
+            display: block;
+            line-height: 43px;
+          }
+          .qd-index-box__content {
+            .qd-input-box__1 {
+              border: 1px solid @light-gray-4;
+              display: inline-block;
+              &:nth-child(1){
+                width: 69%;
+              }
+              &:nth-child(2){
+                width: 29%;
+              }
+              span {
+                font-size: 12px;
+                height: 30px;
+                line-height: 30px;
+                display: block;
+                border-bottom: 1px solid @light-gray-4;
+              }
+              .qd-input {
+                height: 30px;
+                line-height: 30px;
+                width: 100%;
+                text-align: center;
+                padding: 0;
+              }
+            }
+            .qd-add-btn-box {
+              line-height: 30px;
+              height: 30px;
+              .qd-btn-box {
+                line-height: 30px;
+                height: 30px;
+                display: inline-block;
+                padding: 0;
+                .qd-btn-box-2 {
+                  .boxSize2(80px,30px);
+                  .font1(12px,30px)
+                }
+              }
+            }
+          }
+        }
+      }*/
 }
 .qd-content .qd-section .qd-issues-list-content .qd-module-btn-box {
   padding: 0;
@@ -611,6 +680,7 @@ body {
 .qd-content .qd-section .qd-issues-list-content .qd-module-btn-box .qd-module-btn {
   font-size: 14px;
   line-height: 43px;
+  border: 0;
   letter-spacing: 1px;
   background-color: #FFFFFF;
   color: #2a364c;
@@ -623,10 +693,25 @@ body {
   transition: height 0.5s ease;
   height: 43px;
   float: left;
-  border-top: 0;
 }
 .qd-content .qd-section .qd-issues-list-content .qd-module-btn-box .qd-module-btn:nth-child(1) {
-  width: 60%;
+  width: 10%;
+}
+.qd-content .qd-section .qd-issues-list-content .qd-module-btn-box .qd-module-btn:nth-child(2) {
+  width: 40%;
+  border-left: 0;
+}
+.qd-content .qd-section .qd-issues-list-content .qd-module-btn-box .qd-module-btn:nth-child(3) {
+  width: 20%;
+  border-left: 0;
+}
+.qd-content .qd-section .qd-issues-list-content .qd-module-btn-box .qd-module-btn:nth-child(4) {
+  width: 20%;
+  border-left: 0;
+}
+.qd-content .qd-section .qd-issues-list-content .qd-module-btn-box .qd-module-btn:nth-child(5) {
+  width: 10%;
+  border-left: 0;
 }
 .qd-content .qd-section .qd-issues-list-content .qd-module-btn-box .qd-module-btn .qd-input-box {
   width: 100%;
@@ -635,15 +720,6 @@ body {
   width: 100%;
   text-align: center;
   padding: 0;
-  color: #EB5548;
-}
-.qd-content .qd-section .qd-issues-list-content .qd-module-btn-box .qd-module-btn:nth-child(2) {
-  width: 20%;
-  border-left: 0;
-}
-.qd-content .qd-section .qd-issues-list-content .qd-module-btn-box .qd-module-btn:nth-child(3) {
-  width: 20%;
-  border-left: 0;
 }
 .qd-content .qd-section .qd-issues-list-content .qd-module-btn-box .qd-label {
   top: 12px;
@@ -671,83 +747,22 @@ body {
   background-size: 12px 12px;
 }
 .qd-content .qd-section .qd-issues-list-content .qd-module-btn-box .qd-module-small-btn.qd-module-small-btn-3 {
-  background: url('../img/qd/icon/re_blue.svg') no-repeat center;
+  background: url('../img/qd/icon/top_blue.svg') no-repeat center;
   background-size: 12px 12px;
 }
 .qd-content .qd-section .qd-issues-list-content .qd-module-btn-box .qd-module-small-btn.qd-module-small-btn-4 {
-  background: url('../img/qd/icon/close_blue.svg') no-repeat center;
+  background: url('../img/qd/icon/bottom_blue.svg') no-repeat center;
   background-size: 12px 12px;
 }
-.qd-content .qd-section .qd-issues-list-content .qd-home-catalog {
-  position: relative;
-  background-color: #FFFFFF;
-  padding: 0px 20px;
-  margin-top: 10px;
-  border: 1px solid #B5D1E4;
+.qd-content .qd-section .qd-issues-list-content .qd-module-btn-box .qd-module-small-btn.qd-module-small-btn-5 {
+  background: url('../img/qd/icon/see_blue.svg') no-repeat center;
+  background-size: 16px 16px;
 }
-.qd-content .qd-section .qd-issues-list-content .qd-home-catalog .qd-add-btn-box {
-  color: #2a364c;
-  text-align: center;
-  margin: 0;
-  -webkit-transition: height 0.5s ease;
-  -moz-transition: height 0.5s ease;
-  -ms-transition: height 0.5s ease;
-  -o-transition: height 0.5s ease;
-  transition: height 0.5s ease;
-  height: 43px;
-}
-.qd-content .qd-section .qd-issues-list-content .qd-home-catalog .qd-add-btn-box.qd-add-btn-box-active {
-  height: 165px;
-}
-.qd-content .qd-section .qd-issues-list-content .qd-home-catalog .qd-add-btn-box .qd-add-btn {
+.qd-content .qd-section .qd-issues-list-content .qd-module-btn-box.qd-module-add-btn-box .qd-module-add-btn {
+  width: 50%;
   font-size: 24px;
   line-height: 43px;
-  display: block;
-}
-.qd-content .qd-section .qd-issues-list-content .qd-home-catalog .qd-add-btn-box .qd-add-btn-title-box {
-  font-size: 16px;
-  display: block;
-  line-height: 43px;
-}
-.qd-content .qd-section .qd-issues-list-content .qd-home-catalog .qd-add-btn-box .qd-index-box__content .qd-input-box__1 {
-  border: 1px solid #d0d0d0;
   display: inline-block;
-}
-.qd-content .qd-section .qd-issues-list-content .qd-home-catalog .qd-add-btn-box .qd-index-box__content .qd-input-box__1:nth-child(1) {
-  width: 69%;
-}
-.qd-content .qd-section .qd-issues-list-content .qd-home-catalog .qd-add-btn-box .qd-index-box__content .qd-input-box__1:nth-child(2) {
-  width: 29%;
-}
-.qd-content .qd-section .qd-issues-list-content .qd-home-catalog .qd-add-btn-box .qd-index-box__content .qd-input-box__1 span {
-  font-size: 12px;
-  height: 30px;
-  line-height: 30px;
-  display: block;
-  border-bottom: 1px solid #d0d0d0;
-}
-.qd-content .qd-section .qd-issues-list-content .qd-home-catalog .qd-add-btn-box .qd-index-box__content .qd-input-box__1 .qd-input {
-  height: 30px;
-  line-height: 30px;
-  width: 100%;
-  text-align: center;
-  padding: 0;
-}
-.qd-content .qd-section .qd-issues-list-content .qd-home-catalog .qd-add-btn-box .qd-index-box__content .qd-add-btn-box {
-  line-height: 30px;
-  height: 30px;
-}
-.qd-content .qd-section .qd-issues-list-content .qd-home-catalog .qd-add-btn-box .qd-index-box__content .qd-add-btn-box .qd-btn-box {
-  line-height: 30px;
-  height: 30px;
-  display: inline-block;
-  padding: 0;
-}
-.qd-content .qd-section .qd-issues-list-content .qd-home-catalog .qd-add-btn-box .qd-index-box__content .qd-add-btn-box .qd-btn-box .qd-btn-box-2 {
-  width: 80px;
-  height: 30px;
-  font-size: 12px;
-  line-height: 30px;
 }
 .qd-content .qd-section .qd-issues-list-foot {
   padding: 0 20px 42px;
@@ -952,18 +967,13 @@ body {
   width: calc(100% - 20px);
   color: #EB5548;
 }
-.qd-content .qd-modal-box .qd-modal-content {
-  display: flex;
-  align-items: center;
-}
 .qd-content .qd-modal-box .qd-modal-content .qd-new-issues-box {
   padding: 0 20px;
-  margin-top: -150px;
   width: 100%;
   height: auto;
 }
 .qd-content .qd-modal-box .qd-modal-content .qd-new-issues-box .qd-new-issues-header {
-  padding: 0 0 15px;
+  padding: 15px 0;
 }
 .qd-content .qd-modal-box .qd-modal-content .qd-new-issues-box .qd-new-issues-header p {
   font-size: 22px;
@@ -1023,18 +1033,22 @@ body {
   width: 100%;
 }
 .qd-content .qd-modal-box .qd-modal-content .qd-new-issues-box .qd-new-issues-content .qd-new-issues-details-box .qd-new-issues-details {
-  font-size: 14px;
-  line-height: 40px;
-  text-align: center;
-  background-color: #F5F5F5;
-  -webkit-border-radius: 4px !important;
-  -moz-border-radius: 4px !important;
-  border-radius: 4px !important;
-  color: #2a364c;
   margin: 0 0 10px;
-  -webkit-box-shadow: 2px 2px 5px #B8B8B8 !important;
-  -moz-box-shadow: 2px 2px 5px #B8B8B8 !important;
-  box-shadow: 2px 2px 5px #B8B8B8 !important;
+}
+.qd-content .qd-modal-box .qd-modal-content .qd-new-issues-box .qd-new-issues-content .qd-new-issues-details-box .qd-new-issues-details-input {
+  border: 0;
+  border-bottom: 1px solid #797979;
+  line-height: 21px;
+  outline: none;
+  padding: 14px 8px 0;
+  width: 150px;
+}
+.qd-content .qd-modal-box .qd-modal-content .qd-new-issues-box .qd-new-issues-content .qd-new-issues-details-box .qd-new-issues-details-grade {
+  display: inline-block;
+  width: calc(100% - 155px);
+}
+.qd-content .qd-modal-box .qd-modal-content .qd-new-issues-box .qd-new-issues-content .qd-new-issues-details-box .qd-new-issues-details-grade .qd-new-issues-details-input {
+  width: 35px;
 }
 .qd-btn-box-style-2 {
   padding: 0 20px 42px;
@@ -1071,10 +1085,10 @@ body {
   top: 20px;
   right: 20px;
   display: inline-block;
-  width: 30px;
-  height: 30px;
-  background: url('../img/qd/icon/close.svg') no-repeat center;
-  background-size: 30px 30px;
+  width: 20px;
+  height: 20px;
+  background: url('../img/qd/icon/fanhui.svg') no-repeat center;
+  background-size: 20px 20px;
 }
 .qd-modal-box .qd-modal-content {
   width: 100%;

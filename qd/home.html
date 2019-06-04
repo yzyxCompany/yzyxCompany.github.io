@@ -111,18 +111,6 @@
                 }]
             }
         },
-        filters: {
-            dateShift: function (val) {
-                var datetime = new Date(val);
-                var year = datetime.getFullYear(),
-                    month = ("0" + (datetime.getMonth() + 1)).slice(-2),
-                    date = ("0" + datetime.getDate()).slice(-2)
-                // 拼接
-                var result = year + "-" + month + "-" + date;
-                // 返回
-                return result;
-            }
-        },
         methods: {
             toDetail: function (id) {
                 window.location.href = 'new/menu.html?qdId=' + id
