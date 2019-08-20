@@ -37,21 +37,21 @@
     <!-- 2 -->
     <div class="qd-section" style="margin-top: 3px">
         <div class="qd-issues-list-content">
-            <div class="qd-module-btn-box clear" v-for="(data,index) in issuesData">
+            <div class="qd-module-btn-box clear" v-for="(data,index) in issuesBothData">
                 <div class="qd-module-btn">
-                    <a class="qd-module-small-btn qd-module-small-btn-5" @click="openModal(index)"
+                    <a class="qd-module-small-btn qd-module-small-btn-5" @click="openBothModal(index)"
                        href="javascript:;" v-show="data.name!==''"></a>
                 </div>
                 <div class="qd-module-btn">
                     <div class="qd-input-box qd-input-box__1">
-                        <input v-model="data.name" @change="reAlter(index)" type="text" name="issuesName"
+                        <input v-model="data.name" @change="reAlterBoth(index)" type="text" name="issuesName"
                                class="qd-input"
                                placeholder="议题名称">
                     </div>
                 </div>
                 <div class="qd-module-btn">
                     <div class="qd-input-box qd-input-box__1">
-                        <input v-model="data.weight" @change="reAlter(index)" type="number" name="issuesWeight" min="1"
+                        <input v-model="data.weight" @change="reAlterBoth(index)" type="number" name="issuesWeight" min="1"
                                max="100"
                                class="qd-input" placeholder="议题权重">
                     </div>
@@ -59,20 +59,20 @@
                 <div class="qd-module-btn">
                     <a class="qd-module-small-btn qd-module-small-btn-3"
                        v-show="!isAdd && index!== 0 && data.name!==''"
-                       @click="btnPriority(1,index)" href="javascript:;"></a>
+                       @click="btnPriorityBoth(1,index)" href="javascript:;"></a>
                     <a class="qd-module-small-btn qd-module-small-btn-3"
-                       v-show="isAdd && data.number!==1 && data.name!=='' && index!==issuesData.length-1"
-                       @click="btnPriority(1,index)" href="javascript:;"></a>
+                       v-show="isAdd && data.number!==1 && data.name!=='' && index!==issuesBothData.length-1"
+                       @click="btnPriorityBoth(1,index)" href="javascript:;"></a>
 
                     <a class="qd-module-small-btn qd-module-small-btn-4"
-                       v-show="!isAdd&&index !== issuesData.length-1&&data.name!==''"
-                       @click="btnPriority(2,index)" href="javascript:;"></a>
+                       v-show="!isAdd&&index !== issuesBothData.length-1&&data.name!==''"
+                       @click="btnPriorityBoth(2,index)" href="javascript:;"></a>
                     <a class="qd-module-small-btn qd-module-small-btn-4"
-                       v-show="isAdd && index!==issuesData.length-2 && index!==issuesData.length-1 && data.name!==''"
-                       @click="btnPriority(2,index)" href="javascript:;"></a>
+                       v-show="isAdd && index!==issuesBothData.length-2 && index!==issuesBothData.length-1 && data.name!==''"
+                       @click="btnPriorityBoth(2,index)" href="javascript:;"></a>
                 </div>
                 <div class="qd-module-btn">
-                    <a class="qd-module-small-btn qd-module-small-btn-2" @click="delIssues(index)"
+                    <a class="qd-module-small-btn qd-module-small-btn-2" @click="delIssuesBoth(index)"
                        href="javascript:;"></a>
                 </div>
             </div>
@@ -80,18 +80,18 @@
             <div class="qd-module-btn-box qd-module-add-btn-box clear">
                 <a href="javascript:;" class="qd-module-btn" style="font-size:16px;"></a>
                 <a href="javascript:;" class="qd-module-btn" v-show="isAdd||isFull" style="font-size:16px;width: 30%"></a>
-                <a href="javascript:;" class="qd-module-btn" v-show="!isAdd&&!isFull" @click="addIssuesModal()"
+                <a href="javascript:;" class="qd-module-btn" v-show="!isAdd&&!isFull" @click="addIssuesBothModal()"
                    style="font-size:20px;width: 30%">+</a>
                 <a href="javascript:;" class="qd-module-btn"
                    style="font-size:12px;width: 30%">总权重：&nbsp;{{allWeight}}</a>
                 <a href="javascript:;" class="qd-module-btn" style="width: 30%;display: none"></a>
                 <a href="javascript:;" class="qd-module-btn" style="font-size:12px;width: 30%;color:#5f95ed"
-                   @click="showPossible()" v-show="isWriteFull">显示所有可能</a>
+                   @click="showBothPossible()" v-show="isWriteFull">显示所有可能</a>
             </div>
         </div>
         <div class="qd-modal-box" v-show="showModal">
             <div class="qd-modal-header">
-                <span @click="closeModal()" class="qd-modal-close-btn"></span>
+                <span @click="closeBothModal()" class="qd-modal-close-btn"></span>
             </div>
             <div class="qd-modal-content">
                 <div class="qd-new-issues-box">
@@ -102,12 +102,12 @@
                         <div class="qd-new-issues-details-box">
                             <p class="qd-new-issues-details">
                                 渴望（您最理想的渴望结果）
-                                <input type="text" v-model="modalData.content[0].content" @change="changeIssuesContent(1)"
+                                <input type="text" v-model="modalData.content[0].content" @change="changeIssuesBothContent(1)"
                                        class="qd-new-issues-details-input" placeholder="请输入您最理想的的渴望结果"/>&nbsp;&nbsp;,
                                 <span class="qd-new-issues-details-grade"
                                       v-show="writeIndex >= 2 || modalData.content[0].content!==''">这个结果对您来说有多重要（0不重要-10很重要）
                                 <input type="text" v-model="modalData.content[0].grade"
-                                       class="qd-new-issues-details-input" @change="changeIssuesContent(2)"/>&nbsp;&nbsp;。
+                                       class="qd-new-issues-details-input" @change="changeIssuesBothContent(2)"/>&nbsp;&nbsp;。
                             </span>
                             </p>
                             <!--<div class="">-->
@@ -115,11 +115,11 @@
                             <!--<p class="qd-new-issues-details"-->
                             <!--v-show="writeIndex >= 3 || modalData.content[0].content!==''">-->
                             <!--底线是-->
-                            <!--<input type="text" v-model="modalData.content[1].content" @change="changeIssuesContent(3)"-->
+                            <!--<input type="text" v-model="modalData.content[1].content" @change="changeIssuesBothContent(3)"-->
                             <!--class="qd-new-issues-details-input" placeholder="底线是对您最坏的条件下，您所能承受的结果"/>&nbsp;&nbsp;,-->
                             <!--<span class="qd-new-issues-details-grade"-->
                             <!--v-show="writeIndex >= 4 || modalData.content[1].content!==''">这个结果对您来说有多重要（0不重要-10很重要）-->
-                            <!--<input type="text" v-model="modalData.content[1].grade" @change="changeIssuesContent(4)"-->
+                            <!--<input type="text" v-model="modalData.content[1].grade" @change="changeIssuesBothContent(4)"-->
                             <!--class="qd-new-issues-details-input"/>&nbsp;&nbsp;。-->
                             <!--</span>-->
                             <!--</p>-->
@@ -127,11 +127,11 @@
                             <p class="qd-new-issues-details"
                                v-show="writeIndex >= 3 || modalData.content[0].grade!==''">
                                 底线（您能接受的最坏结果）
-                                <input type="text" v-model="modalData.content[1].content" @change="changeIssuesContent(3)"
+                                <input type="text" v-model="modalData.content[1].content" @change="changeIssuesBothContent(3)"
                                        class="qd-new-issues-details-input" placeholder="请输入您能接受的最坏结果"/>&nbsp;&nbsp;,
                                 <span class="qd-new-issues-details-grade"
                                       v-show="writeIndex >= 4 || modalData.content[1].content!==''">这个结果对您来说有多重要（0不重要-10很重要）
-                                <input type="text" v-model="modalData.content[1].grade" @change="changeIssuesContent(4)"
+                                <input type="text" v-model="modalData.content[1].grade" @change="changeIssuesBothContent(4)"
                                        class="qd-new-issues-details-input"/>&nbsp;&nbsp;。
                             </span>
                             </p>
@@ -164,7 +164,7 @@
                         </div>
                         <div class="qd-module-issuesPossibleData-content-1 clear">
                             <div class="qd-module-issuesPossibleData-content-child">
-                                <div class="qd-module-issuesPossibleData-content-child-content" v-for="data1 in issuesData">
+                                <div class="qd-module-issuesPossibleData-content-child-content" v-for="data1 in issuesBothData">
                                     {{data1.name}}
                                 </div>
                             </div>
@@ -198,7 +198,7 @@
             showModal: false,
             showPossibleModal: false,
             modalNum: 1,
-            issuesData: [],
+            issuesBothData: [],
             issuesBothData: [],
             isWriteFull:false,
             issuesPossibleData: [],
@@ -231,8 +231,8 @@
         computed: {
             allWeight: function () {
                 var allWeight = 0
-                for (var i in this.issuesData) {
-                    allWeight = allWeight + Number(this.issuesData[i].weight)
+                for (var i in this.issuesBothData) {
+                    allWeight = allWeight + Number(this.issuesBothData[i].weight)
                 }
                 return allWeight + '%';
             },
@@ -241,21 +241,21 @@
             totalPoints: function (val) {
                 var totalPoints = 0
                 for (var i = 0; i < val.length; i++) {
-                    console.log(val[i].grade + '*' + mainVue.issuesData[i].weight + '/ 100' + '=' + Number(val[i].grade * mainVue.issuesData[i].weight / 100))
-                    totalPoints = Number(totalPoints) + Number(val[i].grade * mainVue.issuesData[i].weight / 100);
+                    console.log(val[i].grade + '*' + mainVue.issuesBothData[i].weight + '/ 100' + '=' + Number(val[i].grade * mainVue.issuesBothData[i].weight / 100))
+                    totalPoints = Number(totalPoints) + Number(val[i].grade * mainVue.issuesBothData[i].weight / 100);
                 }
                 return totalPoints.toFixed(2);
             }
         },
         methods: {
-            openModal: function (index) {
+            openBothModal: function (index) {
                 this.modalIndex = index;
                 this.writeIndex = 1;
-                this.modalData = JSON.parse(JSON.stringify(this.issuesData[index]));
+                this.modalData = JSON.parse(JSON.stringify(this.issuesBothData[index]));
                 this.showModal = true;
             },
 
-            closeModal: function () {
+            closeBothModal: function () {
                 this.showModal = false;
                 this.modalData = {
                     number: 0,
@@ -273,7 +273,7 @@
                 }
             },
 
-            showPossible: function () {
+            showBothPossible: function () {
                 this.showPossibleModal = true;
 
                 function doCombination(arr) {
@@ -308,120 +308,103 @@
                 }
 
                 var b = []
-                for (var i = 0; i < this.issuesData.length; i++) {
+                for (var i = 0; i < this.issuesBothData.length; i++) {
                     b[i] = [];
-                    for (var j = 0; j < this.issuesData[i].content.length; j++) {
-                        b[i][j] = this.issuesData[i].content[j];
+                    for (var j = 0; j < this.issuesBothData[i].content.length; j++) {
+                        b[i][j] = this.issuesBothData[i].content[j];
                     }
                 }
                 this.issuesPossibleData = doCombination(b);
             },
 
-            addIssuesModal: function () {
+            addIssuesBothModal: function () {
                 mainVue.isAdd = true;
-                this.issuesData.push(this.modalData);
-                this.issuesData[this.issuesData.length - 1].number = this.issuesData.length;
+                this.issuesBothData.push(this.modalData);
+                this.issuesBothData[this.issuesBothData.length - 1].number = this.issuesBothData.length;
                 this.averageWeight();
-                this.qdData.issues = JSON.parse(JSON.stringify(this.issuesData));
-                mainVue.updatedIssues();
+                this.qdData.issuesBoth = JSON.parse(JSON.stringify(this.issuesBothData));
+                mainVue.updatedIssuesBoth();
             },
 
             averageWeight: function () {
-                var averageWeight = parseInt(100 / this.issuesData.length);
-                for (var i = 0; i < this.issuesData.length; i++) {
-                    this.issuesData[i].weight = averageWeight
+                var averageWeight = parseInt(100 / this.issuesBothData.length);
+                for (var i = 0; i < this.issuesBothData.length; i++) {
+                    this.issuesBothData[i].weight = averageWeight
                 }
-                if(averageWeight * this.issuesData.length != 100){
-                    this.issuesData[0].weight = 100 - averageWeight * (this.issuesData.length - 1);
+                if(averageWeight * this.issuesBothData.length != 100){
+                    this.issuesBothData[0].weight = 100 - averageWeight * (this.issuesBothData.length - 1);
                 }
             },
 
             assignWeight: function (val) {
-                var assignWeight = parseInt(this.issuesData[val].weight / (this.issuesData.length - 1));
-                this.issuesData.splice(val, 1);
-                for (var i = 0; i < this.issuesData.length; i++) {
-                    this.issuesData[i].weight = Number(this.issuesData[i].weight) + Number(assignWeight)
+                var assignWeight = parseInt(this.issuesBothData[val].weight / (this.issuesBothData.length - 1));
+                this.issuesBothData.splice(val, 1);
+                for (var i = 0; i < this.issuesBothData.length; i++) {
+                    this.issuesBothData[i].weight = Number(this.issuesBothData[i].weight) + Number(assignWeight)
                 }
             },
 
             /*
-            * delIssues() 删除议题
+            * delIssuesBoth() 删除议题
             * index: 删除议题的索引
             * */
-            delIssues: function (index) {
-                if(this.qdData.issues.length > 1){
-                    var res = confirm("确定删除此议题？");
-                    if (res) {
-                        this.assignWeight(index);
-                        this.qdData.issues = JSON.parse(JSON.stringify(this.issuesData));
-                        mainVue.updatedIssues(2);
-                    } else {
-
-                    }
+            delIssuesBoth: function (index) {
+                var res = confirm("确定删除此议题？");
+                if (res) {
+                    this.assignWeight(index);
+                    this.qdData.issuesBoth = JSON.parse(JSON.stringify(this.issuesBothData));
+                    mainVue.updatedIssuesBoth(2);
                 } else {
-                    this.issuesData[0] = {
-                        number: 0,
-                        name: '',
-                        weight: 100,
-                        content: [{
-                            content: '',
-                            grade: '',
-                        }, {
-                            content: '',
-                            grade: '',
-                        }]
-                    }
-                    this.qdData.issues = JSON.parse(JSON.stringify(this.issuesData));
-                    mainVue.updatedIssues(2);
+
                 }
             },
 
-            btnPriority: function (val, index) {
+            btnPriorityBoth: function (val, index) {
                 var t1 = 0;
                 var t2 = 0;
                 if (val === 1) {
-                    t1 = Number(this.issuesData[index].weight);
-                    t2 = Number(this.issuesData[index - 1].weight);
-                    this.issuesData[index] = JSON.parse(JSON.stringify(this.qdData.issues[index - 1]));
-                    this.issuesData[index].number = index + 1;
-                    this.issuesData[index].weight = t1;
-                    this.issuesData[index - 1] = JSON.parse(JSON.stringify(this.qdData.issues[index]));
-                    this.issuesData[index - 1].number = index;
-                    this.issuesData[index - 1].weight = t2;
-                    this.qdData.issues = JSON.parse(JSON.stringify(this.issuesData));
-                    mainVue.updatedIssues();
+                    t1 = Number(this.issuesBothData[index].weight);
+                    t2 = Number(this.issuesBothData[index - 1].weight);
+                    this.issuesBothData[index] = JSON.parse(JSON.stringify(this.qdData.issuesBoth[index - 1]));
+                    this.issuesBothData[index].number = index + 1;
+                    this.issuesBothData[index].weight = t1;
+                    this.issuesBothData[index - 1] = JSON.parse(JSON.stringify(this.qdData.issuesBoth[index]));
+                    this.issuesBothData[index - 1].number = index;
+                    this.issuesBothData[index - 1].weight = t2;
+                    this.qdData.issuesBoth = JSON.parse(JSON.stringify(this.issuesBothData));
+                    mainVue.updatedIssuesBoth();
                 } else if (val === 2) {
-                    t1 = Number(this.issuesData[index].weight);
-                    t2 = Number(this.issuesData[index + 1].weight);
-                    this.issuesData[index] = JSON.parse(JSON.stringify(this.qdData.issues[index + 1]));
-                    this.issuesData[index].number = index + 1;
-                    this.issuesData[index].weight = t1;
-                    this.issuesData[index + 1] = JSON.parse(JSON.stringify(this.qdData.issues[index]));
-                    this.issuesData[index + 1].number = index + 2;
-                    this.issuesData[index + 1].weight = t2;
-                    this.qdData.issues = JSON.parse(JSON.stringify(this.issuesData));
-                    mainVue.updatedIssues();
+                    t1 = Number(this.issuesBothData[index].weight);
+                    t2 = Number(this.issuesBothData[index + 1].weight);
+                    this.issuesBothData[index] = JSON.parse(JSON.stringify(this.qdData.issuesBoth[index + 1]));
+                    this.issuesBothData[index].number = index + 1;
+                    this.issuesBothData[index].weight = t1;
+                    this.issuesBothData[index + 1] = JSON.parse(JSON.stringify(this.qdData.issuesBoth[index]));
+                    this.issuesBothData[index + 1].number = index + 2;
+                    this.issuesBothData[index + 1].weight = t2;
+                    this.qdData.issuesBoth = JSON.parse(JSON.stringify(this.issuesBothData));
+                    mainVue.updatedIssuesBoth();
                 }
 
             },
 
-            reAlter: function (index) {
-                if (this.issuesData[index].name === '') {
+            reAlterBoth: function (index) {
+                if (this.issuesBothData[index].name === '') {
                     alert('请输入议题名称');
-                } else if (this.issuesData[index].weight === '') {
+                } else if (this.issuesBothData[index].weight === '') {
                     alert('请输入此议题权重');
-                    this.issuesData[index].weight = 0
+                    this.issuesBothData[index].weight = 0
                 } else {
                     if (this.allWeight > 100) {
                         alert('总权重大于100，请重新分配！！！');
-                        this.issuesData[index].weight = 0
+                        this.issuesBothData[index].weight = 0
                     } else {
                         var repetition = false;
-                        for (var i in this.issuesData) {
+                        for (var i in this.issuesBothData) {
                             if (index == i) {
 
                             } else {
-                                if (this.issuesData[index].name === this.issuesData[i].name) {
+                                if (this.issuesBothData[index].name === this.issuesBothData[i].name) {
                                     repetition = true;
                                     break;
                                 }
@@ -431,42 +414,42 @@
                         if (repetition) {
                             alert('议题名称重复');
                             if (this.isAdd) {
-                                this.issuesData[index].name = ''
+                                this.issuesBothData[index].name = ''
                             } else {
-                                this.issuesData[index].name = String(this.qdData.issues[index].name);
+                                this.issuesBothData[index].name = String(this.qdData.issuesBoth[index].name);
                             }
                         } else {
                             function sortId(a, b) {
                                 return Number(a.weight) < Number(b.weight);
                             }
 
-                            this.issuesData.sort(sortId);
-                            this.qdData.issues = JSON.parse(JSON.stringify(this.issuesData));
-                            mainVue.updatedIssues();
+                            this.issuesBothData.sort(sortId);
+                            this.qdData.issuesBoth = JSON.parse(JSON.stringify(this.issuesBothData));
+                            mainVue.updatedIssuesBoth();
                         }
                     }
                 }
             },
 
-            changeIssuesContent: function (index) {
+            changeIssuesBothContent: function (index) {
                 this.writeIndex = index + 1;
                 if (index === 4) {
                     console.log(this.modalData.content[1].grade >= this.modalData.content[0].grade)
                     if (Number(this.modalData.content[1].grade) >= Number(this.modalData.content[0].grade)) {
                         alert("底线评分不能超过渴望评分！")
                     } else {
-                        this.issuesData[mainVue.modalIndex].content = JSON.parse(JSON.stringify(this.modalData.content));
-                        this.qdData.issues = JSON.parse(JSON.stringify(this.issuesData));
-                        mainVue.updatedIssues();
+                        this.issuesBothData[mainVue.modalIndex].content = JSON.parse(JSON.stringify(this.modalData.content));
+                        this.qdData.issuesBoth = JSON.parse(JSON.stringify(this.issuesBothData));
+                        mainVue.updatedIssuesBoth();
                     }
                 } else {
-                    this.issuesData[mainVue.modalIndex].content = JSON.parse(JSON.stringify(this.modalData.content));
-                    this.qdData.issues = JSON.parse(JSON.stringify(this.issuesData));
-                    mainVue.updatedIssues();
+                    this.issuesBothData[mainVue.modalIndex].content = JSON.parse(JSON.stringify(this.modalData.content));
+                    this.qdData.issuesBoth = JSON.parse(JSON.stringify(this.issuesBothData));
+                    mainVue.updatedIssuesBoth();
                 }
             },
 
-            updatedIssues: function (val) {
+            updatedIssuesBoth: function (val) {
                 var jsonStr = {
                     userId: '',
                     docId: '',
@@ -480,19 +463,19 @@
                         if (val === 2) {
                             alert('删除成功')
                         }
-                        if (mainVue.issuesData.length > 0) {
-                            mainVue.isAdd = mainVue.issuesData[mainVue.issuesData.length - 1].name === '';
-                        } else if (mainVue.issuesData.length >= 0) {
+                        if (mainVue.issuesBothData.length > 0) {
+                            mainVue.isAdd = mainVue.issuesBothData[mainVue.issuesBothData.length - 1].name === '';
+                        } else if (mainVue.issuesBothData.length >= 0) {
                             mainVue.isFull = true;
                         } else {
                             mainVue.isAdd = false;
                         }
-                        mainVue.issuesData = JSON.parse(JSON.stringify(mainVue.qdData.issues));
+                        mainVue.issuesBothData = JSON.parse(JSON.stringify(mainVue.qdData.issuesBoth));
 
                         var isWriteFull = true;
-                        for (var i = 0; i < mainVue.issuesData.length; i++) {
-                            for (var j = 0; j < mainVue.issuesData[i].content.length; j++) {
-                                if(mainVue.issuesData[i].content[j].content==='' || mainVue.issuesData[i].content[j].grade===''){
+                        for (var i = 0; i < mainVue.issuesBothData.length; i++) {
+                            for (var j = 0; j < mainVue.issuesBothData[i].content.length; j++) {
+                                if(mainVue.issuesBothData[i].content[j].content==='' || mainVue.issuesBothData[i].content[j].grade===''){
                                     isWriteFull = false;
                                     break;
                                 }
@@ -540,7 +523,7 @@
                 jsonStr.userId = this.userId;
                 jsonStr.docId = this.qdId;
                 if (jsonStr.docId === 'qdCogiactio1') {
-                    this.issuesData = [
+                    this.issuesBothData = [
                         {
                             number: 0,
                             name: '价格',
@@ -586,7 +569,7 @@
                         }]
                     }
                 } else if (jsonStr.docId === 'qdCogiactio2') {
-                    this.issuesData = [];
+                    this.issuesBothData = [];
                     this.qdData = {
                         both1: '豪利威尔', //己方
                         both2: 'WCHI电视台', //对方
@@ -606,17 +589,17 @@
                         var datas = res.data.data[0];
                         console.log(datas);
                         mainVue.qdData = JSON.parse(JSON.stringify(datas));
-                        mainVue.issuesData = JSON.parse(JSON.stringify(datas.issues));
-                        if (mainVue.issuesData[mainVue.issuesData.length - 1].name === '') {
+                        mainVue.issuesBothData = JSON.parse(JSON.stringify(datas.issuesBoth));
+                        if (mainVue.issuesBothData[mainVue.issuesBothData.length - 1].name === '') {
                             mainVue.isAdd = true;
                         }
-                        if (mainVue.issuesData.length >= 3){
+                        if (mainVue.issuesBothData.length >= 3){
                             mainVue.isFull = true;
                         }
                         var isWriteFull = true;
-                        for (var i = 0; i < mainVue.issuesData.length; i++) {
-                            for (var j = 0; j < mainVue.issuesData[i].content.length; j++) {
-                                if(mainVue.issuesData[i].content[j].content==='' || mainVue.issuesData[i].content[j].grade===''){
+                        for (var i = 0; i < mainVue.issuesBothData.length; i++) {
+                            for (var j = 0; j < mainVue.issuesBothData[i].content.length; j++) {
+                                if(mainVue.issuesBothData[i].content[j].content==='' || mainVue.issuesBothData[i].content[j].grade===''){
                                     isWriteFull = false;
                                     break;
                                 }

@@ -622,7 +622,7 @@ body {
   height: 5px;
   top: 3px;
   left: 2px;
-  opacity: 1.0;
+  opacity: 1;
 }
 .cp-btn-box .cp-btn {
   -webkit-transition: background-color 0.6s;

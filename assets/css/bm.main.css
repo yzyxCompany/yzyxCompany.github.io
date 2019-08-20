@@ -167,7 +167,7 @@ header .logo-box img {
   border-color: #e47f52;
 }
 .bm-content .bm-container .bm-tag-box.active .bm-tag i {
-  opacity: 1.0;
+  opacity: 1;
 }
 .bm-content .bm-container .bm-tag-box:nth-child(4) {
   margin-bottom: 10px;
@@ -778,7 +778,7 @@ header .logo-box img {
   height: 5px;
   top: 3px;
   left: 2px;
-  opacity: 1.0;
+  opacity: 1;
 }
 .bm-btn-box .bm-btn {
   text-decoration: none;

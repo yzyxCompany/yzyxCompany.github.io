@@ -78,10 +78,11 @@ html, body {
       .boxSize2(100%, 35px);
       .BC(@white-1);
       z-index: 1000;
+      position: relative;
       .qd-close-new-btn {
         position: absolute;
         display: block;
-        left: 0px;
+        left: 0;
         top: 0;
         .boxSize1(35px);
         .BS('../img/qd/icon/fanhui.svg', 18px 18px);
@@ -95,9 +96,35 @@ html, body {
         .boxSizeW(100%);
         color: @color_1;
       }
+      .qd-background-page-progress-box{
+        position: absolute;
+        right: 10px;
+        top: 0;
+        .boxSize2(36px,35px);
+        .qd-background-page-progress-text{
+          .boxSize2(36px,18px);
+          text-align: center;
+          margin: 2px 0 0;
+          color: @gray-5;
+        }
+        .qd-background-page-progress-bar{
+          .boxSize2(36px,5px);
+          .border(1px,@light-gray-1);
+          margin: 0;
+          position: relative;
+          span{
+            position: absolute;
+            left: 0;
+            top: 0;
+            .boxSize2(4px,5px);
+            .BC(@color_1);
+          }
+        }
+      }
     }
   }
   .qd-section {
+    .boxSize1(100%);
     .qd-login-box {
       position: absolute;
       .boxSize1(100%);
@@ -166,7 +193,7 @@ html, body {
     .qd-home-box {
       .boxSize1(100%);
       background: @white-2 url("../img/qd/qd-login-bg-1.png") no-repeat center top;
-      background-size: 100% 33%;
+      background-size: 100% 200px;
       .qd-home-box__top {
         .qd-logo__1 {
           text-align: center;
@@ -220,9 +247,9 @@ html, body {
               .qd-home-catalog__title {
                 color: @black-4;
                 margin: 0;
-                .font2(18px, normal);
+                .font2(18px, bold);
                 float: left;
-                font-family: '幼圆', 'PingFang SC', 'Microsoft YaHei UI', sans-serif !important;
+                font-family: '幼圆','yuanti SC','PingFang SC', 'Microsoft YaHei UI', sans-serif !important;
               }
               .qd-home-catalog__date {
                 float: right;
@@ -287,6 +314,24 @@ html, body {
                 }
               }
             }
+            .qd-home-catalog-delete-btn{
+              position: absolute;
+              bottom: 20px;
+              right: 25px;
+              .qd-btn-box{
+                padding: 0;
+                .qd-btn{
+                  .boxSize1(22px);
+                  .font2(12px,normal);
+                  color: @color_1;
+                  margin-left: 10px;
+                  .BS('../img/qd/icon/del.svg', 22px 22px);
+                  &:first-child{
+                    .BS('../img/qd/icon/update.svg', 22px 22px);
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -308,13 +353,6 @@ html, body {
                 }
               }
             }
-            /*.qd-nav-previous-box,
-            .qd-nav-next-box{
-
-            }
-            .qd-nav-btn-box{
-
-            }*/
           }
         }
       }
@@ -498,7 +536,7 @@ html, body {
         margin: 0;
         text-align: center;
         color: @white-1;
-        font-family: '幼圆', '圆体', 'PingFang SC', 'Microsoft YaHei UI', sans-serif !important;
+        font-family: '幼圆', 'yuanti SC', 'PingFang SC', 'Microsoft YaHei UI', sans-serif !important;
       }
     }
     .qd-background-list-header {
@@ -563,8 +601,6 @@ html, body {
           display: inline-block;
           .boxSize1(20px);
           margin-top: 11px;
-          /*position: absolute;
-          top: 9px;*/
           &.qd-module-small-btn-1{
             .BS('../img/icon/alter_blue.svg', 12px 12px);
           }
@@ -590,88 +626,15 @@ html, body {
           }
         }
       }
-
-      /*.qd-home-catalog {
-        position: relative;
-        .BC(@white-1);
-        margin-top: 0;
-        border-top: 0;
-        .qd-add-btn-box {
-          color: @black-4;
-          text-align: center;
-          margin: 0;
-          .transition(height .5s ease);
-          height: 43px;
-          &.qd-add-btn-box-active {
-            height: 165px;
-          }
-          .qd-add-btn{
-            font-size: 24px;
-            line-height: 43px;
-            display: block;
-          }
-          .qd-add-btn-title-box {
-            font-size: 16px;
-            display: block;
-            line-height: 43px;
-          }
-          .qd-index-box__content {
-            .qd-input-box__1 {
-              border: 1px solid @light-gray-4;
-              display: inline-block;
-              &:nth-child(1){
-                width: 69%;
-              }
-              &:nth-child(2){
-                width: 29%;
-              }
-              span {
-                font-size: 12px;
-                height: 30px;
-                line-height: 30px;
-                display: block;
-                border-bottom: 1px solid @light-gray-4;
-              }
-              .qd-input {
-                height: 30px;
-                line-height: 30px;
-                width: 100%;
-                text-align: center;
-                padding: 0;
-              }
-            }
-            .qd-add-btn-box {
-              line-height: 30px;
-              height: 30px;
-              .qd-btn-box {
-                line-height: 30px;
-                height: 30px;
-                display: inline-block;
-                padding: 0;
-                .qd-btn-box-2 {
-                  .boxSize2(80px,30px);
-                  .font1(12px,30px)
-                }
-              }
-            }
-          }
-        }
-      }*/
     }
     .qd-issues-list-foot {
       .qd-btn-box-style-2;
     }
     .qd-background-list-content {
       padding: 0 20px;
-      margin-top: -90px;
       .qd-background-list-box {
-        .BC(@white-1);
-        .boxSize2(100%, 320px);
-        .borderRadius(6px);
-        .boxShadow(2px 2px 5px @gray-1);
-        .border(1px, @white-3);
         .qd-background-list-box-title {
-          padding: 15px 20px;
+          padding: 15px 5px;
           border-bottom: 1px solid @light-gray-3;
           p {
             .font1(16px, 40px);
@@ -679,13 +642,12 @@ html, body {
           }
         }
         .qd-background-list-box-content {
-          padding: 20px;
+          padding: 20px 5px;
           p {
             margin: 0 0 10px;
             .font1(12px, 40px);
             text-align: center;
-            .BC(@white-5);
-            .boxShadow(2px 2px 5px @gray-1);
+            .BC(@white-3);
             .borderRadius(4px);
             &.active {
               .BC(@color_1);
@@ -761,17 +723,21 @@ html, body {
       .qd-btn-box {
         .clear;
         text-align: center;
-        .qd-btn:nth-child(1) {
-          width: 24%;
-          float: left;
-        }
-        .qd-btn:nth-child(2) {
-          width: 50%;
-          font-size: 16px;
-        }
-        .qd-btn:nth-child(3) {
-          width: 24%;
-          float: right;
+        .qd-btn{
+          .BC(@white-3);
+          color:@black-4;
+          width: 40%;
+          &:nth-child(1) {
+            float: left;
+          }
+          &:nth-child(2) {
+            width: 40%;
+            float: right;
+          }
+          &:nth-child(3) {
+            width: 40%;
+            float: right;
+          }
         }
       }
     }
@@ -814,6 +780,7 @@ html, body {
     }
   }
   .qd-modal-box {
+    z-index: 1001;
     .qd-modal-content {
       .qd-new-issues-box {
         padding: 0 20px;
@@ -866,6 +833,16 @@ html, body {
           .qd-new-issues-details-box {
             .qd-new-issues-details {
               margin: 0 0 10px;
+              .qd-new-issues-details-btn-box{
+                line-height: 30px;
+                .qd-new-issues-details-btn{
+                  display: inline-block;
+                  .BC(@light-gray-1);
+                  padding: 0 15px;
+                  .borderRadius(4px);
+                  margin-left: 5px;
+                }
+              }
             }
             .qd-new-issues-details-input{
               border: 0;
@@ -873,14 +850,98 @@ html, body {
               line-height:21px;
               outline: none;
               padding: 14px 8px 0;
-              width: 150px;
+              width: calc(100% - 175px);
+              .borderRadius(0);
+              &::-webkit-input-placeholder {
+                .font1(12px, 25px);
+                color: @light-gray-2;
+              }
+              &::-moz-placeholder { /* Mozilla Firefox 19+ */
+                .font1(12px, 25px);
+                color: @light-gray-2;
+              }
+              &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                .font1(12px, 25px);
+                color: @light-gray-2;
+              }
+              &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+                .font1(12px, 25px);
+                color: @light-gray-2;
+              }
             }
             .qd-new-issues-details-grade{
               display: inline-block;
-              width: calc(100% - 155px);
               .qd-new-issues-details-input{
                 width: 35px;
               }
+            }
+          }
+        }
+      }
+      .qd-module-issuesPossibleData-box{
+        padding: 0 20px 50px;
+        h3{
+          margin: 0;
+          .font1(18px,60px);
+        }
+        .qd-module-issuesPossibleData-content{
+          border: 1px solid @light-gray-4;
+          border-top: 0;
+          height: auto;
+          &:nth-child(2){
+            border-top: 1px solid @light-gray-4;
+          }
+          .qd-module-issuesPossibleData-content-1{
+            float: left;
+            .font1(12px,30px);
+            text-align: center;
+            &:nth-child(1){
+              width:20%;
+              height: 100%;
+            }
+            &:nth-child(2){
+              width:60%;
+              border-left: 1px solid @light-gray-4;
+              border-right: 1px solid @light-gray-4;
+            }
+            &:nth-child(3){
+              width:20%;
+              height: 100%;
+            }
+            .qd-module-issuesPossibleData-content-child{
+              width: 50%;
+              float: left;
+              &:nth-child(1){
+                width:60%;
+                border-right: 1px solid @light-gray-4;
+              }
+              &:nth-child(2){
+                width:40%;
+              }
+              .qd-module-issuesPossibleData-content-child-content{
+                border-bottom: 1px solid @light-gray-4;
+                &:last-child{
+                  border-bottom: 0;
+                }
+              }
+            }
+          }
+        }
+      }
+      .qd-index-box__content{
+        display: table;
+        .boxSize1(100%);
+        padding: 0 20px;
+        .issues-page-btn-box{
+          margin-top: -100px;
+          .qd-module-btn-box{
+            padding: 13px 0;
+            .qd-module-btn {
+              border-radius: 5px;
+              .font1(18px, 53px);
+              display: block;
+              .border(1px, #B5D1E4);
+              text-align: center;
             }
           }
         }
