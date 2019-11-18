@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>亦知亦行 知行谈判助手</title>
+    <link rel="stylesheet" href="../../assets/node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="../../assets/node_modules/animate.css/animate.css">
+    <link rel="stylesheet" href="../../assets/css/qdv1.0.main.css">
+    <link rel="ICON" href="../../assets/img/main/icon.png">
+    <style>
+        .qd-close-new-btn {
+            background-size: 15px 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="qd-content" id="qd_issues_page" v-cloak>
+    <div class="qd-header-box">
+        <div class="qd-page-title-box">
+            <a v-bind:href="'issues.html?qdId='+qdId+'&both='+issuesOJ" class="qd-close-new-btn"></a>
+            <h3 class="qd-page-title">{{qdData.title}}</h3>
+        </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="qd-section" style="margin-top: 3px">
+        <div class="qd-module-issuesPossibleData-box">
+            <h3>
+                <p class="qd-module-issuesPossibleData-box-title-btn">
+                    <span  v-bind:class="{active:isShowVisual===1}" @click="isShowVisual=1">权重饼图</span>
+                    |
+                    <span v-bind:class="{active:isShowVisual===2}" @click="isShowVisual=2">所有可能</span>
+                </p>
+            </h3>
+            <div class="qd-module-issuesPossibleData-visual-box" v-show="isShowVisual===1">
+                <div class="qd-echarts-pie-box">
+                    <div id="qd_echarts_pie_bar1" style="height:330px;"></div>
+                </div>
+            </div>
+            <div class="qd-module-issuesPossibleData-content-box" v-show="isShowVisual===2">
+                <div class="qd-module-issuesPossibleData-content clear" v-for="(data,index) in issuesPossibleData" v-bind:class="{'active':openNum === index + 1}">
+                    <div class="qd-module-issuesPossibleData-content-title">
+                        <p>分析方案{{index+1}}</p>
+                        <p>评分：{{data | totalPoints}}</p>
+                        <span @click="openShowPossibleDetail(index)"></span>
+                    </div>
+                    <div class="qd-module-issuesPossibleData-content-details">
+                        <div class="qd-module-issuesPossibleData-content-details-content" v-for="(data2,index) in data">
+                            {{issuesData[index].name}}:&nbsp;&nbsp;{{data2.content}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/echarts/4.0.4/echarts.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript">
+    'user strict';
+    var mainVue = new Vue({
+        el: '#qd_issues_page',
+        data: {
+            userId:'',
+            qdId:'',
+            issuesData: [],
+            issuesBothData: [],
+            qdData: [],
+            issuesPossibleData: [],
+            isShowVisual:1,
+            issuesOJ: 0,
+            openNum: 0,
+            pageSource:'',
+        },
+        methods: {
+            openShowPossibleDetail:function(index){
+                if(this.openNum - 1 === index){
+                    this.openNum = 0;
+                }else{
+                    this.openNum = index + 1;
+                }
+            }
+        },
+        filters: {
+            totalPoints: function (val) {
+                var totalPoints = 0
+                for (var i = 0; i < val.length; i++) {
+                    totalPoints = Number(totalPoints) + Number(val[i].grade * mainVue.issuesData[i].weight / 100);
+                }
+                return totalPoints.toFixed(2);
+            }
+        },
+
+        mounted: function () {
+            var userId = localStorage.getItem('userId');
+            this.userId = userId;
+            if (userId === null) {
+                window.location.href = '../home.html'
+            }
+            function GetRequest() {
+                var url = decodeURI(location.search);
+                var theRequest = new Object();
+                if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for (var i = 0; i < strs.length; i++) {
+                        theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                    }
+                }
+                return theRequest;
+            }
+            var urlData = GetRequest();
+
+            if (urlData.qdId === undefined) {
+                window.location.href = '../home.html'
+            } else {
+                this.qdId = urlData.qdId;
+                if(Number(urlData.both) !== 1 && Number(urlData.both) !== 2){
+                    this.issuesOJ = 1
+                }else{
+                    this.issuesOJ = urlData.both;
+                }
+
+                var jsonStr = {
+                    userId: '',
+                    docId: ''
+                };
+                jsonStr.userId = this.userId;
+                jsonStr.docId = this.qdId;
+              if (jsonStr.docId === 'qdCogiactio1'||jsonStr.docId === 'qdCogiactio2') {
+              } else {
+                    axios.post("http://www.cogitoactio.com/api/v1/negotiation/getNegotiationById", jsonStr).then(function (res) {
+                        var datas = res.data.data[0];
+                        mainVue.qdData = JSON.parse(JSON.stringify(datas));
+                        if(Number(mainVue.issuesOJ) === 1){
+                            mainVue.issuesData = JSON.parse(JSON.stringify(datas.issues));
+                        }else if(Number(mainVue.issuesOJ) === 2){
+                            mainVue.issuesData = JSON.parse(JSON.stringify(datas.issuesBoth));
+                        }
+
+                        var b = []
+                        var pieListName=[];
+                        var pieListData=[];
+                        function doCombination(arr) {
+                            var count = arr.length - 1; //数组长度(从0开始)
+                            var tmp = [];
+                            var totalArr = [];// 总数组
+
+                            return doCombinationCallback(arr, 0);//从第一个开始
+                            //js 没有静态数据，为了避免和外部数据混淆，需要使用闭包的形式
+                            function doCombinationCallback(arr, curr_index) {
+                                for (val of arr[curr_index]) {
+                                    tmp[curr_index] = val;//以curr_index为索引，加入数组
+                                    //当前循环下标小于数组总长度，则需要继续调用方法
+                                    if (curr_index < count) {
+                                        doCombinationCallback(arr, curr_index + 1);//继续调用
+                                    } else {
+                                        totalArr.push(tmp);//(直接给push进去，push进去的不是值，而是值的地址)
+                                    }
+
+                                    //js  对象都是 地址引用(引用关系)，每次都需要重新初始化，否则 totalArr的数据都会是最后一次的 tmp 数据；
+                                    oldTmp = tmp;
+                                    tmp = [];
+                                    for (index of oldTmp) {
+                                        tmp.push(index);
+                                    }
+                                }
+                                return totalArr;
+                            }
+                        }
+                        for (var i = 0; i < mainVue.issuesData.length; i++) {
+                            b[i] = [];
+                            pieListName[i] = mainVue.issuesData[i].name;
+                            pieListData.push({name: mainVue.issuesData[i].name,value : Number(mainVue.issuesData[i].weight)});
+                            for (var j = 0; j < mainVue.issuesData[i].content.length; j++) {
+                                b[i][j] = mainVue.issuesData[i].content[j];
+                            }
+                        }
+                        /*
+                        * js全排序
+                        * */
+                        mainVue.issuesPossibleData = doCombination(b);
+
+                        console.log(mainVue.issuesPossibleData);
+                        var qd_myChart1 = echarts.init(document.getElementById('qd_echarts_pie_bar1'),
+                            null, {renderer: 'svg'});
+                        qd_myChart1.setOption({
+                            tooltip: {
+                                show: function(value){
+                                    if(value == 0.00) return false;
+                                }(),
+                                formatter: "{a}<br>{b} : {c} ({d}%)"
+                            },
+                            legend: {
+                                x: 'center',
+                                y: 'bottom',
+                                itemGap: 15,
+                                itemWidth: 15,
+                                itemHeight: 15,
+                                textStyle: {
+                                    color: '#797979',
+                                    fontSize: 14,
+                                    fontFamily: ['幼圆', 'PingFang SC Thin', 'Microsoft YaHei UI', 'sans-serif']
+                                },
+                                data: pieListName
+                            },
+                            color: ['#44b8e7', '#eb624f','#ffbd3d','#FCD0CD','#93D1F3','#fff443'],
+                            calculable: true,
+                            series: [
+                                {
+                                    name: '维度分析',
+                                    type: 'pie',
+                                    radius : '65%',
+                                    center: ['50%', '50%'],
+                                    data: pieListData
+                                }]
+                        });
+                    }).catch(function (error) {
+                        console.log(error);
+                    })
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

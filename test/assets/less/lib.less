@@ -1,0 +1,213 @@
+@transparent: transparent;
+@white-1: #FFFFFF;
+@white-2: #F8F8F8;
+@white-3: #F1F1F1;
+@white-4: #FcFcFc;
+@white-5: #F5F5F5;
+@light-gray-0: #EEEEEE;
+@light-gray-1: #E8E8E8;
+@light-gray-2: #D8D8D8;
+@light-gray-3: #cacdd5;
+@light-gray-4: #d0d0d0;
+@gray-1: #B8B8B8;
+@gray-2: #A8A8A8;
+@gray-3: #979da7;
+@gray-4: #888888;
+@gray-5: #797979;
+@black-1: #64676c;
+@black-2: #585858;
+@black-3: #4c5564;
+@black-4: #2a364c;
+@black-5: #191919;
+@red-1: #EB5548;
+@red-2: #ED5548;
+@red-3: #FCD0CD;
+@red-4: #edcdc5;
+@red-5: #ffa69e;
+@red-6: #FFE8E8;
+@red-7: #eb624f;
+@blue-1: #27364E;
+@blue-2: #447BAD;
+@blue-3: #54C3F1;
+@blue-4: #059dda;
+@blue-5: #e6e9f3;
+@blue-6: #01A1FF;
+@blue-7: #93D1F3;
+@blue-8: #d7f8ff;
+@blue-9: #457cad;
+@blue-10: #44b8e7;
+@orange-1: #e47f52;
+@orange-2: #FA845A;
+@orange-3: #FFCC99;
+@orange-4: #FFAA66;
+@orange-5: #fbe4c6;
+@orange-6: #ffbd3d;
+@yellow-1: #fff443;
+@yellow-2: #ffe134;
+@yellow-3: #ffc03b;
+@yellow-4: #FFBD3D;
+@yellow-5: #f5b35d;
+
+.boxSize1(@style){
+  width: @style;
+  height: @style;
+}
+.boxSize2(@width, @height){
+  width: @width;
+  height: @height;
+}
+.boxSizeW(@style){
+  width: @style;
+  height: auto;
+}
+.boxSizeH(@style){
+  width: auto;
+  height: @style;
+}
+
+.boxSize(@style){
+  -webkit-box-sizing: @style !important;
+  -moz-box-sizing: @style !important;
+  box-sizing: @style !important;
+}
+
+.boxShadow(@style){
+  -webkit-box-shadow: @style !important;
+  -moz-box-shadow: @style !important;
+  box-shadow: @style !important;
+}
+
+.borderRadius(@style){
+  -webkit-border-radius: @style !important;
+  -moz-border-radius: @style !important;
+  border-radius: @style !important;
+}
+
+.border(@size, @color){
+  border: @size solid @color;
+}
+
+.font1(@size, @height){
+  font-size: @size;
+  line-height: @height;
+}
+
+.font2(@size, @weight){
+  font-size: @size;
+  line-height: 1.5*@size;
+  font-weight: @weight;
+}
+
+.font3(@size, @height, @weight){
+  font-size: @size;
+  line-height:  @height;
+  font-weight: @weight;
+}
+
+.BS(@url, @size){
+  background: url(@url) no-repeat center;
+  background-size: @size;
+}
+.BC(@color){
+  background-color: @color;
+}
+
+.textOverflow(){
+  overflow: hidden;
+  white-space: nowrap;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.transform(@style){
+  -webkit-transform: @style;
+  -moz-transform: @style;
+  -ms-transform: @style;
+  -o-transform: @style;
+  transform: @style;
+}
+
+.transition(@style){
+  -webkit-transition: @style;
+  -moz-transition: @style;
+  -ms-transition: @style;
+  -o-transition: @style;
+  transition: @style;
+}
+
+.lineClamp(@num){
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp:@num;
+  -webkit-box-orient: vertical;
+}
+
+a{
+  cursor: pointer;
+}
+
+.btn-primary{
+  background-color: @blue-2;
+}
+.btn-info{
+  background-color: @blue-3;
+}
+.btn-danger{
+  background-color: @red-1;
+}
+
+.MP-0{
+  margin: 0;
+  padding: 0;
+}
+
+.picture-section{
+  background-color: transparent;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.clear{
+  &:after,&:before{
+    display: table;
+    content: " ";
+  }
+  &:after{
+    clear: both;
+  }
+}
+
+.BLG-R(@color1, @color2){
+  background: @color1; /* Old browsers */
+  background: -moz-linear-gradient(45deg, @color1 20%,@color2 21%,@color2 40%,@color1 41%,
+  @color1 60%,@color2 61%,@color2 80%,@color1 81%); /* FF3.6+ */
+  background: -webkit-linear-gradient(45deg, @color1 20%,@color2 21%,@color2 40%, @color1 41%,
+  @color1 60%,@color2 61%,@color2 80%,@color1 81%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(45deg, @color1 20%,@color2 21%,@color2 40%,@color1 41%,
+  @color1 60%,@color2 61%,@color2 80%,@color1 81%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(45deg, @color1 20%,@color2 21%,@color2 40%,@color1 41%,
+   @color1 60%,@color2 61%,@color2 80%,@color1 81%); /* IE10+ */
+  background: linear-gradient(45deg, @color1 20%,@color2 21%,@color2 40%,@color1 41%,
+   @color1 60%,@color2 61%,@color2 80%,@color1 81%); /* W3C */
+  //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2989d8', endColorstr='#2989d8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.BLG-2(@style,@color1, @color2){
+  background: @color1; /* Old browsers */
+  background: -moz-linear-gradient(@style, @color1 0%,@color2 100%); /* FF3.6+ */
+  background: -webkit-linear-gradient(@style, @color1 0%,@color2 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(@style, @color1 0%,@color2 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(@style, @color1 0%,@color2 100%); /* IE10+ */
+  background: linear-gradient(@style, @color1 0%,@color2 100%); /* W3C */
+}
+
+.opacity-0{
+  opacity: 0!important;
+}
+
+.opacity-1{
+  opacity: 1!important;
+}

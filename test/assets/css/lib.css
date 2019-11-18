@@ -1,0 +1,36 @@
+a {
+  cursor: pointer;
+}
+.btn-primary {
+  background-color: #447BAD;
+}
+.btn-info {
+  background-color: #54C3F1;
+}
+.btn-danger {
+  background-color: #EB5548;
+}
+.MP-0 {
+  margin: 0;
+  padding: 0;
+}
+.picture-section {
+  background-color: transparent;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.clear:after,
+.clear:before {
+  display: table;
+  content: " ";
+}
+.clear:after {
+  clear: both;
+}
+.opacity-0 {
+  opacity: 0!important;
+}
+.opacity-1 {
+  opacity: 1!important;
+}

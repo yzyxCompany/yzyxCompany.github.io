@@ -1,0 +1,32 @@
+[{
+  'both1': '珍珠投资公司', //己方
+  'both2': '地产一号', //对方
+  'title': '汉密尔顿地产', //项目名称
+  'issues': [
+    {
+      number: 0,
+      name: '价格',
+      weight: 30,
+      content: [{
+        content: '',
+        grade: '10',
+        both1: ''
+      }, {
+        content: '',
+        grade: '',
+        both1: '',
+      }]
+    }
+  ],
+  background: [],  //背景篇
+  tactic: [{
+    name: '对立式',
+    content: '',
+  }, {
+    name: '双赢式',
+    content: '',
+  }]
+},{
+
+}
+]

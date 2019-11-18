@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>亦知亦行 知行谈判助手</title>
+    <link rel="stylesheet" href="../../assets/node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="../../assets/node_modules/animate.css/animate.css">
+    <link rel="stylesheet" href="../../assets/css/qdv1.0.main.css">
+    <link rel="ICON" href="../../assets/img/main/icon.png">
+</head>
+<body>
+<div class="qd-content" id="qd_menu_page" v-cloak>
+    <div class="qd-modal-box">
+        <div class="qd-modal-header">
+            <span @click="previousMenu" class="qd-modal-close-btn"></span>
+        </div>
+        <div class="qd-modal-content">
+            <div class="qd-index-box__content clear">
+                <div class="qd-index-module-btn-box" style="display: table-cell;vertical-align: middle;">
+                    <div class="issues-page-btn-box">
+                        <div class="qd-module-btn-box">
+                            <a v-bind:href="'issues.html?qdId='+qdId+'&both=1'" class="qd-module-btn">知&nbsp;&nbsp;&nbsp;&nbsp;己</a>
+                        </div>
+                        <div class="qd-module-btn-box">
+                            <a v-bind:href="'issues.html?qdId='+qdId+'&both=2'" class="qd-module-btn">知&nbsp;&nbsp;&nbsp;&nbsp;彼</a>
+                        </div>
+                        <div class="qd-module-btn-box">
+                            <a v-bind:href="'issuesAnalyze.html?qdId='+qdId" class="qd-module-btn">己&nbsp;&nbsp;&nbsp;&nbsp;彼&nbsp;&nbsp;&nbsp;&nbsp;分&nbsp;&nbsp;&nbsp;&nbsp;析</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript">
+  'user strict';
+  var mainVue = new Vue({
+    el: '#qd_menu_page',
+    data: {
+      userId: '',
+      qdId: '',
+    },
+    methods: {
+      previousMenu: function () {
+        window.location.href = 'menu.html?qdId=' + this.qdId
+      },
+    },
+    mounted: function () {
+      var userId = localStorage.getItem('userId');
+      this.userId = userId;
+      if (userId === null) {
+        window.location.href = '../home.html'
+      }
+      function GetRequest() {
+        var url = decodeURI(location.search);
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+          var str = url.substr(1);
+          strs = str.split("&");
+          for (var i = 0; i < strs.length; i++) {
+            theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+          }
+        }
+        return theRequest;
+      }
+
+      var urlData = GetRequest();
+      if (urlData.qdId === undefined) {
+        window.location.href = '../home.html?openid='+userId;
+      } else {
+        this.qdId = urlData.qdId;
+      }
+    }
+  });
+</script>
+</body>
+</html>
